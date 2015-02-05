@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:spring-configured />
+
+	<!-- <mvc:annotation-driven /> -->
+	<context:component-scan base-package="com">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<tx:annotation-driven mode="aspectj"
+		transaction-manager="transactionManager" />
+
+	<!-- JDBC Data Source -->
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	<!-- <property name="url" value="jdbc:mysql://138.49.196.23:3306/twiddler_scun" 
+		/> localhost <property name="username" value="twiddler_scun" /> xueyufan 
+		root <property name="password" value="never_hack_me" /> -->
+		<property name="url"
+			value="jdbc:mysql://twiddler-mysql.cbcqiw5xhsmo.us-west-2.rds.amazonaws.com:3306/twiddler_scun" />
+		<!-- twiddler-mysql.cbcqiw5xhsmo.us-west-2.rds.amazonaws.com -->
+		<!-- 138.49.196.23:3306 -->
+		<!-- localhost -->
+		<property name="username" value="twiddler" />
+		<!-- xueyufan -->
+		<!-- root -->
+		<property name="password" value="never_hack_me" />
+	</bean>
+
+	<!-- Hibernate Session Factory -->
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="packagesToScan">
+			<array>
+				<value>com.authentication.data</value>
+			</array>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Hibernate Transaction Manager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+
+	<!-- file upload -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="250000" />
+	</bean>
+
+
+
+</beans>
