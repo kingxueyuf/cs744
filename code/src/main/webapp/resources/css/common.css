@@ -4,3 +4,7 @@
 .table th {
    text-align: center;   
 }
+
+.image { 
+	.size(200px; 200px); 
+}
