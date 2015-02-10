@@ -5,7 +5,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<meta http-equiv="refresh" content="0; url=/twiddler/login" />
+<meta http-equiv="refresh" content="0; url=/pages/login.html" />
 
 <html>
 
