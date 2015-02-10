@@ -6,3 +6,5 @@ user=root
 pass=never_hack_me
 # SpringTools
 https://spring.io/tools
+# URL
+http://uwl-cs744-emr.elasticbeanstalk.com/
