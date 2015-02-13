@@ -47,11 +47,11 @@ body {
 	background-color: #fff;
 }
 
-.form-signin .form-signin-heading,.form-signin .checkbox {
+.form-signin .form-signin-heading, .form-signin .checkbox {
 	margin-bottom: 10px;
 }
 
-.form-signin input[type="text"],.form-signin input[type="password"] {
+.form-signin input[type="text"], .form-signin input[type="password"] {
 	font-size: 16px;
 	height: auto;
 	margin-bottom: 15px;
@@ -61,7 +61,7 @@ body {
 #footer {
 	text-align: center;
 	color: #FFFFFF;
-	margin-top:100px;
+	margin-top: 100px;
 }
 </style>
 
@@ -97,8 +97,9 @@ body {
 	<!-- /container -->
 	<div class="footer" id="footer">
 		<p>
-			Twiddler by <a href="http://charity.cs.uwlax.edu/">@Kenny,</a> <a
-				href="http://robin-xueyufan.com/"> @Robin,</a> <a href=""> @Ray</a>
+			EMR by <a href="https://github.com/alvinvinvinvin">@Han,</a> <a
+				href="http://robin-xueyufan.com/"> @Robin,</a> <a
+				href="https://github.com/sanwazi"> @Bo</a>
 		</p>
 
 	</div>
