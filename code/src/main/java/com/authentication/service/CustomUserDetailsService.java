@@ -33,6 +33,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
+		System.out.println("loadUserByUsername");
 		UserDetails ud = getUser(username);
 		return ud;
 	}
@@ -41,6 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			throws UsernameNotFoundException {
 		List<Physician> userList = uaDao.listUser();
 		Physician currentUser = null;
+		System.out.println(userList.size());
 		for (int i = 0; i < userList.size(); i++) {
 			if (userList.get(i).getPhysicianName().equals(username)) {
 				System.out.println(username);
@@ -51,6 +53,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			System.out.println("No User Exist");
 			return null;
 		}
+		System.out.println("ROLE_PHYSICIAN");
 		UserDetails user = new User(currentUser.getPhysicianName(),
 				currentUser.getPassword(), true, true, true, true,
 				this.getAuthorities("ROLE_PHYSICIAN"));

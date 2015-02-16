@@ -19,9 +19,11 @@ public class UserAuthenticationDao {
 
 	public List<Physician> listUser() {
 		Session session = sessionFactory.openSession();
-		List<Physician> list;
+		List<Physician> list = null;
 		try {
 			list = session.createQuery("from Physician").list();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			session.close();
 		}
