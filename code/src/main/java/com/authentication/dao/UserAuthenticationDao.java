@@ -9,8 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.authentication.data.DbUser;
-import com.client.data.Client;
+import com.authentication.data.Physician;
 
 @Repository
 public class UserAuthenticationDao {
@@ -18,35 +17,35 @@ public class UserAuthenticationDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public List<DbUser> listUser() {
+	public List<Physician> listUser() {
 		Session session = sessionFactory.openSession();
-		List<DbUser> list;
+		List<Physician> list;
 		try {
-			list = session.createQuery("from DbUser").list();
+			list = session.createQuery("from Physician").list();
 		} finally {
 			session.close();
 		}
 		return list;
 	}
 
-	public String addUser(DbUser user) {
+	public String addUser(Physician user) {
 		Session session = sessionFactory.openSession();
 		String uid = (String) session.save(user);
 		session.close();
 		return uid;
 	}
 
-	public Client findClientUser(String account) {
+	public Physician findClientUser(String physicianName) {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Query q = session.createQuery("from Client where account ='"+account+"'");
-		List<Client> l = q.list();
+		Query q = session.createQuery("from Physician where physician_name ='"
+				+ physicianName + "'");
+		List<Physician> l = q.list();
 		transaction.commit();
 		session.close();
-		if(l.size()>0){
+		if (l.size() > 0) {
 			return l.remove(0);
-		}
-		else{
+		} else {
 			return null;
 		}
 	}

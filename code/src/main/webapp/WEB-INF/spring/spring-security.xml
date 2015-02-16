@@ -21,9 +21,6 @@
 		<security:intercept-url pattern="/j_spring_security_check"
 			access="permitAll" />
 
-		<!-- <security:intercept-url pattern="/client/**" access="hasRole('ROLE_ADMIN')" 
-			/> -->
-
 		<security:intercept-url pattern="/crm/**"
 			access="hasRole('ROLE_ADMIN')" />
 
@@ -31,17 +28,14 @@
 		<!-- 使用 annotations 过了url阻截的请求 调用相应的controller函数， 这时，spring再验证请求角色是否对应函数的@secure注解 -->
 		<security:form-login login-page="/login"
 
-			authentication-failure-url="/login?error=true" default-target-url="/crm"
+			authentication-failure-url="/login?error=true" default-target-url="/pages/index.html"
 			login-processing-url="/j_spring_security_check" />
 
 		<security:access-denied-handler
 			error-page="/403" />
 
-		<!-- default-target-url="/productmanager" -->
-		<!-- login-processing-url="/j_spring_security_check*" -->
-
 		<security:logout invalidate-session="true"
-			logout-success-url="/userAuthentication/login" />
+			logout-success-url="/login" />
 
 	</security:http>
 

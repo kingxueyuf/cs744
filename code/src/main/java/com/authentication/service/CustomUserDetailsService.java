@@ -18,10 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.authentication.dao.UserAuthenticationDao;
-import com.authentication.data.DbUser;
-import com.client.data.Client;
-import com.license.dao.LicenseDAO;
-import com.license.data.License;
+import com.authentication.data.Physician;
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
@@ -36,19 +33,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		UserDetails ud = getTwiddlerUser(username);
-		if (ud == null) {
-			ud = getAccountUser(username);
-		}
+		UserDetails ud = getUser(username);
 		return ud;
 	}
 
-	private UserDetails getTwiddlerUser(String username)
+	private UserDetails getUser(String username)
 			throws UsernameNotFoundException {
-		List<DbUser> userList = uaDao.listUser();
-		DbUser currentUser = null;
+		List<Physician> userList = uaDao.listUser();
+		Physician currentUser = null;
 		for (int i = 0; i < userList.size(); i++) {
-			if (userList.get(i).getName().equals(username)) {
+			if (userList.get(i).getPhysicianName().equals(username)) {
 				System.out.println(username);
 				currentUser = userList.get(i);
 			}
@@ -57,50 +51,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 			System.out.println("No User Exist");
 			return null;
 		}
-		UserDetails user = new User(currentUser.getName(),
+		UserDetails user = new User(currentUser.getPhysicianName(),
 				currentUser.getPassword(), true, true, true, true,
-				this.getAuthorities("twiddler_admin"));
+				this.getAuthorities("ROLE_PHYSICIAN"));
 
 		return user;
-	}
-
-	private UserDetails getAccountUser(String username)
-			throws UsernameNotFoundException {
-		Client currentClient = uaDao.findClientUser(username);
-		UserDetails user = null;
-		// clientUser exist
-		// check this client has available license
-		if (currentClient == null) {
-			System.out.println("No Client Exist");
-			return null;
-		}
-		boolean hasAvailableLicense = checkLience(currentClient);
-		if (!hasAvailableLicense) {
-			System.out.println("No License or Expire");
-			return null;
-		}
-		user = new User(currentClient.getAccount(),
-				currentClient.getPassword(), true, true, true, true,
-				this.getAuthorities("account_admin"));
-		return user;
-	}
-
-	private boolean checkLience(Client currentClient) {
-		List<License> licenses = lDao.listLicense();
-		for (License license : licenses) {
-			if (license.getCid() == currentClient.getCid()) {
-				Date date = new Date();
-				if (dateActive(date, license.getStart_date(),
-						license.getEnd_date())) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	private boolean dateActive(Date date, Date start_date, Date end_date) {
-		return (date.before(end_date) && date.after(start_date));
 	}
 
 	/**
@@ -109,20 +64,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 	 * @param accountType
 	 * @return
 	 */
-	public Collection<GrantedAuthority> getAuthorities(String accountType) {
+	private Collection<GrantedAuthority> getAuthorities(String accountType) {
 		List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>(3);
 
-		if (accountType.equals("user")) {
-			authList.add(new GrantedAuthorityImpl("ROLE_USER"));
+		if (accountType.equals("PHYSICIAN")) {
+			authList.add(new GrantedAuthorityImpl("ROLE_PHYSICIAN"));
 		}
 
-		if (accountType.equals("twiddler_admin")) {
+		if (accountType.equals("ADMIN")) {
 			authList.add(new GrantedAuthorityImpl("ROLE_ADMIN"));
 		}
 
-		if (accountType.equals("account_admin")) {
-			authList.add(new GrantedAuthorityImpl("ROLE_AADMIN"));
-		}
 		return authList;
 	}
 
