@@ -36,6 +36,7 @@ public class UserAuthenticationDao {
 		session.close();
 		return uid;
 	}
+	
 
 	public Physician findClientUser(String physicianName) {
 		Session session = sessionFactory.openSession();
@@ -51,5 +52,7 @@ public class UserAuthenticationDao {
 			return null;
 		}
 	}
+	
+	
 
 }
