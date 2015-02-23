@@ -1,5 +1,7 @@
 package com.authentication.data;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ public class Physician {
 	@Id
 	@Column(name = "physician_id")
 	@GeneratedValue
-	private String physicianId;
+	private int physicianId;
 
 	@Column(name = "physician_name")
 	private String physicianName;
@@ -21,16 +23,19 @@ public class Physician {
 	private String physicianGender;
 
 	@Column(name = "physician_birthday")
-	private String physicianBirthday;
+	private Date physicianBirthday;
+
+	@Column(name = "account")
+	private String account;
 
 	@Column(name = "password")
 	private String password;
 
-	public String getPhysicianId() {
+	public int getPhysicianId() {
 		return physicianId;
 	}
 
-	public void setPhysicianId(String physicianId) {
+	public void setPhysicianId(int physicianId) {
 		this.physicianId = physicianId;
 	}
 
@@ -50,12 +55,20 @@ public class Physician {
 		this.physicianGender = physicianGender;
 	}
 
-	public String getPhysicianBirthday() {
+	public Date getPhysicianBirthday() {
 		return physicianBirthday;
 	}
 
-	public void setPhysicianBirthday(String physicianBirthday) {
+	public void setPhysicianBirthday(Date physicianBirthday) {
 		this.physicianBirthday = physicianBirthday;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
 	}
 
 	public String getPassword() {

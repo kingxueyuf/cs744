@@ -1,4 +1,4 @@
-package com.authentication.data;
+package com.patient.data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
