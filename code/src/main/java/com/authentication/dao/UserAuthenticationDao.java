@@ -36,9 +36,8 @@ public class UserAuthenticationDao {
 		session.close();
 		return uid;
 	}
-	
 
-	public Physician findClientUser(String physicianName) {
+	public Physician findPhysicianUserByName(String physicianName) {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Query q = session.createQuery("from Physician where physician_name ='"
@@ -52,7 +51,5 @@ public class UserAuthenticationDao {
 			return null;
 		}
 	}
-	
-	
 
 }
