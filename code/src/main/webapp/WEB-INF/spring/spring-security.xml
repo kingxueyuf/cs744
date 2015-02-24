@@ -34,8 +34,8 @@
 		<security:access-denied-handler
 			error-page="/403" />
 
-		<security:logout invalidate-session="true"
-			logout-success-url="/login" />
+		<security:logout delete-cookies="JSESSIONID"
+			logout-url="/logout" invalidate-session="true" logout-success-url="/login"/>
 
 	</security:http>
 

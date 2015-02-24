@@ -36,6 +36,7 @@
 			<array>
 				<value>com.authentication.data</value>
 				<value>com.patient_physician_relation.data</value>
+				<value>com.emr.data</value>
 			</array>
 		</property>
 		<property name="hibernateProperties">

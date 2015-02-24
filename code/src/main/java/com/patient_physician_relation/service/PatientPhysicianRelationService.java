@@ -54,9 +54,7 @@ public class PatientPhysicianRelationService implements
 	}
 
 	private Physician getCurrentPhysician() {
-		if (currentPhysician == null) {
-			currentPhysician = pService.currentPhysician();
-		}
+		currentPhysician = pService.currentPhysician();
 		return currentPhysician;
 	}
 

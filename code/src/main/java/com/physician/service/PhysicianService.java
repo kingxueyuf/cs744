@@ -15,6 +15,7 @@ public class PhysicianService {
 	public Physician currentPhysician() {
 		String account = CustomUserDetailsService.currentUserDetails()
 				.getUsername();
+		System.out.println("current user = " + account);
 		Physician physician = physicianDao.getPhysicianByAccount(account);
 		return physician;
 	}
