@@ -56,7 +56,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		System.out.println("ROLE_PHYSICIAN");
 		UserDetails user = new User(currentUser.getAccount(),
 				currentUser.getPassword(), true, true, true, true,
-				this.getAuthorities("ROLE_PHYSICIAN"));
+				this.getAuthorities("PHYSICIAN"));
 
 		return user;
 	}
