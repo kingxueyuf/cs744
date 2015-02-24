@@ -58,6 +58,8 @@ function loadTemporaryPatient(temporary) {
 		patientItem.push(temporary[i].patient_gender);
 		patientItem.push(convertTimestampToDate(temporary[i].patient_birthday));
 		patientItem.push(temporary[i].relation_type);
+		patientItem.push(temporary[i].start_date);
+		patientItem.push(temporary[i].end_date);
 		patientItem.push(temporary[i].access_right);
 		patientItem.push(temporary[i].primary_physician_name)
 		var button = getEmrButton(temporary[i].patient_id);
@@ -77,6 +79,12 @@ function loadTemporaryPatient(temporary) {
 			"title" : "Patient Birthday"
 		}, {
 			"title" : "Relation Type",
+			"class" : "center"
+		}, {
+			"title" : "Start Date",
+			"class" : "center"
+		}, {
+			"title" : "End Date",
 			"class" : "center"
 		}, {
 			"title" : "Access Level",

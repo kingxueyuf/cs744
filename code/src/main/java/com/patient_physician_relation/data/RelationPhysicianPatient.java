@@ -49,9 +49,11 @@ public class RelationPhysicianPatient {
 	@Column(name = "access_right")
 	private String access_right;
 
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "start_date")
 	private Date start_date;
 
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "end_date")
 	private Date end_date;
 
