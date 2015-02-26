@@ -117,7 +117,7 @@ function updateButton() {
 					$button.attr("href", "emr.html?patient_id=" + patient_id);
 				} else if (data['hasEmr'] == "false") {
 					$button.attr('class', 'btn btn-danger btn-xs');
-					$button.attr('herf', 'create_emr.html?id=' + patient_id);
+					$button.attr('href', 'create_emr.html?id=' + patient_id);
 					
 					
 				}
