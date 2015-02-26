@@ -22,23 +22,6 @@ public class Emr {
 	@Column(name = "patient_name")
 	private String patient_name;
 	
-	/**
-	 * @return the patient_gender
-	 */
-	public String getPatient_gender() {
-		return patient_gender;
-	}
-
-	/**
-	 * @param patient_gender the patient_gender to set
-	 */
-	public void setPatient_gender(String patient_gender) {
-		this.patient_gender = patient_gender;
-	}
-
-	@Column(name = "patient_gender")
-	private String patient_gender;
-	
 	@Column(name = "birthday")
 	private Date birthday;
 	

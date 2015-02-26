@@ -22,6 +22,7 @@ import com.patient.service.PatientService;
 public class EmrController {
 	@Autowired
 	EmrService eService;
+	@Autowired
 	PatientService pService;
 
 	@RequestMapping(value = "/emr/check", method = RequestMethod.GET)
