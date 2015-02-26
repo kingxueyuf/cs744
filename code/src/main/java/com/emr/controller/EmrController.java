@@ -57,7 +57,8 @@ public class EmrController {
 		Emr emr = new Emr(patientId, patient.getPatient_name(), patient.getPatient_birthday(),
 										race, occupation, address, height, weight, blood_group, vaccinations,
 										diabetes, allergies);
-		eService.createNewEmr(emr);
-		return "Creating has been done.";
+		if(eService.createNewEmr(emr))
+		return "success";
+		else return "failure";
 	}
 }

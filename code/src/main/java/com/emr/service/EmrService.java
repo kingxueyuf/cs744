@@ -18,8 +18,9 @@ public class EmrService {
 		return emr;
 	}
 	
-	public void createNewEmr(Emr emr){
-		eDao.insertNewEmr(emr);
+	public boolean createNewEmr(Emr emr){
+		return eDao.insertNewEmr(emr);
+		
 	}
 	
 	
