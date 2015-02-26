@@ -63,7 +63,7 @@ function bindSubmitAction() {
 							+ "&address=" + address + "&height=" + height
 							+ "&weight=" + weight + "&blood_group="
 							+ blood_group + "&vaccinations=" + vaccinations
-							+ "&diabetes" + diabetes + "&allergies="
+							+ "&diabetes=" + diabetes + "&allergies="
 							+ allergies + "&patientId=" + id,
 					success : function(data) {
 						if( data == "success" ){
