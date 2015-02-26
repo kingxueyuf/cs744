@@ -46,19 +46,19 @@ function bindSubmitAction() {
 	$('#createEMRSubmit').click(
 			function() {
 
-				var race = $(this).attr("race");
-				var occupation = $(this).attr("occupation");
-				var address = $(this).attr("address");
-				var height = $(this).attr("height");
-				var weight = $(this).attr("weight");
-				var blood_group = $(this).attr("blood_group");
-				var vaccinations = $(this).attr("vaccinations");
-				var diabetes = $(this).attr("diabetes");
-				var allergies = $(this).attr("allergies");
+				var race = $('#race').val();
+				var occupation = $('#occupation').val();
+				var address = $('#address').val();
+				var height = $('#height').val();
+				var weight = $('#weight').val();
+				var blood_group = $('#blood_group').val();
+				var vaccinations = $('#vaccinations').val();
+				var diabetes = $('#diabetes').val();
+				var allergies = $('#allergies').val();
 
 				$.ajax({
 					type : "GET",
-					url : "/emr/create_emr",
+					url : "/emr/create",
 					data : "race=" + race + "&occupation=" + occupation
 							+ "&address=" + address + "&height=" + height
 							+ "&weight=" + weight + "&blood_group="
@@ -66,8 +66,11 @@ function bindSubmitAction() {
 							+ "&diabetes" + diabetes + "&allergies="
 							+ allergies + "&patientId=" + id,
 					success : function(data) {
-						var responseData = eval(data);
-						alert(data);
+						if( data == "success" ){
+							alert(data);
+						}
+						//var responseData = eval(data);
+						
 						// if (data['hasEmr'] == 'true') {
 						// $button.attr("href", "emr.html?patient_id=" +
 						// patient_id);
