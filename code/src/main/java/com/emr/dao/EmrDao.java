@@ -2,6 +2,7 @@ package com.emr.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,12 +31,19 @@ public class EmrDao {
 		return emr;
 	}
 	
-	public void insertNewEmr(Emr emr){
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(emr);
-		session.getTransaction().commit();
-		session.close();
+	public boolean insertNewEmr(Emr emr){
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.save(emr);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 }
