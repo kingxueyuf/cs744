@@ -68,6 +68,8 @@ function bindSubmitAction() {
 					success : function(data) {
 						if( data == "success" ){
 							alert(data);
+						}else if( data == "failure"){
+							alert(data)
 						}
 						//var responseData = eval(data);
 						
