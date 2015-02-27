@@ -5,21 +5,33 @@ var gender;
 var name;
 $(document).ready(function() {
 	getPatientID();
+	getPatientBasicInfo();
 	bindSubmitAction();
-
 })
 
 function getPatientID() {
 	id = getUrlParameter("id");
-	name = getUrlParameter("name");
-	age = getUrlParameter("age");
-	birthday = getUrlParameter("birthday");
-	gender = getUrlParameter("gender");
+}
+
+function getPatientBasicInfo(){
+	$.ajax({
+		type : "GET",
+		url : "/emr/getPatient",
+		data :"patientId=" + id,
+		success : function(data) {
+			age = data["patient_age"];
+			gender = data["patient_gender"];
+			name = data["patient_name"];
+			birthday = data["patient_birthday"];
+			$('#name').val(name);
+			$('birth').val( birthday);
+			$('age').val(age);
+			$('gender').val(gender);
+		},
+		dataType : "json",
+	});
 	
-	$('#name').val(name);
-	$('#age').val(age);
-	$('#birth').val(birthday);
-	$('#gender').val(gender);
+	
 }
 
 function getUrlParameter(sParam) {
@@ -71,14 +83,6 @@ function bindSubmitAction() {
 						}else if( data == "failure"){
 							alert(data)
 						}
-						//var responseData = eval(data);
-						
-						// if (data['hasEmr'] == 'true') {
-						// $button.attr("href", "emr.html?patient_id=" +
-						// patient_id);
-						// } else if (data['hasEmr'] == "false") {
-						// $button.attr('class', 'btn btn-danger btn-xs');
-						// }
 					},
 					dataType : "text",
 				});
