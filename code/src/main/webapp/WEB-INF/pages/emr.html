@@ -212,12 +212,22 @@
 		</nav>
 
 		<div id="page-wrapper">
+		
 			<br>
 			<div class="row">
 				<div class="col-lg-11">
 					<div class="panel panel-info">
-						<div class="panel-heading">Patient Info</div>
-						<div class="panel-body">
+					
+					
+						<div class="panel-heading">
+							<a class="panel-toggle" data-toggle="collapse" href="#patientInfoBody" 
+							aria-expanded="true" aria-controls="patientInfoBody">
+								Patient Infor
+							</a>
+						</div>
+					
+					
+						<div class="panel-body" id="patientInfoBody">
 							<div class="row">
 								<div class="col-lg-3">
 									<img src="/resources/img/chou_jay.jpg" alt="jay"
@@ -318,11 +328,17 @@
 				<!-- ./col-lg-11 -->
 			</div>
 			<!-- /.row -->
+			<br>
 			<div class="row">
 				<div class="col-lg-11">
 					<div class="panel panel-danger">
-						<div class="panel-heading">Physical Conditions</div>
-						<div class="panel-body">
+						<div class="panel-heading">
+							<a class="panel-toggle" data-toggle="collapse" href="#physicianConBody" 
+							aria-expanded="false" aria-controls="physicianConBody">
+								Physical Conditions
+							</a>
+						</div>
+						<div class="panel-body" id="physicianConBody">
 							<form role="form">
 								<div class="form-group has-error">
 									<div class="row">
@@ -377,11 +393,17 @@
 					</div>
 				</div>
 			</div>
+			<br>
 			<div class="row">
 				<div class="col-lg-11">
 					<div class="panel panel-danger">
-						<div class="panel-heading">Medical Disorders</div>
-						<div class="panel-body">
+						<div class="panel-heading">
+							<a class="panel-toggle" data-toggle="collapse" href="#medicalDisBody" 
+							 aria-expanded="false" aria-controls="medicalDisBody">
+								Medical Disorders
+							</a>
+						</div>
+						<div class="panel-body" id="medicalDisBody">
 							<form role="form">
 								<div class="form-group has-error">
 									<div class="row">
@@ -412,6 +434,8 @@
 					</div>
 				</div>
 			</div>
+			<br>
+			
 			<!-- <div class="row">
 				<div class="col-lg-11">
 					<div class="panel panel-default">
@@ -675,6 +699,13 @@
 				}
 			});
 		});
+	</script>
+	
+	<script>  
+  
+		$('.collapse').collapse({  
+		  
+		})  
 	</script>
 
 </body>
