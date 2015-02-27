@@ -24,9 +24,9 @@ function getPatientBasicInfo(){
 			name = data["patient_name"];
 			birthday = data["patient_birthday"];
 			$('#name').val(name);
-			$('birth').val( birthday);
-			$('age').val(age);
-			$('gender').val(gender);
+			$('#birth').val( birthday);
+			$('#age').val(age);
+			$('#gender').val(gender);
 		},
 		dataType : "json",
 	});
