@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUIL	D-SNAPSHOT</version>
 	<properties>
-		<java-version>1.6</java-version>
+		<java-version>1.7</java-version>
 		<org.springframework-version>3.2.3.RELEASE</org.springframework-version>
 		<org.spring-security-version>3.1.4.RELEASE</org.spring-security-version>
 		<org.aspectj-version>1.7.0</org.aspectj-version>

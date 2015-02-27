@@ -61,4 +61,23 @@ public class EmrController {
 		return "success";
 		else return "failure";
 	}
+	
+	@RequestMapping(value = "/emr/getPatient", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody Map<String, String> getPatientById(
+			@RequestParam(value = "patientId", required = true) int patientId) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		Patient patient = pService.getPatientById(patientId);
+		
+		if (patient != null) {
+			map.put("patientId", patientId+"");
+			map.put("patient_name", patient.getPatient_name());
+			map.put("patient_gender", patient.getPatient_gender());
+			map.put("patient_birthday", pService.dateToString(patient.getPatient_birthday()));
+			map.put("patient_age", pService.computeAge(patient.getPatient_birthday()));
+		} else {
+			map = null;
+		}
+		return map;
+	}
 }
