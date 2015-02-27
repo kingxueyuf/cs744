@@ -19,10 +19,10 @@ function getPatientBasicInfo(){
 		url : "/emr/getPatient",
 		data :"patientId=" + id,
 		success : function(data) {
-			age = data["age"];
-			gender = data["gender"];
-			name = data["name"];
-			birthday = data["birthday"];
+			age = data["patient_age"];
+			gender = data["patient_gender"];
+			name = data["patient_name"];
+			birthday = data["patient_birthday"];
 			$('#name').val(name);
 			$('birth').val( birthday);
 			$('age').val(age);
