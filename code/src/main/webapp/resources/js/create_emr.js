@@ -80,7 +80,7 @@ function bindSubmitAction() {
 					success : function(data) {
 						if( data == "success" ){
 							alert(data);
-							windows.href("/pages/patients.html");
+							window.location.href="/pages/patients.html";
 						}else if( data == "failure"){
 							alert(data)
 						}
