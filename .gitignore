@@ -15,3 +15,13 @@ hs_err_pid*
 *.xml
 
 *.prefs
+
+*.properties
+
+code/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
+code/target/m2e-wtp/web-resources/META-INF/maven/EMR/EMR/pom.xml
+
+code/target/m2e-wtp/web-resources/META-INF/maven/EMR/EMR/pom.properties
+
+code/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
