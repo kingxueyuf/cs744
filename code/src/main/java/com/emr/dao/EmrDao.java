@@ -46,4 +46,19 @@ public class EmrDao {
 		return true;
 	}
 	
+	public boolean updateEmr(Emr emr){
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			session.update(emr);
+			session.getTransaction().commit();
+			session.close();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
 }
