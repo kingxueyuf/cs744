@@ -22,7 +22,7 @@ $(document).ready(function() {
 })
 
 function getPatientID() {
-	id = getUrlParameter("id");
+	id = getUrlParameter("patient_id");
 }
 function getPatientBasicInfo() {
 	$.ajax({
