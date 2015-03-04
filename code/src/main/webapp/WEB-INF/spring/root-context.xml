@@ -38,6 +38,8 @@
 				<value>com.patient_physician_relation.data</value>
 				<value>com.emr.data</value>
 				<value>com.patient.data</value>
+				<value>com.transcription.data</value>
+				<value>com.drug.data</value>
 			</array>
 		</property>
 		<property name="hibernateProperties">

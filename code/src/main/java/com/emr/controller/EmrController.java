@@ -44,9 +44,7 @@ public class EmrController {
 	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody Emr viewEmr(
 			@RequestParam(value = "patientId", required=true) int patientId){
-		Patient patient = pService.getPatientById(patientId);
 		Emr emr = eService.getEmrByPatientId(patientId);
-
 		return emr;
 
 	}
