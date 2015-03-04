@@ -33,7 +33,7 @@
   Collapse.TRANSITION_DURATION = 350
 
   Collapse.DEFAULTS = {
-    toggle: true,
+    //toggle: true,
     trigger: '[data-toggle="collapse"]'
   }
 
