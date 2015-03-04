@@ -17,11 +17,13 @@ public class EmrService {
 		Emr emr = eDao.findEmrByPatientId(patientId);
 		return emr;
 	}
-	
-	public boolean createNewEmr(Emr emr){
+
+	public boolean createNewEmr(Emr emr) {
 		return eDao.insertNewEmr(emr);
-		
+
 	}
-	
-	
+
+	public boolean updateEmr(Emr emr) {
+		return eDao.updateEmr(emr);
+	}
 }
