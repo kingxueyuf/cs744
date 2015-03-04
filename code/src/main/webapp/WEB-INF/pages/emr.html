@@ -262,8 +262,8 @@
 																	<label class="control-label" for="inputSuccess">Name</label>
 																</div>
 																<div class="col-lg-10">
-																	<input type="text" class="form-control"
-																		id="inputSuccess" placeholder="Jay" disabled>
+																	<input type="text" class="form-control" id="name"
+																		placeholder="Jay" disabled>
 																</div>
 															</div>
 														</div>
@@ -273,8 +273,8 @@
 																	<label class="control-label" for="inputSuccess">Gender</label>
 																</div>
 																<div class="col-lg-10">
-																	<input type="text" class="form-control"
-																		id="inputSuccess" placeholder="Man" disabled>
+																	<input type="text" class="form-control" id="gender"
+																		placeholder="Man" disabled>
 																</div>
 															</div>
 														</div>
@@ -284,8 +284,8 @@
 																	<label class="control-label" for="inputSuccess">Age</label>
 																</div>
 																<div class="col-lg-10">
-																	<input type="text" class="form-control"
-																		id="inputSuccess" placeholder="36" disabled>
+																	<input type="text" class="form-control" id="age"
+																		placeholder="36" disabled>
 																</div>
 															</div>
 														</div>
@@ -295,9 +295,8 @@
 																	<label class="control-label" for="inputSuccess">Birth</label>
 																</div>
 																<div class="col-lg-10">
-																	<input type="text" class="form-control"
-																		id="inputSuccess" placeholder="18 January 1979"
-																		disabled>
+																	<input type="text" class="form-control" id="birth"
+																		placeholder="18 January 1979" disabled>
 																</div>
 															</div>
 														</div>
@@ -307,8 +306,8 @@
 																	<label class="control-label" for="inputSuccess">Race</label>
 																</div>
 																<div class="col-lg-10">
-																	<input type="text" class="form-control"
-																		id="inputSuccess" placeholder="Asian" disabled>
+																	<input type="text" class="form-control" id="race"
+																		placeholder="Asian" disabled>
 																</div>
 															</div>
 														</div>
@@ -318,8 +317,8 @@
 																	<label class="control-label" for="inputSuccess">Occupation</label>
 																</div>
 																<div class="col-lg-10">
-																	<input type="text" class="form-control"
-																		id="inputSuccess" placeholder="Singer" disabled>
+																	<input type="text" class="form-control" id="occupation"
+																		placeholder="Singer" disabled>
 																</div>
 															</div>
 														</div>
@@ -329,9 +328,8 @@
 																	<label class="control-label" for="inputSuccess">Address</label>
 																</div>
 																<div class="col-lg-10">
-																	<input type="text" class="form-control"
-																		id="inputSuccess" placeholder="1123 Taiwan Road"
-																		disabled>
+																	<input type="text" class="form-control" id="address"
+																		placeholder="1123 Taiwan Road" disabled>
 																</div>
 															</div>
 														</div>
@@ -367,7 +365,7 @@
 															<label class="control-label" for="inputSuccess">Height</label>
 														</div>
 														<div class="col-lg-10">
-															<input type="text" class="form-control" id="inputSuccess"
+															<input type="text" class="form-control" id="height"
 																placeholder="173cm" disabled>
 														</div>
 													</div>
@@ -378,7 +376,7 @@
 															<label class="control-label" for="inputSuccess">Weight</label>
 														</div>
 														<div class="col-lg-10">
-															<input type="text" class="form-control" id="inputSuccess"
+															<input type="text" class="form-control" id="weight"
 																placeholder="70kg" disabled>
 														</div>
 													</div>
@@ -390,7 +388,7 @@
 																Group</label>
 														</div>
 														<div class="col-lg-10">
-															<input type="text" class="form-control" id="inputSuccess"
+															<input type="text" class="form-control" id="blood_group"
 																placeholder="O" disabled>
 														</div>
 													</div>
@@ -402,10 +400,8 @@
 														</div>
 														<div class="col-lg-10">
 															<div class="well">
-																polio vaccine -1/2/2002<br> influenza vaccine
-																-1/3/2003<br> typhoid vaccine -1/4/2004<br>
-																cholera vaccine -1/5/2005<br> measles vaccine
-																-2/6/2006<br> BCG vaccine -3/7/2007
+																<textarea class="form-control" rows="6"
+																	id="vaccinations" disabled></textarea>
 															</div>
 														</div>
 													</div>
@@ -433,7 +429,7 @@
 															<label class="control-label" for="inputSuccess">Diabetes</label>
 														</div>
 														<div class="col-lg-10">
-															<input type="text" class="form-control" id="inputSuccess"
+															<input type="text" class="form-control" id="diabetes"
 																placeholder="No" disabled>
 														</div>
 													</div>
@@ -445,8 +441,8 @@
 														</div>
 														<div class="col-lg-10">
 															<div class="well">
-																Corn products<br> Cow's milk and dairy products <br>
-																Eggs<br> Soy
+																<textarea class="form-control" rows="4" id="allergies"
+																	disabled></textarea>
 															</div>
 														</div>
 													</div>
@@ -650,6 +646,9 @@
 	<script src="/resources/bootstrap-editable/js/bootstrap-editable.js"></script>
 	<!-- Custom Theme JavaScript -->
 	<script src="/resources/dist/js/sb-admin-2.js"></script>
+
+	<!--  view emr js -->
+	<script src="/resources/js/view_emr.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 	<script>
