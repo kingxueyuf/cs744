@@ -111,7 +111,7 @@ function getEmrBasicInfo() {
 function getTranscriptionList(emr_id) {
 	$.ajax({
 		type : "GET",
-		url : "/emr/getTranscription=" + emr_id,
+		url : "/emr/getTranscription?emr_id=" + emr_id,
 		success : function(data) {
 			loadTranscription(data);
 		},
