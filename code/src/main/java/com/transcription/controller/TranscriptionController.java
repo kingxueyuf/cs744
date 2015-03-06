@@ -25,7 +25,7 @@ public class TranscriptionController {
 	@RequestMapping(value = "/emr/getTranscription", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody List<Transcription> getTranscriptionList(
-			@RequestParam(value = "emrId", required = true) int emrId) {
+			@RequestParam(value = "emr_id", required = true) int emrId) {
 		List<Transcription> list = transcriptionService.getTranscriptionsByEmrId(emrId);
 		return list;
 	}

@@ -32,6 +32,18 @@ public class Transcription {
 	@Column( name = "patient_name" )
 	private String patient_name;
 	
+	@Column( name ="abstraction ")
+	private String abstraction;
+	
+	@Column ( name = "diagnostic_test" )
+	private String diagnostic_test;
+	
+	@Column( name = "surgery" )
+	private String surgery;
+	
+	@Column ( name = "content")
+	private String content;
+	
 	@Column( name = "physician_id" )
 	private int physician_id;
 	
@@ -42,35 +54,129 @@ public class Transcription {
 	@Column(name = "create_date")
 	private Date create_date;
 
+	
+	
 	public Transcription() {
 
 	}
 
+	
 
-
+	
 	/**
 	 * @param transcription_id
 	 * @param emr_id
 	 * @param patient_id
 	 * @param patient_name
+	 * @param abstraction
+	 * @param diagnostic_test
+	 * @param surgery
+	 * @param content
 	 * @param physician_id
 	 * @param physician_name
 	 * @param create_date
 	 */
 	public Transcription(int transcription_id, int emr_id, int patient_id,
-			String patient_name, int physician_id, String physician_name,
-			Date create_date) {
+			String patient_name, String abstraction, String diagnostic_test,
+			String surgery, String content, int physician_id,
+			String physician_name, Date create_date) {
 		super();
 		this.transcription_id = transcription_id;
 		this.emr_id = emr_id;
 		this.patient_id = patient_id;
 		this.patient_name = patient_name;
+		this.abstraction = abstraction;
+		this.diagnostic_test = diagnostic_test;
+		this.surgery = surgery;
+		this.content = content;
 		this.physician_id = physician_id;
 		this.physician_name = physician_name;
 		this.create_date = create_date;
 	}
 
-	
+
+
+
+	/**
+	 * @return the abstraction
+	 */
+	public String getAbstraction() {
+		return abstraction;
+	}
+
+
+
+
+	/**
+	 * @param abstraction the abstraction to set
+	 */
+	public void setAbstraction(String abstraction) {
+		this.abstraction = abstraction;
+	}
+
+
+
+
+	/**
+	 * @return the diagnostic_test
+	 */
+	public String getDiagnostic_test() {
+		return diagnostic_test;
+	}
+
+
+
+
+	/**
+	 * @param diagnostic_test the diagnostic_test to set
+	 */
+	public void setDiagnostic_test(String diagnostic_test) {
+		this.diagnostic_test = diagnostic_test;
+	}
+
+
+
+
+	/**
+	 * @return the surgery
+	 */
+	public String getSurgery() {
+		return surgery;
+	}
+
+
+
+
+	/**
+	 * @param surgery the surgery to set
+	 */
+	public void setSurgery(String surgery) {
+		this.surgery = surgery;
+	}
+
+
+
+
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
+
+
+
+
+	/**
+	 * @param content the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+
+
+
 	/**
 	 * @return the transcription_id
 	 */

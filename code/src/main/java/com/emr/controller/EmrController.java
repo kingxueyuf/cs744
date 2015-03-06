@@ -40,7 +40,7 @@ public class EmrController {
 		return map;
 	}
 	
-	@RequestMapping(value = "/emr/view", method = RequestMethod.GET)
+	@RequestMapping(value = "/emr/viewEmr", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody Emr viewEmr(
 			@RequestParam(value = "patientId", required=true) int patientId){
