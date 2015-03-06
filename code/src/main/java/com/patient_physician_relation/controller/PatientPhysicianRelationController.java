@@ -34,4 +34,14 @@ public class PatientPhysicianRelationController {
 		map.put("temporary", temporary);
 		return map;
 	}
+
+	@RequestMapping(value = "/relation/temporaryCare", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody List<RelationPhysicianPatient> findTemporaryCareByPatientId(
+			@RequestParam(value = "patient_id", required = true) int patient_id) {
+
+		List<RelationPhysicianPatient> temporary = pService
+				.findTemporaryCaraByPatientId( patient_id);
+		return temporary;
+	}
 }

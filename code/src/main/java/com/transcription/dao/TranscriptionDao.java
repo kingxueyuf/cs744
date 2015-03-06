@@ -1,5 +1,5 @@
-
 package com.transcription.dao;
+
 /**
  * @author Jingbo Chu	
  *
@@ -22,7 +22,7 @@ public class TranscriptionDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public List<Transcription> findTranscriptionsByEmrId(int emrId) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
@@ -33,5 +33,16 @@ public class TranscriptionDao {
 		transaction.commit();
 		session.close();
 		return list;
+	}
+
+	public Transcription findTranscriptionById(int transcription_id) {
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery( "from Transcription where transcription_id = " + transcription_id );
+		Transaction transaction = session.beginTransaction();
+		List<Transcription> transcriptions = q.list();
+		transaction.commit();
+		session.close();
+		Transcription transcription = ( transcriptions.size() != 0 ? transcriptions.remove(0): null );
+		return transcription;
 	}
 }
