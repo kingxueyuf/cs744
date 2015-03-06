@@ -19,8 +19,16 @@ $(document).ready(function() {
 	getPatientID();
 	getPatientBasicInfo();
 	getEmrBasicInfo();
+	bindTabChangedAction();
 	getPysicianList();
 })
+
+function bindTabChangedAction() {
+	$('#tabs a[href="#orange"]').click(function(e) {
+		console.log('here');
+		loadTranscription(transcrptionData);
+	})
+}
 
 function getPatientID() {
 	id = getUrlParameter("patient_id");
@@ -108,17 +116,20 @@ function getEmrBasicInfo() {
 		dataType : "json",
 	});
 }
+var transcrptionData = {};
 function getTranscriptionList(emr_id) {
 	$.ajax({
 		type : "GET",
 		url : "/emr/getTranscription?emr_id=" + emr_id,
 		success : function(data) {
-			loadTranscription(data);
+			transcrptionData = data;
+			// loadTranscription(data);
 		},
 		dataType : "json",
 	});
 }
 function loadTranscription(data) {
+	console.log(data);
 	var dataSet = [];
 	for ( var i in data) {
 		var transcrptionItem = [];
@@ -128,18 +139,44 @@ function loadTranscription(data) {
 		transcrptionItem.push(button);
 		dataSet.push(transcrptionItem);
 	}
-	// console.log(dataSet);
-	$('#dataTables-example1').DataTable({
-		"responsive" : true,
-		"data" : dataSet,
-		"columns" : [ {
-			"title" : "Abstract"
-		}, {
-			"title" : "Date"
-		}, {
-			"title" : "Action"
-		} ]
-	});
+	console.log(dataSet);
+	if ($.fn.dataTable.isDataTable('#dataTables-example1')) {
+		table = $('#dataTables-example1').DataTable({
+			"responsive" : true,
+			"data" : dataSet,
+			"columns" : [ {
+				"title" : "Abstract"
+			}, {
+				"title" : "Date"
+			}, {
+				"title" : "Action"
+			} ]
+		});
+	} else {
+		table = $('#dataTables-example1').DataTable({
+			"paging" : false,
+			"responsive" : true,
+			"data" : dataSet,
+			"columns" : [ {
+				"title" : "Abstract"
+			}, {
+				"title" : "Date"
+			}, {
+				"title" : "Action"
+			} ]
+		});
+	}
+	// $('#dataTables-example1').DataTable({
+	// "responsive" : true,
+	// "data" : dataSet,
+	// "columns" : [ {
+	// "title" : "Abstract"
+	// }, {
+	// "title" : "Date"
+	// }, {
+	// "title" : "Action"
+	// } ]
+	// });
 }
 function getTranscriptionButton(transcription_id) {
 	var button = "<a name=\"transcription\" id=\""
