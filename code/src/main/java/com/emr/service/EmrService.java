@@ -2,7 +2,6 @@ package com.emr.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.emr.dao.EmrDao;
 import com.emr.data.Emr;
 
