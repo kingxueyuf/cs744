@@ -19,17 +19,8 @@ $(document).ready(function() {
 	getPatientID();
 	getPatientBasicInfo();
 	getEmrBasicInfo();
-	bindTabChangedAction();
 	getPysicianList();
 })
-
-function bindTabChangedAction() {
-	$('#tabs a[href="#orange"]').click(function(e) {
-		console.log('here');
-		loadTranscription(transcrptionData);
-	})
-}
-
 function getPatientID() {
 	id = getUrlParameter("patient_id");
 }
@@ -116,14 +107,12 @@ function getEmrBasicInfo() {
 		dataType : "json",
 	});
 }
-var transcrptionData = {};
 function getTranscriptionList(emr_id) {
 	$.ajax({
 		type : "GET",
 		url : "/emr/getTranscription?emr_id=" + emr_id,
 		success : function(data) {
-			transcrptionData = data;
-			// loadTranscription(data);
+			loadTranscription(data);
 		},
 		dataType : "json",
 	});
