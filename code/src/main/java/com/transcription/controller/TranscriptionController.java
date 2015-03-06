@@ -29,4 +29,12 @@ public class TranscriptionController {
 		List<Transcription> list = transcriptionService.getTranscriptionsByEmrId(emrId);
 		return list;
 	}
+	
+	@RequestMapping(value = "/transcription/getTranscription", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody Transcription getTranscriptionById(
+			@RequestParam(value = "transcription_id", required = true) int transcription_id) {
+		Transcription transcription = transcriptionService.getTranscriptionById( transcription_id );
+		return transcription;
+	}
 }

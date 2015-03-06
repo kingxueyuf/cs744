@@ -58,4 +58,20 @@ public class PatientPhysicianRelationService implements
 		return currentPhysician;
 	}
 
+	@Override
+	public List<RelationPhysicianPatient> findTemporaryCaraByPatientId(
+			int patient_id) {
+		// TODO Auto-generated method stub
+		List<RelationPhysicianPatient> patients = ppRelationDao.findTemporaryCareByPatientId( patient_id );
+		List<RelationPhysicianPatient> temporaryCarePatients = new ArrayList<RelationPhysicianPatient>();
+		for (RelationPhysicianPatient p : patients) {
+
+			if ( p.getRelation_type().equals(
+							ConstantValue.TEMPORARY_CARE_RELATION)) {
+				temporaryCarePatients.add(p);
+			}
+		}
+		return temporaryCarePatients;
+	}
+
 }

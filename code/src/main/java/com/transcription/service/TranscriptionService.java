@@ -19,4 +19,9 @@ public class TranscriptionService {
 		return list;
 	}
 	
+	public Transcription getTranscriptionById( int transcription_id ){
+		Transcription transcription = transcriptionDao.findTranscriptionById( transcription_id );
+		return transcription;
+	}
+	
 }
