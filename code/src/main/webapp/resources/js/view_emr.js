@@ -63,7 +63,7 @@ function getUrlParameter(sParam) {
 function getEmrBasicInfo(){
 	$.ajax({
 		type : "GET",
-		url : "/emr/view",
+		url : "/emr/getPatient",
 		data : "patientId=" + id,
 		success : function(data) {
 			emr_id = data["emr_id"];
