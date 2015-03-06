@@ -140,33 +140,8 @@ function loadTranscription(data) {
 		dataSet.push(transcrptionItem);
 	}
 	console.log(dataSet);
-	if ($.fn.dataTable.isDataTable('#dataTables-example1')) {
-		table = $('#dataTables-example1').DataTable({
-			"responsive" : true,
-			"data" : dataSet,
-			"columns" : [ {
-				"title" : "Abstract"
-			}, {
-				"title" : "Date"
-			}, {
-				"title" : "Action"
-			} ]
-		});
-	} else {
-		table = $('#dataTables-example1').DataTable({
-			"paging" : false,
-			"responsive" : true,
-			"data" : dataSet,
-			"columns" : [ {
-				"title" : "Abstract"
-			}, {
-				"title" : "Date"
-			}, {
-				"title" : "Action"
-			} ]
-		});
-	}
-	// $('#dataTables-example1').DataTable({
+	// if ($.fn.dataTable.isDataTable('#dataTables-example1')) {
+	// table = $('#dataTables-example1').DataTable({
 	// "responsive" : true,
 	// "data" : dataSet,
 	// "columns" : [ {
@@ -177,6 +152,31 @@ function loadTranscription(data) {
 	// "title" : "Action"
 	// } ]
 	// });
+	// } else {
+	// table = $('#dataTables-example1').DataTable({
+	// "paging" : false,
+	// "responsive" : true,
+	// "data" : dataSet,
+	// "columns" : [ {
+	// "title" : "Abstract"
+	// }, {
+	// "title" : "Date"
+	// }, {
+	// "title" : "Action"
+	// } ]
+	// });
+	// }
+	$('#trans-table').DataTable({
+		"responsive" : true,
+		"data" : dataSet,
+		"columns" : [ {
+			"title" : "Abstract"
+		}, {
+			"title" : "Date"
+		}, {
+			"title" : "Action"
+		} ]
+	});
 }
 function getTranscriptionButton(transcription_id) {
 	var button = "<a name=\"transcription\" id=\""
