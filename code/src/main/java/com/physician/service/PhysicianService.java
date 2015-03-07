@@ -1,5 +1,7 @@
 package com.physician.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,10 @@ public class PhysicianService {
 		System.out.println("current user = " + account);
 		Physician physician = physicianDao.getPhysicianByAccount(account);
 		return physician;
+	}
+	
+	public List<Physician> searchWithInput( String input ){
+		List<Physician> list = physicianDao.serachWithInput(input);
+		return list;
 	}
 }

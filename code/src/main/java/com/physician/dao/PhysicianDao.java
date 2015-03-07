@@ -29,5 +29,16 @@ public class PhysicianDao {
 		Physician p = (Physician) ((list.size() != 0) ? list.remove(0) : null);
 		return p;
 	}
+	
+	public List<Physician> serachWithInput( String input ){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Physician where physicianName like '" + input + "%'");
+		Transaction transaction = session.beginTransaction();
+		List<Physician> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
+	
 
 }
