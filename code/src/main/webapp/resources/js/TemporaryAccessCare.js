@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function loadAutocomplete() {
 	var input = $("#physician_input").val();
-	// console.log("??????????"+input);
+
 	$.ajax({
 		type : "GET",
 		url : "/physician/autocomplete",
