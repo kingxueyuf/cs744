@@ -168,7 +168,7 @@ function loadTranscription(data) {
 	});
 }
 function getTranscriptionButton(transcription_id) {
-	var button = "<a name=\"transcription\" id=\""
+	var button = "<a name=\"transcription\" href=\"transcription.html?transcriptionId="
 			+ transcription_id
 			+ "\" class=\"btn btn-success btn-xs\"><i class=\"fa fa-edit\"></i>View</a>";
 	return button;

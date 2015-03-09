@@ -40,6 +40,10 @@
 				<value>com.patient.data</value>
 				<value>com.transcription.data</value>
 				<value>com.drug.data</value>
+				<value>com.relation_transcription_diagnostic_test.data</value>
+				<value>com.relation_transcription_surgery.data</value>
+				<value>com.prescription.data</value>
+				<value>com.relation_prescription_drug.data</value>
 			</array>
 		</property>
 		<property name="hibernateProperties">

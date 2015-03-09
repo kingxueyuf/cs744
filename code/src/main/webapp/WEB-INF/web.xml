@@ -8,7 +8,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<display-name>EMR</display-name>
 
 	<session-config>
-		<session-timeout>3000</session-timeout>
+		<session-timeout>60</session-timeout>
 	</session-config>
 
 	<!-- - Location of the XML file that defines the root application context. 
@@ -33,7 +33,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
+	
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

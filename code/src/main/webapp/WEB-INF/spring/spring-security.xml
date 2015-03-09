@@ -35,7 +35,12 @@
 			error-page="/403" />
 
 		<security:logout delete-cookies="JSESSIONID"
-			logout-url="/logout" invalidate-session="true" logout-success-url="/login"/>
+			logout-url="/logout" invalidate-session="true" logout-success-url="/login" />
+
+		<security:session-management invalid-session-url="/login" >
+			<security:concurrency-control
+				max-sessions="1" expired-url="/login" />
+		</security:session-management>
 
 	</security:http>
 

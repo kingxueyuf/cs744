@@ -51,7 +51,70 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style>
+.label {
+	padding: 1px 3px 2px;
+	font-size: 13.75px;
+	font-weight: bold;
+	color: #ffffff;
+	text-transform: uppercase;
+	white-space: nowrap;
+	background-color: #bfbfbf;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
 
+.label.important {
+	background-color: #c43c35;
+}
+
+.label.warning {
+	background-color: #f89406;
+}
+
+.label.success {
+	background-color: #46a546;
+}
+
+.label.notice {
+	background-color: #62cffc;
+}
+
+td.details-control {
+	background: url('/resources/img/details_open.png') no-repeat center
+		center;
+	cursor: pointer;
+}
+
+tr.shown td.details-control {
+	background: url('/resources/img/details_close.png') no-repeat center
+		center;
+}
+
+td .drugname {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
+
+td .drugamount {
+	color: red;
+	text-decoration: underline;
+}
+
+#diagnostic-test {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
+
+#surgery {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
@@ -218,15 +281,13 @@
 				<tbody>
 					<tr>
 						<td width="35%">Patient Name</td>
-						<td width="65%"><a href="#" id="username" data-type="text"
-							data-pk="1" data-title="Enter username"
-							class="editable editable-click">Jay</a></td>
+						<td width="65%"><span class="label important"
+							id="patient_name"></span></td>
 					</tr>
 					<tr>
 						<td width="35%">Physician Name(create examination)</td>
-						<td width="65%"><a href="#" id="username" data-type="text"
-							data-pk="1" data-title="Enter username"
-							class="editable editable-click">Yufan</a></td>
+						<td width="65%"><span class="label notice"
+							id="physician_name">Success</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -235,27 +296,25 @@
 				<tbody>
 					<tr>
 						<td width="35%">Diagnostic Test</td>
-						<td width="65%"><p>X ray</p></td>
+						<td width="65%"><p id="diagnostic-test"></p></td>
 					</tr>
 					<tr>
 						<td width="35%">Surgery</td>
-						<td width="65%"><p>
-								Neurosurgery<br>Orthopedic Surgery
-							</p></td>
+						<td width="65%"><p id="surgery"></p></td>
 					</tr>
 				</tbody>
 			</table>
 			<!-- Prescription -->
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="panel panel-default">
+					<div class="panel panel-info">
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-lg-10">Prescription</div>
 							</div>
 						</div>
 						<div class="panel-body">
-							<table id="user" class="table table-bordered table-striped"
+							<!-- <table id="user" class="table table-bordered table-striped"
 								style="clear: both">
 								<thead>
 									<th>Drug Name</th>
@@ -277,6 +336,28 @@
 										<td>7 (or NO refills)</td>
 									</tr>
 								</tbody>
+							</table> -->
+							<table class="table table-striped table-bordered table-hover"
+								id="example">
+								<thead>
+									<tr>
+										<th></th>
+										<th>prescription_id</th>
+										<th>patient_name</th>
+										<th>physician_name</th>
+										<th>create_date</th>
+									</tr>
+								</thead>
+
+								<tfoot>
+									<tr>
+										<th></th>
+										<th>prescription_id</th>
+										<th>patient_name</th>
+										<th>physician_name</th>
+										<th>create_date</th>
+									</tr>
+								</tfoot>
 							</table>
 						</div>
 					</div>
@@ -364,6 +445,9 @@ Respectfully submitted,
 	<script src="/resources/bootstrap-editable/js/bootstrap-editable.js"></script>
 	<!-- Custom Theme JavaScript -->
 	<script src="/resources/dist/js/sb-admin-2.js"></script>
+
+	<!-- Transcription JavaScript -->
+	<script src="/resources/js/transcription.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 	<script>

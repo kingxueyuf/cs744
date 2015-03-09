@@ -1,6 +1,7 @@
 package com.authentication.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.access.annotation.Secured;
@@ -22,17 +23,18 @@ public class CommonController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLoginPage(
 			@RequestParam(value = "error", required = false) boolean error,
-			ModelMap model) {
+			ModelMap model, HttpServletResponse response) {
 		model.put("error", error);
+		response.setHeader("sessionstatus", "timeout");
 		return "login";
 	}
 
-//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-//	public String logout(HttpServletRequest request) {
-//		HttpSession session = request.getSession(false);
-//		session.invalidate();
-//		return "login.html";
-//	}
+	// @RequestMapping(value = "/logout", method = RequestMethod.GET)
+	// public String logout(HttpServletRequest request) {
+	// HttpSession session = request.getSession(false);
+	// session.invalidate();
+	// return "login.html";
+	// }
 
 	@RequestMapping(value = "/denied", method = RequestMethod.GET)
 	public String getDeniedPage(

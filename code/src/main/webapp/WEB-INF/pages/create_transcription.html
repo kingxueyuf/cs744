@@ -52,7 +52,19 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style>
+#diagnostic-test {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
 
+#surgery {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
@@ -220,15 +232,13 @@
 				<tbody>
 					<tr>
 						<td width="35%">Patient Name</td>
-						<td width="65%"><a href="#" id="username" data-type="text"
-							data-pk="1" data-title="Enter username"
-							class="editable editable-click">Jay</a></td>
+						<td width="65%"><span class="label important"
+							id="patient_name"></span></td>
 					</tr>
 					<tr>
 						<td width="35%">Physician Name(create examination)</td>
-						<td width="65%"><a href="#" id="username" data-type="text"
-							data-pk="1" data-title="Enter username"
-							class="editable editable-click">Yufan</a></td>
+						<td width="65%"><span class="label notice"
+							id="physician_name">Success</span></td>
 					</tr>
 				</tbody>
 			</table>
@@ -238,8 +248,18 @@
 				<tbody>
 					<tr>
 						<td width="35%">Diagnostic Test</td>
-						<td width="65%"><a href="#" id="test" data-type="checklist"
-							data-title="Select options"></a></td>
+						<td width="65%">
+							<form class="form-inline" role="form">
+								<div class="form-group">
+									<input type="email" class="form-control input-sm"
+										id="diagnosticTest" placeholder="input diagnostic name">
+								</div>
+								<button class="btn btn-xs btn-danger"><i class="fa fa-pencil-square-o"></i> add </button>
+								<p id="diagnostic-test">
+									<br>Tuberculosis<br> Lead testing<br>
+								</p>
+							</form>
+						</td>
 					</tr>
 					<tr>
 						<td width="35%">Surgery</td>
@@ -300,9 +320,8 @@
 					<p>
 						<a type="button" class="btn btn-info" href="emr.html"> <i
 							class="fa fa-pencil-square-o"></i> Create
-						</a>
-						<a type="button" class="btn btn-danger" href="emr.html">
-							<i class="fa fa-pencil-square-o"></i> Cancel
+						</a> <a type="button" class="btn btn-danger" href="emr.html"> <i
+							class="fa fa-pencil-square-o"></i> Cancel
 						</a>
 					</p>
 				</div>
