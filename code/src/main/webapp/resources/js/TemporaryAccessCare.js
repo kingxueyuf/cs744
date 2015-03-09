@@ -2,19 +2,31 @@ var id;
 var relation_id;
 $(document).ready(function() {
 	getPatientID();
+	$("#physician_input").change(function() {
+		loadAutocomplete();
+	});
 	loadTemporaryAccessCare();
-	loadAutocomplete();
-
 });
 
 function loadAutocomplete() {
-	var availableTags = [ "ActionScript", "AppleScript", "Asp", "BASIC", "C",
-			"C++", "Clojure", "COBOL", "ColdFusion", "Erlang", "Fortran",
-			"Groovy", "Haskell", "Java", "JavaScript", "Lisp", "Perl", "PHP",
-			"Python", "Ruby", "Scala", "Scheme" ];
-	$("#physician_input").autocomplete({
-		source : availableTags
+	var input = $("#physician_input").val();
+	// console.log("??????????"+input);
+	$.ajax({
+		type : "GET",
+		url : "/physician/autocomplete",
+		data : "input=" + input,
+		success : function(data) {
+			var suggestion = [];
+			for( var i in data){
+				suggestion.push( data[i].physicianName);
+			}
+
+			$("#physician_input").autocomplete({
+				source : suggestion
+			});
+		}
 	});
+
 }
 
 function loadTemporaryAccessCare() {
