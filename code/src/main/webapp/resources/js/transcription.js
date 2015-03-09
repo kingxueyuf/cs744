@@ -1,4 +1,8 @@
 $(document).ready(function() {
+	$("#showimg").click(function() {
+		console.log("here");
+		$("#slider1_container").toggle("slow");
+	});
 	var transcriptionId = getUrlParameter("transcriptionId");
 	getTranscriptionBasicContent(transcriptionId); // for 1st panel
 	getDiagnosticAndSurgery(transcriptionId); // for 2nd panel

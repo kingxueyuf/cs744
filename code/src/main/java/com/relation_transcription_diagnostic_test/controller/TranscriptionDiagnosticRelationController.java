@@ -14,16 +14,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.relation_transcription_diagnostic_test.data.TranscriptionDiagnosticRelation;
 import com.relation_transcription_diagnostic_test.service.TranscriptionDiagnosticRelationService;
 
-
 @Controller
 public class TranscriptionDiagnosticRelationController {
-	
+
 	@Autowired
 	TranscriptionDiagnosticRelationService tdrService;
-	
+
 	@RequestMapping(value = "/relation_transcription_diagnostic_test/getDiagnostic", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
-	public @ResponseBody List<TranscriptionDiagnosticRelation> getDiagnosticListByTranscriptionId(@RequestParam(value = "transcription_id", required = true) int transcriptionId) {
+	public @ResponseBody List<TranscriptionDiagnosticRelation> getDiagnosticListByTranscriptionId(
+			@RequestParam(value = "transcription_id", required = true) int transcriptionId) {
 		return tdrService.getByTranscriptionId(transcriptionId);
 	}
+
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody void upload() {
+
+	}
+
 }
