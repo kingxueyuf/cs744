@@ -2,7 +2,7 @@ var id;
 var relation_id;
 $(document).ready(function() {
 	getPatientID();
-	$("#physician_input").change(function() {
+	$("#physician_input").on('keyup', function() {
 		loadAutocomplete();
 	});
 	loadTemporaryAccessCare();
@@ -17,8 +17,8 @@ function loadAutocomplete() {
 		data : "input=" + input,
 		success : function(data) {
 			var suggestion = [];
-			for( var i in data){
-				suggestion.push( data[i].physicianName);
+			for ( var i in data) {
+				suggestion.push(data[i].physicianName);
 			}
 
 			$("#physician_input").autocomplete({
