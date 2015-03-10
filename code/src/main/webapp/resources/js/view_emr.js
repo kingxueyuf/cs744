@@ -102,10 +102,15 @@ function getEmrBasicInfo() {
 			$('#vaccinations').val(vaccinations);
 			$('#diabetes').val(diabetes);
 			$('#allergies').val(allergies);
+			bindCreateTranscriptionButtonAction();
 			getTranscriptionList(emr_id);
 		},
 		dataType : "json",
 	});
+}
+function bindCreateTranscriptionButtonAction() {
+	$("#create_emr").attr('href',
+			'create_transcription.html?patientId=' + id + "&emrId=" + emr_id);
 }
 function getTranscriptionList(emr_id) {
 	$.ajax({

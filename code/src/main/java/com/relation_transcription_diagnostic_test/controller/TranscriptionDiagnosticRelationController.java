@@ -33,4 +33,17 @@ public class TranscriptionDiagnosticRelationController {
 
 	}
 
+	@RequestMapping(value = "/diagnostictest/add", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody String add(
+			@RequestParam(value = "transcriptionId", required = true) int transcriptionId,
+			@RequestParam(value = "testName", required = true) String testName,
+			@RequestParam(value = "testId", required = true) int testId) {
+		TranscriptionDiagnosticRelation tdr = new TranscriptionDiagnosticRelation();
+		tdr.setDiagnostic_test_id(testId);
+		tdr.setDiagnostic_test_name(testName);
+		tdr.setTranscription_id(transcriptionId);
+		tdrService.add(tdr);
+		return "success";
+	}
 }

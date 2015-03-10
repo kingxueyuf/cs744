@@ -30,4 +30,13 @@ public class PrescriptionDrugDao {
 		return list;
 	}
 
+	public void save(PrescriptionDrugRelation pdr) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		session.save(pdr);
+		session.getTransaction().commit();
+		session.close();
+	}
+
 }

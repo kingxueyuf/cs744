@@ -22,4 +22,10 @@ public class TranscriptionSurgeryRelationService {
 		return tsrDao.getByTranscriptionId(transcriptionId);
 	}
 
+
+	public void add(TranscriptionSurgeryRelation tsr) {
+		// TODO Auto-generated method stub
+		tsrDao.add(tsr);
+	}
+
 }

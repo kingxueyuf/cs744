@@ -22,7 +22,12 @@ function loadPrimaryPatient(primary) {
 		patientItem.push(primary[i].patient_gender);
 		patientItem.push(convertTimestampToDate(primary[i].patient_birthday));
 		patientItem.push(primary[i].relation_type);
-		patientItem.push(primary[i].access_right);
+		if (primary[i].access_right == '11') {
+			patientItem.push('read/write');
+		} else if (primary[i].access_right == '10') {
+			patientItem.push('read');
+		}
+		// patientItem.push(primary[i].access_right);
 		var button = getEmrButton(primary[i].patient_id);
 		patientItem.push(button);
 		dataSet.push(patientItem);
@@ -60,7 +65,12 @@ function loadTemporaryPatient(temporary) {
 		patientItem.push(temporary[i].relation_type);
 		patientItem.push(temporary[i].start_date);
 		patientItem.push(temporary[i].end_date);
-		patientItem.push(temporary[i].access_right);
+		if (temporary[i].access_right == '11') {
+			patientItem.push('read/write');
+		} else if (temporary[i].access_right == '10') {
+			patientItem.push('read');
+		}
+		// patientItem.push(temporary[i].access_right);
 		patientItem.push(temporary[i].primary_physician_name)
 		var button = getEmrButton(temporary[i].patient_id);
 		console.log(button);
@@ -118,8 +128,7 @@ function updateButton() {
 				} else if (data['hasEmr'] == "false") {
 					$button.attr('class', 'btn btn-danger btn-xs');
 					$button.attr('href', 'create_emr.html?id=' + patient_id);
-					
-					
+
 				}
 			},
 			dataType : "json",
@@ -127,9 +136,9 @@ function updateButton() {
 	})
 }
 function convertTimestampToDate(unix_timestamp) {
-//	console.log(unix_timestamp);
-//	var date = new Date(unix_timestamp * 1000);
-//	console.log(date.toGMTString());
-//	return date.toGMTString();
+	// console.log(unix_timestamp);
+	// var date = new Date(unix_timestamp * 1000);
+	// console.log(date.toGMTString());
+	// return date.toGMTString();
 	return unix_timestamp;
 }

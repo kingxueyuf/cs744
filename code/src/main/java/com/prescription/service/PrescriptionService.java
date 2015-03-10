@@ -10,13 +10,18 @@ import com.prescription.data.Prescription;
 
 @Service
 public class PrescriptionService {
-	
+
 	@Autowired
 	PrescriptionDao pDao;
-	
+
 	public List<Prescription> getByTranscriptionId(int transcriptionId) {
 		// TODO Auto-generated method stub
 		return pDao.getByTranscriptionId(transcriptionId);
+	}
+
+	public String save(Prescription p) {
+		// TODO Auto-generated method stub
+		return pDao.save(p);
 	}
 
 }

@@ -15,7 +15,6 @@ import com.relation_transcription_diagnostic_test.data.TranscriptionDiagnosticRe
 @Repository
 public class TranscriptionDiagnosticRelationDao {
 
-
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -33,5 +32,13 @@ public class TranscriptionDiagnosticRelationDao {
 		return list;
 
 	}
-	
+
+	public void save(TranscriptionDiagnosticRelation tdr) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		session.save(tdr);
+		session.getTransaction().commit();
+	}
+
 }

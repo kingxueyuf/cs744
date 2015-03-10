@@ -27,7 +27,7 @@ public class TranscriptionDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
 		Query q = session.createQuery("from Transcription where emr_id = "
-				+ emrId);
+				+ emrId + " ORDER BY transcription_id DESC");
 		Transaction transaction = session.beginTransaction();
 		List<Transcription> list = q.list();
 		transaction.commit();
@@ -37,12 +37,46 @@ public class TranscriptionDao {
 
 	public Transcription findTranscriptionById(int transcription_id) {
 		Session session = sessionFactory.openSession();
-		Query q = session.createQuery( "from Transcription where transcription_id = " + transcription_id );
+		Query q = session
+				.createQuery("from Transcription where transcription_id = "
+						+ transcription_id);
 		Transaction transaction = session.beginTransaction();
 		List<Transcription> transcriptions = q.list();
 		transaction.commit();
 		session.close();
-		Transcription transcription = ( transcriptions.size() != 0 ? transcriptions.remove(0): null );
+		Transcription transcription = (transcriptions.size() != 0 ? transcriptions
+				.remove(0) : null);
 		return transcription;
+	}
+
+	public Integer create(Transcription transcription) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		int transcriptionId = (Integer) session.save(transcription); // if you
+																		// want
+																		// to
+																		// save
+																		// the
+																		// id to
+																		// some
+																		// variable
+		session.getTransaction().commit();
+		return transcriptionId;
+	}
+
+	public void update(int transcriptionId, String content, String abstraction) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		Query query = session
+				.createQuery("update Transcription set content = :content,abstraction =:abstraction "
+						+ " where transcription_id = :transcriptionId");
+		query.setParameter("abstraction", abstraction);
+		query.setParameter("content", content);
+		query.setParameter("transcriptionId", transcriptionId);
+		int result = query.executeUpdate();
+		session.getTransaction().commit();
+		session.close();
 	}
 }

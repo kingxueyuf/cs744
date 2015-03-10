@@ -25,31 +25,18 @@ public class PatientPhysicianRelationService implements
 
 	public List<RelationPhysicianPatient> findPrimaryCaraPatient() {
 		// TODO Auto-generated method stub
-		List<RelationPhysicianPatient> patients = ppRelationDao.find();
-		List<RelationPhysicianPatient> primaryCarePatients = new ArrayList<RelationPhysicianPatient>();
-		for (RelationPhysicianPatient p : patients) {
-			if (p.getPhysician_id() == getCurrentPhysician().getPhysicianId()
-					&& p.getRelation_type().equals(
-							ConstantValue.PRIMARY_CARE_RELATION)) {
-				primaryCarePatients.add(p);
-			}
-		}
+		List<RelationPhysicianPatient> primaryCarePatients = ppRelationDao
+				.findPrimaryCareRelation(getCurrentPhysician().getPhysicianId());
 		return primaryCarePatients;
 	}
 
 	@Override
 	public List<RelationPhysicianPatient> findTemporaryCaraPatient() {
 		// TODO Auto-generated method stub
-		List<RelationPhysicianPatient> patients = ppRelationDao.find();
-		List<RelationPhysicianPatient> temporaryCarePatients = new ArrayList<RelationPhysicianPatient>();
-		for (RelationPhysicianPatient p : patients) {
+		List<RelationPhysicianPatient> temporaryCarePatients = ppRelationDao
+				.findTemporaryCareRelation(getCurrentPhysician()
+						.getPhysicianId());
 
-			if (p.getPhysician_id() == getCurrentPhysician().getPhysicianId()
-					&& p.getRelation_type().equals(
-							ConstantValue.TEMPORARY_CARE_RELATION)) {
-				temporaryCarePatients.add(p);
-			}
-		}
 		return temporaryCarePatients;
 	}
 
@@ -62,15 +49,8 @@ public class PatientPhysicianRelationService implements
 	public List<RelationPhysicianPatient> findTemporaryCaraByPatientId(
 			int patient_id) {
 		// TODO Auto-generated method stub
-		List<RelationPhysicianPatient> patients = ppRelationDao.findTemporaryCareByPatientId( patient_id );
-		List<RelationPhysicianPatient> temporaryCarePatients = new ArrayList<RelationPhysicianPatient>();
-		for (RelationPhysicianPatient p : patients) {
-
-			if ( p.getRelation_type().equals(
-							ConstantValue.TEMPORARY_CARE_RELATION)) {
-				temporaryCarePatients.add(p);
-			}
-		}
+		List<RelationPhysicianPatient> temporaryCarePatients = ppRelationDao
+				.findTemporaryCareByPatientId(patient_id);
 		return temporaryCarePatients;
 	}
 

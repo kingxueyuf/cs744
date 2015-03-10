@@ -24,8 +24,10 @@
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://138.49.196.23:3306/EMR" />
+		<!-- <property name="url" value="jdbc:mysql://localhost:3306/EMR" /> -->
 		<property name="username" value="cs744" />
 		<property name="password" value="cs744_emr" />
+
 	</bean>
 
 	<!-- Hibernate Session Factory -->
@@ -44,6 +46,8 @@
 				<value>com.relation_transcription_surgery.data</value>
 				<value>com.prescription.data</value>
 				<value>com.relation_prescription_drug.data</value>
+				<value>com.diagnostic_test.data</value>
+				<value>com.surgery.data</value>
 			</array>
 		</property>
 		<property name="hibernateProperties">

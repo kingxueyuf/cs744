@@ -1,4 +1,4 @@
-package com.prescription.controller;
+package com.surgery.controller;
 
 import java.util.List;
 
@@ -10,18 +10,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.prescription.data.Prescription;
-import com.prescription.service.PrescriptionService;
+import com.surgery.data.Surgery;
+import com.surgery.service.SurgeryService;
 
 @Controller
-public class PrescriptionController {
-	
+public class SurgeryController {
 	@Autowired
-	PrescriptionService pService;
+	SurgeryService sService;
 	
-	@RequestMapping(value = "/prescription/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/surgery/autocomplete", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
-	public @ResponseBody List<Prescription> list(@RequestParam(value = "transcription_id", required = true) int transcriptionId) {
-		return pService.getByTranscriptionId(transcriptionId);
+	public @ResponseBody List<Surgery> searchWithInput(
+			@RequestParam(value = "input", required = true) String input) {
+		List<Surgery> list =sService.searchWithInput(input);
+		return list;
 	}
+
 }

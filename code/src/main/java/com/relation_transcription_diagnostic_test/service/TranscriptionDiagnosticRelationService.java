@@ -18,4 +18,9 @@ public class TranscriptionDiagnosticRelationService {
 		// TODO Auto-generated method stub
 		return tdrDao.getByTranscrptionId(transcriptionId);
 	}
+
+	public void add(TranscriptionDiagnosticRelation tdr) {
+		// TODO Auto-generated method stub
+		tdrDao.save(tdr);
+	}
 }

@@ -23,12 +23,6 @@ public class Drug {
 	@Column( name = "drug_name")
 	private String drug_name;
 	
-	@Column( name = "drug_term")
-	private String drug_term;
-	
-	@Column( name = "drug_dispense")
-	private String drug_dispense;
-	
 	public Drug(){
 		
 	}
@@ -45,8 +39,6 @@ public class Drug {
 		super();
 		this.drug_id = drug_id;
 		this.drug_name = drug_name;
-		this.drug_term = drug_term;
-		this.drug_dispense = drug_dispense;
 	}
 
 
@@ -78,34 +70,5 @@ public class Drug {
 		this.drug_name = drug_name;
 	}
 
-	/**
-	 * @return the drug_term
-	 */
-	public String getDrug_term() {
-		return drug_term;
-	}
 
-	/**
-	 * @param drug_term the drug_term to set
-	 */
-	public void setDrug_term(String drug_term) {
-		this.drug_term = drug_term;
-	}
-
-	/**
-	 * @return the drug_dispense
-	 */
-	public String getDrug_dispense() {
-		return drug_dispense;
-	}
-
-	/**
-	 * @param drug_dispense the drug_dispense to set
-	 */
-	public void setDrug_dispense(String drug_dispense) {
-		this.drug_dispense = drug_dispense;
-	}
-	
-	
-	
 }

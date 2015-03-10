@@ -31,4 +31,12 @@ public class TranscriptionSurgeryRelationDao {
 		return list;
 	}
 
+	public void add(TranscriptionSurgeryRelation tsr) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		session.save(tsr);
+		session.getTransaction().commit();
+	}
+
 }

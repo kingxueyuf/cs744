@@ -42,6 +42,9 @@
 <link
 	href="/resources/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+
 <link href="/resources/css/dropzone.css" rel="stylesheet"
 	type="text/css">
 
@@ -57,7 +60,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <style>
-#diagnostic-test {
+#diagnostictest {
 	font-family: Arial, Helvetica, sans-serif;
 	color: red;
 	text-decoration: underline;
@@ -236,13 +239,11 @@
 				<tbody>
 					<tr>
 						<td width="35%">Patient Name</td>
-						<td width="65%"><span class="label important"
-							id="patient_name"></span></td>
+						<td width="65%"><mark id="patient_name"></mark></td>
 					</tr>
 					<tr>
 						<td width="35%">Physician Name(create examination)</td>
-						<td width="65%"><span class="label notice"
-							id="physician_name">Success</span></td>
+						<td width="65%"><mark id="physician_name"></mark></td>
 					</tr>
 				</tbody>
 			</table>
@@ -253,24 +254,46 @@
 					<tr>
 						<td width="35%">Diagnostic Test</td>
 						<td width="65%">
-							<form class="form-inline" role="form">
-								<div class="form-group">
-									<input type="email" class="form-control input-sm"
-										id="diagnosticTest" placeholder="input diagnostic name">
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-10">
+									<div class="input-group">
+										<input type="text" id="diagnosticTestInput"
+											class="form-control" placeholder="Search for..."> <span
+											class="input-group-btn">
+											<button id='addTest' class="btn btn-danger">
+												<i class="fa fa-pencil-square-o"></i> add
+											</button>
+										</span>
+									</div>
 								</div>
-								<button class="btn btn-xs btn-danger">
-									<i class="fa fa-pencil-square-o"></i> add
-								</button>
-								<p id="diagnostic-test">
-									<br>Tuberculosis<br> Lead testing<br>
-								</p>
-							</form>
+							</div>
+							<div class="row">
+								<p id="diagnostictest"></p>
+							</div>
 						</td>
 					</tr>
 					<tr>
 						<td width="35%">Surgery</td>
-						<td width="65%"><a href="#" id="surgery"
-							data-type="checklist" data-title="Select options"></a></td>
+						<td width="65%">
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-10">
+									<div class="input-group">
+										<input type="text" id="surgeryInput" class="form-control"
+											placeholder="Search for..."> <span
+											class="input-group-btn">
+											<button id='addSurgery' class="btn btn-danger">
+												<i class="fa fa-pencil-square-o"></i> add
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<p id="surgery"></p>
+							</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -292,41 +315,57 @@
 							<div class="row">
 								<div class="col-lg-10">Prescription</div>
 								<div class="col-lg-2">
-									<a type="button" class="btn btn-danger btn-xs" id="addNewDrug">
+									<button type="button" class="btn btn-danger btn-xs"
+										id="createPrescription">
 										<i class="fa fa-pencil-square-o"></i> Add
-									</a>
+									</button>
 								</div>
 							</div>
 						</div>
-						<div class="panel-body">
-							<table id="user" class="table table-bordered table-striped"
-								style="clear: both">
+						<div class="panel-body" id='panelcontent' style="display: none;">
+							<table class="table table-bordered">
 								<thead>
 									<th>Drug Name</th>
-									<th>Sig (instructions)</th>
-									<th>Disp (dispense)</th>
-									<th>Refills</th>
+									<th>Drug Amount</th>
 								</thead>
-								<tbody id="prescription-body">
-									<tr>
-										<td><a href="#" id="prescription" data-type="checklist"
-											data-title="Select options"></a></td>
-										<td><textarea type="text" class="form-control"
-												id="inputSuccess"></textarea></td>
-										<td><textarea type="text" class="form-control"
-												id="inputSuccess"></textarea></td>
-										<td><textarea type="text" class="form-control"
-												id="inputSuccess"></textarea></td>
-									</tr>
+								<tbody id='drugTableContent'>
+
 								</tbody>
 							</table>
+							<div class="row">
+								<div class="col-lg-6">
+									<span class="input-group-addon">Drug Name</span> <input
+										type="text" class="form-control"
+										placeholder="Search for drug..." id='drugInput'>
+									<!-- /input-group -->
+								</div>
+								<div class="col-lg-6">
+									<span class="input-group-addon">Drug Amount</span> <input
+										type="text" class="form-control" placeholder="Drug amount"
+										id='amount'> <span class="input-group-btn">
+										<button class="btn btn-default" type="button" id="addDrug">Add!</button>
+									</span>
+								</div>
+								<!-- /.col-lg-12 -->
+							</div>
+							<!-- /.row -->
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-12">
-					<textarea class="form-control" rows="20" id="comment"></textarea>
+				<div class="row">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Abstraction</span>
+						<input type="text" class="form-control"
+							placeholder="input abstraction" aria-describedby="basic-addon1"
+							id='abstraction'>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<textarea class="form-control" rows="20" id="comment"></textarea>
+					</div>
 				</div>
 			</div>
 
@@ -334,9 +373,9 @@
 				<div class="col-lg-6"></div>
 				<div class="col-lg-4">
 					<p>
-						<a type="button" class="btn btn-info" href="emr.html"> <i
+						<button type="button" class="btn btn-info" id='updateTranscription'> <i
 							class="fa fa-pencil-square-o"></i> Create
-						</a> <a type="button" class="btn btn-danger" href="emr.html"> <i
+						</button> <a type="button" class="btn btn-danger" href="emr.html"> <i
 							class="fa fa-pencil-square-o"></i> Cancel
 						</a>
 					</p>
@@ -349,6 +388,7 @@
 
 	<!-- jQuery -->
 	<script src="/resources/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script
@@ -375,89 +415,6 @@
 	<!-- My js -->
 	<script src="/resources/js/create_transcription.js"></script>
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-	<script>
-		$(document).ready(function() {
-			$('#test').editable({
-				placement : 'bottom',
-				value : [],
-				source : [ {
-					value : 1,
-					text : 'Blood pressure'
-				}, {
-					value : 2,
-					text : 'Tuberculosis'
-				}, {
-					value : 3,
-					text : 'Lead testing '
-				}, {
-					value : 4,
-					text : 'Malaria '
-				}, {
-					value : 5,
-					text : 'Intestinal and Tissue Invasive Parasites (ITIP)  '
-				}, {
-					value : 6,
-					text : 'X ray '
-				}, {
-					value : 7,
-					text : 'CT '
-				}, {
-					value : 8,
-					text : 'Blood testing '
-				}, {
-					value : 9,
-					text : 'Pregnancy test '
-				} ]
-			});
-			$('#surgery').editable({
-				placement : 'bottom',
-				value : [],
-				source : [ {
-					value : 1,
-					text : 'Hand Surgery'
-				}, {
-					value : 2,
-					text : 'Head and Neck Surgery'
-				}, {
-					value : 3,
-					text : 'Hernia Surgery '
-				}, {
-					value : 4,
-					text : 'Neurosurgery '
-				}, {
-					value : 5,
-					text : 'Orthopedic Surgery '
-				}, {
-					value : 6,
-					text : 'Ophthalmological Surgery'
-				} ]
-			});
-			$('#prescription').editable({
-				placement : 'bottom',
-				value : [],
-				source : [ {
-					value : 1,
-					text : 'Famotidine'
-				}, {
-					value : 2,
-					text : 'Amlodipine'
-				}, {
-					value : 3,
-					text : 'Paracetamol'
-				}, {
-					value : 4,
-					text : 'Jakafi '
-				}, {
-					value : 5,
-					text : 'Valacyclovir '
-				}, {
-					value : 6,
-					text : 'Kazano'
-				} ]
-			});
-		});
-	</script>
-
 </body>
 
 </html>

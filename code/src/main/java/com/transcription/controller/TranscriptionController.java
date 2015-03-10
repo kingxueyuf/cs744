@@ -20,21 +20,42 @@ public class TranscriptionController {
 
 	@Autowired
 	private TranscriptionService transcriptionService;
-	
-	
+
 	@RequestMapping(value = "/emr/getTranscription", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody List<Transcription> getTranscriptionList(
 			@RequestParam(value = "emr_id", required = true) int emrId) {
-		List<Transcription> list = transcriptionService.getTranscriptionsByEmrId(emrId);
+		List<Transcription> list = transcriptionService
+				.getTranscriptionsByEmrId(emrId);
 		return list;
 	}
-	
+
 	@RequestMapping(value = "/transcription/getTranscription", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
 	public @ResponseBody Transcription getTranscriptionById(
 			@RequestParam(value = "transcription_id", required = true) int transcription_id) {
-		Transcription transcription = transcriptionService.getTranscriptionById( transcription_id );
+		Transcription transcription = transcriptionService
+				.getTranscriptionById(transcription_id);
 		return transcription;
+	}
+
+	@RequestMapping(value = "/transcription/create", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody String create(
+			@RequestParam(value = "emrId", required = true) int emrId,
+			@RequestParam(value = "patientId", required = true) int patientId) {
+		Integer transcriptionId = transcriptionService.create(emrId, patientId);
+		return transcriptionId + "";
+	}
+
+	@RequestMapping(value = "/transcription/update", method = RequestMethod.POST)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody String update(
+			@RequestParam(value = "transcriptionId", required = true) int transcriptionId,
+			@RequestParam(value = "content", required = true) String content,
+			@RequestParam(value = "abstraction", required = true) String abstraction) {
+
+		transcriptionService.update(transcriptionId, content, abstraction);
+		return "success";
 	}
 }

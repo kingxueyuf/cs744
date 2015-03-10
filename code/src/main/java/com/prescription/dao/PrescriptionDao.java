@@ -30,4 +30,15 @@ public class PrescriptionDao {
 		return list;
 	}
 
+	public String save(Prescription p) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		int pId = (Integer) session.save(p); // if you want to save the id to
+												// some variable
+		session.getTransaction().commit();
+		session.close();
+		return pId + "";
+	}
+
 }

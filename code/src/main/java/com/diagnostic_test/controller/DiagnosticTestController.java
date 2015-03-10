@@ -1,8 +1,6 @@
-package com.drug.controller;
+package com.diagnostic_test.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -12,22 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.drug.data.Drug;
-import com.drug.service.DrugService;
-import com.emr.data.Emr;
+import com.diagnostic_test.data.DiagnosticTest;
+import com.diagnostic_test.service.DiagnosticTestServcie;
 
 @Controller
-public class DrugController {
-
+public class DiagnosticTestController {
 	@Autowired
-	DrugService drugService;
-	
-	@RequestMapping(value = "/drug/searchWithInput", method = RequestMethod.GET)
+	private DiagnosticTestServcie dtService;
+
+	@RequestMapping(value = "/diagnostictest/autocomplete", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
-	public @ResponseBody List<Drug> searchWithInput(
-			@RequestParam(value = "drugInput", required = true) String input) {
-		List<Drug> list = drugService.searchWithInput(input);
+	public @ResponseBody List<DiagnosticTest> searchWithInput(
+			@RequestParam(value = "input", required = true) String input) {
+		List<DiagnosticTest> list = dtService.searchWithInput(input);
 		return list;
 	}
-	
 }
