@@ -37,6 +37,7 @@ public class TranscriptionSurgeryRelationDao {
 		session.getTransaction().begin();
 		session.save(tsr);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 }

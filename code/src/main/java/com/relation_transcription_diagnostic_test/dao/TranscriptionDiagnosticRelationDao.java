@@ -39,6 +39,7 @@ public class TranscriptionDiagnosticRelationDao {
 		session.getTransaction().begin();
 		session.save(tdr);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 }

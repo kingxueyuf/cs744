@@ -62,6 +62,7 @@ public class TranscriptionDao {
 																		// some
 																		// variable
 		session.getTransaction().commit();
+		session.close();
 		return transcriptionId;
 	}
 
