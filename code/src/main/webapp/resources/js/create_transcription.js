@@ -144,9 +144,9 @@ function getTranscriptionBasicContent(transcriptionId) {
 			var physician_name = data.physician_name;
 			var create_date = data.create_date;
 			console.log(patient_name);
-			$("#patient_name").text(patient_name);
-			$("#physician_name").text(physician_name);
-			$("#comment").text(content);
+			$("#patient_name").val(patient_name);
+			$("#physician_name").val(physician_name);
+			$("#comment").val(content);
 		},
 		dataType : "json",
 	});
