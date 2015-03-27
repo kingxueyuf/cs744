@@ -79,7 +79,8 @@ body {
 			action="<c:url value="/j_spring_security_check"/>" method="post">
 			<h2 class="form-signin-heading">Sign in</h2>
 			<input type="text" class="form-control" placeholder="Email address"
-				autofocus name="j_username" /> <input type="password"
+				autofocus name="j_username" /> 
+			<input type="password"
 				class="form-control" placeholder="Password" name="j_password" />
 			<c:if test="${error}">
 				<div class="alert alert-danger">login failed.</div>
