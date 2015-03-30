@@ -16,7 +16,8 @@
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="../resources/jquery-cookie/jc/jquery.cookie.js"></script>
 <!-- Bootstrap -->
-<link href="/resources/css/theme/bootstrap-simplex.min.css"
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <script
@@ -78,13 +79,23 @@ body {
 		<form class="form-signin"
 			action="<c:url value="/j_spring_security_check"/>" method="post">
 			<h2 class="form-signin-heading">Sign in</h2>
+<<<<<<< HEAD
 			<input type="text" class="form-control" placeholder="Email address"
 				autofocus name="j_username" /> 
 			<input type="password"
 				class="form-control" placeholder="Password" name="j_password" />
+=======
+			<input type="text" class="input-block-level"
+				placeholder="Email address" autofocus name="j_username" /> <input
+				type="password" class="input-block-level" placeholder="Password"
+				name="j_password" />
+
+
+>>>>>>> parent of 736f454... UI 1.1
 			<c:if test="${error}">
 				<div class="alert alert-danger">login failed.</div>
 			</c:if>
+
 			<button id="sub" class="btn btn-lg btn-primary btn-block"
 				type="submit">Sign in</button>
 		</form>
@@ -93,7 +104,7 @@ body {
 	<!-- /container -->
 	<div class="footer" id="footer">
 		<p>
-			EMR by <a href="https://github.com/alvinvinvinvin"> @Han,</a> <a
+			EMR by <a href="https://github.com/alvinvinvinvin">@Han,</a> <a
 				href="http://robin-xueyufan.com/"> @Robin,</a> <a
 				href="https://github.com/sanwazi"> @Bo</a>
 		</p>
