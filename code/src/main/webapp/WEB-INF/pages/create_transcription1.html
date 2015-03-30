@@ -237,135 +237,124 @@
 		</nav>
 
 		<div id="page-wrapper">
-			<div class="form-horizontal">
-				<fieldset>
-					<legend>Create new transcription</legend>
-					<div class="form-group has-success">
-						<label for="inputEmail" class="col-lg-3 control-label">Patient
-							Name</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="patient_name"
-								placeholder="" disabled>
-						</div>
-					</div>
-					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Physician
-							Name(create examination)</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="physician_name"
-								placeholder="" disabled>
-						</div>
-					</div>
-					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Diagnostic
-							Test</label>
-						<div class="col-lg-9">
-							<div class="input-group">
-								<input type="text" id="diagnosticTestInput" class="form-control">
-								<span class="input-group-btn">
-									<button class="btn btn-primary" id='addTest' type="button">
-										<i class="fa fa-pencil-square-o"></i> add
-									</button>
-								</span>
+			<!-- General Info -->
+			<table id="user" class="table table-bordered table-striped"
+				style="clear: both">
+				<tbody>
+					<tr>
+						<td width="35%">Patient Name</td>
+						<td width="65%"><mark id="patient_name"></mark></td>
+					</tr>
+					<tr>
+						<td width="35%">Physician Name(create examination)</td>
+						<td width="65%"><mark id="physician_name"></mark></td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- Test and Surgey -->
+			<table id="user" class="table table-bordered table-striped"
+				style="clear: both">
+				<tbody>
+					<tr>
+						<td width="35%">Diagnostic Test</td>
+						<td width="65%">
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-10">
+									<div class="input-group">
+										<input type="text" id="diagnosticTestInput"
+											class="form-control" placeholder="Search for..."> <span
+											class="input-group-btn">
+											<button id='addTest' class="btn btn-primary">
+												<i class="fa fa-pencil-square-o"></i> add
+											</button>
+										</span>
+									</div>
+								</div>
 							</div>
 							<div class="row">
-								<div class="col-lg-9">
-									<p id="diagnostictest"></p>
+								<p id="diagnostictest"></p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="35%">Surgery</td>
+						<td width="65%">
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-10">
+									<div class="input-group">
+										<input type="text" id="surgeryInput" class="form-control"
+											placeholder="Search for..."> <span
+											class="input-group-btn">
+											<button id='addSurgery' class="btn btn-primary">
+												<i class="fa fa-pencil-square-o"></i> add
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<p id="surgery"></p>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<form action="/upload" class="dropzone" id="my-awesome-dropzone">
+				<div class="dz-message">
+					Drop files here or click to upload.<br> <span class="note">(File
+						use only<strong> image </strong> .)
+					</span>
+				</div>
+				<!-- 
+				<input type="file" name="file" /> -->
+			</form>
+			<!-- Prescription -->
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-lg-10">Prescription</div>
+								<div class="col-lg-2">
+									<button type="button" class="btn btn-primary btn-xs"
+										id="createPrescription">
+										<i class="fa fa-pencil-square-o"></i> Add
+									</button>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Surgery
-						</label>
-						<div class="col-lg-9">
-							<div class="input-group">
-								<input type="text" id="surgeryInput" class="form-control"
-									placeholder="surgery name..."> <span
-									class="input-group-btn">
-									<button class="btn btn-primary" id='addSurgery' type="button">
-										<i class="fa fa-pencil-square-o"></i> add
-									</button>
-								</span>
-							</div>
+						<div class="panel-body" id='panelcontent' style="display: none;">
+							<table class="table table-bordered">
+								<thead>
+									<th>Drug Name</th>
+									<th>Drug Amount</th>
+								</thead>
+								<tbody id='drugTableContent'>
+
+								</tbody>
+							</table>
 							<div class="row">
-								<div class="col-lg-9">
-									<p id="surgery"></p>
+								<div class="col-lg-6">
+									<span class="input-group-addon">Drug Name</span> <input
+										type="text" class="form-control"
+										placeholder="Search for drug..." id='drugInput'>
+									<!-- /input-group -->
 								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Upload
-							image </label>
-						<div class="col-lg-9">
-							<form action="/upload" class="dropzone" id="my-awesome-dropzone">
-								<div class="dz-message">
-									Drop files here or click to upload.<br> <span class="note">(File
-										use only<strong> image </strong> .)
+								<div class="col-lg-6">
+									<span class="input-group-addon">Drug Amount</span> <input
+										type="text" class="form-control" placeholder="Drug amount"
+										id='amount'> <span class="input-group-btn">
+										<button class="btn btn-default" type="button" id="addDrug">Add!</button>
 									</span>
 								</div>
-							</form>
-						</div>
-					</div>
-				</fieldset>
-			</div>
-			<!-- Prescription -->
-			<div class="form-horizontal">
-				<fieldset>
-					<legend>Create new prescription</legend>
-					<div class="form-group has-error">
-						<label for="textArea" class="col-lg-3 control-label">Create
-							Prescription </label>
-						<div class="col-lg-9">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<div class="row">
-										<div class="col-lg-10">Prescription</div>
-										<div class="col-lg-2">
-											<button type="button" class="btn btn-primary btn-xs"
-												id="createPrescription">
-												<i class="fa fa-pencil-square-o"></i> Add
-											</button>
-										</div>
-									</div>
-								</div>
-								<div class="panel-body" id='panelcontent' style="display: none;">
-									<table class="table table-bordered">
-										<thead>
-											<th>Drug Name</th>
-											<th>Drug Amount</th>
-										</thead>
-										<tbody id='drugTableContent'>
-
-										</tbody>
-									</table>
-									<div class="form-group has-warning">
-										<label for="textArea" class="col-lg-2 control-label">Drug
-											Name </label>
-										<div class="col-lg-4">
-											<input type="text" id='drugInput' class="form-control"
-												placeholder="drug name...">
-										</div>
-										<label for="textArea" class="col-lg-2 control-label">Drug
-											Amount </label>
-										<div class="col-lg-4">
-											<div class="input-group">
-												<input type="text" id="amount" class="form-control"
-													placeholder="surgery name..."> <span
-													class="input-group-btn">
-													<button class="btn btn-primary" id='addDrug' type="button">
-														<i class="fa fa-pencil-square-o"></i> add
-													</button>
-												</span>
-											</div>
-										</div>
-									</div>
-								</div>
+								<!-- /.col-lg-12 -->
 							</div>
+							<!-- /.row -->
 						</div>
 					</div>
-				</fieldset>
+				</div>
 			</div>
 			<div class="row">
 				<div class="row">
