@@ -129,6 +129,9 @@ function loadTranscription(data) {
 		var transcrptionItem = [];
 		transcrptionItem.push(data[i].abstraction);
 		transcrptionItem.push(data[i].create_date);
+		transcrptionItem.push(data[i].physician_name);
+		transcrptionItem.push(data[i].writer_name);
+		transcrptionItem.push(data[i].writer_type);
 		var button = getTranscriptionButton(data[i].transcription_id);
 		transcrptionItem.push(button);
 		dataSet.push(transcrptionItem);
@@ -168,8 +171,14 @@ function loadTranscription(data) {
 		}, {
 			"title" : "Date"
 		}, {
+			"title" : "Physician Name"
+		}, {
+			"title" : "Operator Name"
+		}, {
+			"title" : "Operator Title"
+		}, {
 			"title" : "Action"
-		} ]
+		} ],
 	});
 }
 function getTranscriptionButton(transcription_id) {

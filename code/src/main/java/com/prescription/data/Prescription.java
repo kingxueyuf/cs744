@@ -28,6 +28,12 @@ public class Prescription {
 	private int physician_id;
 	@Column(name = "physician_name")
 	private String physician_name;
+	@Column(name = "writer_id")
+	private int writer_id;
+	@Column(name = "writer_name")
+	private String writer_name;
+	@Column(name = "writer_type")
+	private String writer_type;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "create_date")
@@ -81,6 +87,30 @@ public class Prescription {
 
 	public void setPhysician_name(String physician_name) {
 		this.physician_name = physician_name;
+	}
+	
+	public int getWriter_id() {
+		return writer_id;
+	}
+
+	public void setWriter_id(int writer_id) {
+		this.writer_id = writer_id;
+	}
+
+	public String getWriter_name() {
+		return writer_name;
+	}
+
+	public void setWriter_name(String writer_name) {
+		this.writer_name = writer_name;
+	}
+
+	public String getWriter_type() {
+		return writer_type;
+	}
+
+	public void setWriter_type(String writer_type) {
+		this.writer_type = writer_type;
 	}
 
 	public Date getCreate_date() {

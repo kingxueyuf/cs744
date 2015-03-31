@@ -75,18 +75,29 @@ body {
 <body>
 
 	<div class="container">
-		<form class="form-signin"
-			action="<c:url value="/j_spring_security_check"/>" method="post">
+		<form class="form-signin" name="loginForm"
+			action="<c:url value="/j_spring_security_check"/>" method="post"
+			onsubmit="DoSubmit();">
 			<h2 class="form-signin-heading">Sign in</h2>
-			<input type="text" class="form-control" placeholder="Email address"
-				autofocus name="j_username" /> <input type="password"
-				class="form-control" placeholder="Password" name="j_password" />
+			<input type="text" class="input-block-level"
+				placeholder="Email address" autofocus name="j_username"
+				id="username" /> 
+			<input type="password" class="input-block-level"
+				placeholder="Password" name="j_password" /> 
+			<select id="role" class="form-control">
+				<option value="1">Physician</option>
+				<option value="2">Medical Staff</option>
+			</select>
+			<br>
+
 			<c:if test="${error}">
 				<div class="alert alert-danger">login failed.</div>
 			</c:if>
+
 			<button id="sub" class="btn btn-lg btn-primary btn-block"
 				type="submit">Sign in</button>
 		</form>
+
 
 	</div>
 	<!-- /container -->
@@ -102,6 +113,7 @@ body {
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/resources/js/login.js"></script>
 </body>
 </html>
 

@@ -6,7 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.authentication.data.MedicalStaff;
 import com.authentication.data.Physician;
+import com.authentication.service.CustomUserDetailsService;
+import com.constant.ConstantValue;
+import com.medical_staff.service.MedicalStaffService;
 import com.patient.data.Patient;
 import com.patient.service.PatientService;
 import com.physician.service.PhysicianService;
@@ -24,6 +28,9 @@ public class TranscriptionService {
 
 	@Autowired
 	PhysicianService physicianService;
+
+	@Autowired
+	MedicalStaffService msService;
 
 	public List<Transcription> getTranscriptionsByEmrId(int emrId) {
 		List<Transcription> list = transcriptionDao
@@ -46,9 +53,26 @@ public class TranscriptionService {
 		transcription.setPatient_name(p.getPatient_name());
 		transcription.setAbstraction("");
 		transcription.setContent("");
-		Physician currentPhysician = physicianService.currentPhysician();
-		transcription.setPhysician_id(currentPhysician.getPhysicianId());
-		transcription.setPhysician_name(currentPhysician.getPhysicianName());
+		if (CustomUserDetailsService.isMedicalStaff()) {
+			MedicalStaff ms = msService
+					.getMedicalstaffById(CustomUserDetailsService
+							.currentUserDetails().getUserId());
+			Physician phsician = physicianService.getPhysicianById(ms
+					.getPhysician_id());
+			transcription.setPhysician_id(phsician.getPhysicianId());
+			transcription.setPhysician_name(phsician.getPhysicianName());
+			transcription.setWriter_id(ms.getMsid());
+			transcription.setWriter_name(ms.getMs_name());
+			transcription.setWriter_type(ConstantValue.MEDICAL_STAFF);
+		} else if (CustomUserDetailsService.isPhysician()) {
+			Physician currentPhysician = physicianService.currentPhysician();
+			transcription.setPhysician_id(currentPhysician.getPhysicianId());
+			transcription
+					.setPhysician_name(currentPhysician.getPhysicianName());
+			transcription.setWriter_id(currentPhysician.getPhysicianId());
+			transcription.setWriter_name(currentPhysician.getAccount());
+			transcription.setWriter_type(ConstantValue.PHYSICIAN);
+		}
 		Date date = new Date();
 		transcription.setCreate_date(date);
 		return transcriptionDao.create(transcription);
@@ -56,7 +80,7 @@ public class TranscriptionService {
 
 	public void update(int transcriptionId, String content, String abstraction) {
 		// TODO Auto-generated method stub
-		transcriptionDao.update(transcriptionId,content,abstraction);
+		transcriptionDao.update(transcriptionId, content, abstraction);
 	}
 
 }

@@ -77,6 +77,8 @@ function loadPrescriptionTable(data) {
 		prescription.prescription_id = data[i].prescription_id;
 		prescription.patient_name = data[i].patient_name;
 		prescription.physician_name = data[i].physician_name;
+		prescription.writer_name = data[i].writer_name;
+		prescription.writer_type = data[i].writer_type;
 		prescription.create_date = data[i].create_date;
 		dataSet.push(prescription);
 	}
@@ -89,13 +91,17 @@ function loadPrescriptionTable(data) {
 			"data" : null,
 			"defaultContent" : ''
 		}, {
-			"data" : "prescription_id"
+			"data" : "Prescription id"
 		}, {
-			"data" : "patient_name"
+			"data" : "Patient Name"
 		}, {
-			"data" : "physician_name"
+			"data" : "Physician Name"
 		}, {
-			"data" : "create_date"
+			"data" : "Operator Name"
+		}, {
+			"data" : "Operator Title"
+		}, {
+			"data" : "Create Date"
 		} ],
 		"order" : [ [ 1, 'asc' ] ]
 	});
