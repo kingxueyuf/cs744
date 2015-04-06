@@ -117,6 +117,12 @@ td .drugamount {
 	color: red;
 	text-decoration: underline;
 }
+
+#treatment {
+	font-family: Arial, Helvetica, sans-serif;
+	color: red;
+	text-decoration: underline;
+}
 </style>
 </head>
 
@@ -291,6 +297,16 @@ td .drugamount {
 						<td width="65%"><span class="label notice"
 							id="physician_name">Success</span></td>
 					</tr>
+					<tr>
+						<td width="35%">Operator Name</td>
+						<td width="65%"><span class="label warning"
+							id="operator_name">Success</span></td>
+					</tr>
+					<tr>
+						<td width="35%">Operator Title</td>
+						<td width="65%"><span class="label warning"
+							id="operator_title">Success</span></td>
+					</tr>
 				</tbody>
 			</table>
 			<table id="user" class="table table-bordered table-striped"
@@ -305,6 +321,10 @@ td .drugamount {
 					<tr>
 						<td width="35%">Surgery</td>
 						<td width="65%"><p id="surgery"></p></td>
+					</tr>
+					<tr>
+						<td width="35%">Treatment</td>
+						<td width="65%"><p id="treatment"></p></td>
 					</tr>
 				</tbody>
 			</table>
@@ -413,24 +433,24 @@ td .drugamount {
 								<thead>
 									<tr>
 										<th></th>
-										<th>Prescription id</th>
-										<th>Patient Name</th>
-										<th>Physician Name</th>
-										<th>Operator Name</th>
-										<th>Operator Title</th>
-										<th>Create Date</th>
+										<th>prescription_id</th>
+										<th>patient_name</th>
+										<th>physician_name</th>
+										<th>operator_name</th>
+										<th>operator_title</th>
+										<th>create_date</th>
 									</tr>
 								</thead>
 
 								<tfoot>
 									<tr>
 										<th></th>
-										<th>Prescription id</th>
-										<th>Patient Name</th>
-										<th>Physician Name</th>
-										<th>Operator Name</th>
-										<th>Operator Title</th>
-										<th>Create Date</th>
+										<th>prescription_id</th>
+										<th>patient_name</th>
+										<th>physician_name</th>
+										<th>operator_name</th>
+										<th>operator_title</th>
+										<th>create_date</th>
 									</tr>
 								</tfoot>
 							</table>

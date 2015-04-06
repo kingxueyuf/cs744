@@ -1,6 +1,7 @@
 var patientId;
 var emrId;
 var transcriptionId;
+var operator_title;
 $(document).ready(function() {
 	patientId = getUrlParameter("patientId");
 	emrId = getUrlParameter("emrId");
@@ -18,7 +19,7 @@ function registerUpdateTranscriptionButton() {
 							+ '&transcriptionId=' + transcriptionId,
 					success : function(data) {
 						window.location.href = "/pages/emr.html?patient_id="
-								+ patientId+'#orange';
+								+ patientId + '#orange';
 					},
 					dataType : "text",
 				});
@@ -33,8 +34,7 @@ function createNewTranscription() {
 		success : function(data) {
 			transcriptionId = data;
 			getTranscriptionBasicContent(transcriptionId); // for 1st panel
-			registerSurgeryInput();
-			registerDiagnosticTestInput();
+
 			$("#createPrescription").on('click', function() {
 				createPrescription();
 			});
@@ -43,30 +43,73 @@ function createNewTranscription() {
 		dataType : "text",
 	});
 }
-function registerSurgeryInput() {
-	$("#surgeryInput").on(
-			"keyup",
+function registerTreatment() {
+	$("#treatment").empty();
+	$.ajax({
+		type : "GET",
+		url : "/treatment",
+		success : function(data) {
+			for ( var i in data) {
+				var treatment_name = data[i].treatment_name;
+				var treatment_id = data[i].treatment_id;
+				var treatment_dom = "<option value=\"" + treatment_id + "\">"
+						+ treatment_name + "</option>";
+				$("#treatment").append(treatment_dom);
+			}
+			registerTreatmentAddButton();
+		},
+		dataType : "json",
+	});
+}
+function registerTreatmentAddButton() {
+	$('#addTreatment').on(
+			'click',
 			function() {
-				console.log("here");
-				var input = $('#surgeryInput').val();
+				var treatment_name = $("#treatment option:selected").text();
+				var treatment_id = $("#treatment option:selected").val();
 				$.ajax({
 					type : "GET",
-					url : "/surgery/autocomplete",
-					data : 'input=' + input,
+					url : "/treatment/add",
+					data : 'treatmentName=' + treatment_name
+							+ '&transcriptionId=' + transcriptionId
+							+ '&treatmentId=' + treatment_id,
 					success : function(data) {
-						var suggestion = [];
-						for ( var i in data) {
-							suggestion.push(data[i].surgery_id + "_"
-									+ data[i].surgery_name);
-						}
-						$("#surgeryInput").autocomplete({
-							source : suggestion
-						});
+						$('#treatment_list').append('<br>' + treatment_name);
 					},
-					dataType : "json",
+					dataType : "text",
 				});
 			});
-	registerSurgeryAddButton();
+}
+function registerSurgeryInput() {
+	console.log(operator_title);
+	if (operator_title == "MEDICAL_STAFF") {
+		$("#surgeryInput").prop('disabled', true);
+		console.log("surgery input disabled");
+	} else if (operator_title == "PHYSICIAN") {
+		$("#surgeryInput").on(
+				"keyup",
+				function() {
+					console.log("here");
+					var input = $('#surgeryInput').val();
+					$.ajax({
+						type : "GET",
+						url : "/surgery/autocomplete",
+						data : 'input=' + input,
+						success : function(data) {
+							var suggestion = [];
+							for ( var i in data) {
+								suggestion.push(data[i].surgery_id + "_"
+										+ data[i].surgery_name);
+							}
+							$("#surgeryInput").autocomplete({
+								source : suggestion
+							});
+						},
+						dataType : "json",
+					});
+				});
+		registerSurgeryAddButton();
+	}
 }
 function registerSurgeryAddButton() {
 	$('#addSurgery').on(
@@ -143,10 +186,17 @@ function getTranscriptionBasicContent(transcriptionId) {
 			var content = data.content;
 			var physician_name = data.physician_name;
 			var create_date = data.create_date;
+			var operator_name = data.writer_name;
+			operator_title = data.writer_type;
 			console.log(patient_name);
 			$("#patient_name").val(patient_name);
 			$("#physician_name").val(physician_name);
 			$("#comment").val(content);
+			$("#operator_name").val(operator_name);
+			$("#operator_title").val(operator_title);
+			registerSurgeryInput();
+			registerDiagnosticTestInput();
+			registerTreatment();
 		},
 		dataType : "json",
 	});

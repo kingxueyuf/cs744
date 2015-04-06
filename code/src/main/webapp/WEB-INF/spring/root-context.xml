@@ -48,6 +48,8 @@
 				<value>com.relation_prescription_drug.data</value>
 				<value>com.diagnostic_test.data</value>
 				<value>com.surgery.data</value>
+				<value>com.relation_transcription_treatment.data</value>
+				<value>com.treatment.data</value>
 			</array>
 		</property>
 		<property name="hibernateProperties">

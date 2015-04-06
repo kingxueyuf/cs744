@@ -7,6 +7,7 @@ $(document).ready(function() {
 	getTranscriptionBasicContent(transcriptionId); // for 1st panel
 	getDiagnosticAndSurgery(transcriptionId); // for 2nd panel
 	getPrescription(transcriptionId);
+	getTreatment(transcriptionId);
 })
 function getTranscriptionBasicContent(transcriptionId) {
 	$.ajax({
@@ -18,10 +19,30 @@ function getTranscriptionBasicContent(transcriptionId) {
 			var content = data.content;
 			var physician_name = data.physician_name;
 			var create_date = data.create_date;
+			var operator_name = data.writer_name;
+			var operator_title = data.writer_type;
 			console.log(patient_name);
 			$("#patient_name").text(patient_name);
 			$("#physician_name").text(physician_name);
 			$("#comment").text(content);
+			$("#operator_name").text(operator_name);
+			$("#operator_title").text(operator_title);
+		},
+		dataType : "json",
+	});
+}
+function getTreatment(transcriptionId) {
+	$.ajax({
+		type : "GET",
+		url : "/treatment/get",
+		data : "transcriptionId=" + transcriptionId,
+		success : function(data) {
+			var treatment = "";
+			for ( var i in data) {
+				treatment += data[i].treatment_name + "<br>";
+			}
+			$("#treatment").empty();
+			$("#treatment").append(treatment);
 		},
 		dataType : "json",
 	});
@@ -77,8 +98,8 @@ function loadPrescriptionTable(data) {
 		prescription.prescription_id = data[i].prescription_id;
 		prescription.patient_name = data[i].patient_name;
 		prescription.physician_name = data[i].physician_name;
-		prescription.writer_name = data[i].writer_name;
-		prescription.writer_type = data[i].writer_type;
+		prescription.operator_name = data[i].writer_name;
+		prescription.operator_title = data[i].writer_type;
 		prescription.create_date = data[i].create_date;
 		dataSet.push(prescription);
 	}
@@ -91,17 +112,17 @@ function loadPrescriptionTable(data) {
 			"data" : null,
 			"defaultContent" : ''
 		}, {
-			"data" : "Prescription id"
+			"data" : "prescription_id"
 		}, {
-			"data" : "Patient Name"
+			"data" : "patient_name"
 		}, {
-			"data" : "Physician Name"
+			"data" : "physician_name"
 		}, {
-			"data" : "Operator Name"
+			"data" : "operator_name"
 		}, {
-			"data" : "Operator Title"
+			"data" : "operator_title"
 		}, {
-			"data" : "Create Date"
+			"data" : "create_date"
 		} ],
 		"order" : [ [ 1, 'asc' ] ]
 	});
