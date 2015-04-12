@@ -55,4 +55,14 @@ public class PhysicianDao {
 		return p;
 	}
 
+	public String save(Physician physician) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		session.save(physician);
+		session.getTransaction().commit();
+		session.close();
+		return "success";
+	}
+
 }

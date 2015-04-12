@@ -31,4 +31,8 @@ public class PhysicianService {
 		List<Physician> list = physicianDao.serachWithInput(input);
 		return list;
 	}
+	public String save(Physician physician) {
+		// TODO Auto-generated method stub
+		return physicianDao.save(physician);
+	}
 }

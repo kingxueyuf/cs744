@@ -29,4 +29,14 @@ public class PatientDao {
 		Patient patient = (Patient) ((list.size() != 0) ? list.remove(0) : null);
 		return patient;
 	}
+
+	public String save(Patient patient) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		session.save(patient);
+		session.getTransaction().commit();
+		session.close();
+		return "success";
+	}
 }

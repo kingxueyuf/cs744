@@ -20,7 +20,10 @@ import com.patient.data.Patient;
 import com.patient.service.PatientService;
 import com.physician.service.PhysicianService;
 import com.prescription.data.Prescription;
+import com.prescription.data.PrescriptionForPharmacy;
 import com.prescription.service.PrescriptionService;
+import com.relation_prescription_drug.data.PrescriptionDrugRelation;
+import com.relation_prescription_drug.service.PrescriptionDrugService;
 
 @Controller
 public class PrescriptionController {
@@ -33,6 +36,9 @@ public class PrescriptionController {
 	PhysicianService physicianService;
 	@Autowired
 	MedicalStaffService msService;
+	@Autowired
+	PrescriptionDrugService pdService;
+
 
 	@RequestMapping(value = "/prescription/list", method = RequestMethod.GET)
 	@Secured(value = { "ROLE_PHYSICIAN" })
@@ -75,5 +81,15 @@ public class PrescriptionController {
 			p.setWriter_type(ConstantValue.PHYSICIAN);
 		}
 		return pService.save(p);
+	}
+	@RequestMapping(value = "/prescription/pharmacy/check", method = RequestMethod.GET)
+	public @ResponseBody PrescriptionForPharmacy check(
+			@RequestParam(value = "prescription_id", required = true) int prescriptionId) {
+		PrescriptionForPharmacy pfp = new PrescriptionForPharmacy();
+		Prescription prescription = pService.getByPrescriptionId(prescriptionId);
+		List<PrescriptionDrugRelation> list= pdService.getByPrescriptionId(prescriptionId);
+		pfp.setPrescription(prescription);
+		pfp.setPrescriptionDrugList(list);
+		return pfp;
 	}
 }

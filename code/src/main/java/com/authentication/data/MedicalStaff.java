@@ -13,7 +13,6 @@ import javax.persistence.Table;
 public class MedicalStaff {
 	@Id
 	@Column(name = "msid")
-	@GeneratedValue
 	private int msid;
 
 	@Column(name = "ms_name")
@@ -31,6 +30,9 @@ public class MedicalStaff {
 	@Column(name = "physician_name")
 	private String physician_name;
 
+	@Column(name = "SSN")
+	private String SSN;
+	
 	public int getMsid() {
 		return msid;
 	}
@@ -77,6 +79,14 @@ public class MedicalStaff {
 
 	public void setPhysician_name(String physician_name) {
 		this.physician_name = physician_name;
+	}
+
+	public String getSSN() {
+		return SSN;
+	}
+
+	public void setSSN(String sSN) {
+		SSN = sSN;
 	}
 
 }

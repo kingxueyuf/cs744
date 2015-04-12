@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Patient {
 	@Id
 	@Column(name = "patient_id")
-	@GeneratedValue
 	private int patient_id;
 
 	@Column(name = "patient_name")
@@ -30,6 +29,8 @@ public class Patient {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@Column(name = "patient_birthday")
 	private Date patient_birthday;
+	@Column(name = "SSN")
+	private String SSN;
 	
 	/**
 	 * @return the patient_id
@@ -78,6 +79,14 @@ public class Patient {
 	 */
 	public void setPatient_birthday(Date patient_birthday) {
 		this.patient_birthday = patient_birthday;
+	}
+	
+	public String getSSN() {
+		return SSN;
+	}
+	
+	public void setSSN(String sSN) {
+		SSN = sSN;
 	}
 	
 	

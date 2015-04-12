@@ -79,4 +79,17 @@ public class PatientPhysicianRelationDao implements
 		return list;
 	}
 
+	public List<RelationPhysicianPatient> findAllByPatientId(int patient_id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session
+				.createQuery("from RelationPhysicianPatient where patient_id="
+						+ patient_id);
+		Transaction transaction = session.beginTransaction();
+		List<RelationPhysicianPatient> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
+
 }

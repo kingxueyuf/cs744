@@ -58,5 +58,10 @@ public class PatientService {
         }
         return age+"";
 	}
+
+	public String save(Patient patient) {
+		// TODO Auto-generated method stub
+		return pDao.save(patient);
+	}
 }
  

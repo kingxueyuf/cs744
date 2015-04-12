@@ -44,4 +44,13 @@ public class PatientPhysicianRelationController {
 				.findTemporaryCaraByPatientId( patient_id);
 		return temporary;
 	}
+	
+	@RequestMapping(value = "/relation/admin", method = RequestMethod.GET)
+	public @ResponseBody List<RelationPhysicianPatient> makeAppointment(
+			@RequestParam(value = "patient_id", required = true) int patient_id) {
+
+		List<RelationPhysicianPatient> list = pService
+				.findPhysicianCanMakeAppointment( patient_id);
+		return list;
+	}
 }

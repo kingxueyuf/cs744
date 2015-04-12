@@ -76,4 +76,11 @@ public class PatientPhysicianRelationService implements
 		return temporaryCarePatients;
 	}
 
+	public List<RelationPhysicianPatient> findPhysicianCanMakeAppointment(
+			int patient_id) {
+		// TODO Auto-generated method stub
+		List<RelationPhysicianPatient> list = ppRelationDao.findAllByPatientId(patient_id);
+		return list;
+	}
+
 }

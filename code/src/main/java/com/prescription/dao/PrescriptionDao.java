@@ -41,4 +41,17 @@ public class PrescriptionDao {
 		return pId + "";
 	}
 
+	public Prescription getByPrescriptionId(int prescriptionId) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session
+				.createQuery("from Prescription where prescription_id="
+						+ prescriptionId);
+		Transaction transaction = session.beginTransaction();
+		List<Prescription> list = q.list();
+		transaction.commit();
+		session.close();
+		return (list.size() == 0) ? null : list.remove(0);
+	}
+
 }

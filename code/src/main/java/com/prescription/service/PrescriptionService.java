@@ -24,4 +24,9 @@ public class PrescriptionService {
 		return pDao.save(p);
 	}
 
+	public Prescription getByPrescriptionId(int prescriptionId) {
+		// TODO Auto-generated method stub
+		return pDao.getByPrescriptionId(prescriptionId);
+	}
+
 }
