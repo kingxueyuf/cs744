@@ -1,0 +1,181 @@
+Interface For Drug Info and Drug List
+
+1.For Drug List:
+
+1.1 GET ALL IN ONE PAGE
+http://138.49.101.83/Pharmacy/interface/drugList/all
+Get ALL drug list from Pharmacy System database (All in one JSON , for load data only)
+
+[
+   {
+      "id":1,
+      "drugId":"097a9215-ee07-451f-8ef1-dd66704b1c01",
+      "drugType":"Prescription drug",
+      "drugNameMedical":"Hydromorphone",
+      "drugNameCommercial":"Exalgo",
+      "drugPrice":10.0,
+      "drugLv":"1",
+      "drugUnit":"MG/ML",
+      "drugDose":"50",
+      "drugReaction":null,
+      "drugUsage":null,
+      "drugStatus":"Enable"
+   },
+   ........................
+   ........................
+   {
+      "id":7,
+      "drugId":"f433da5e-e312-40fb-b891-a403e46f53b9",
+      "drugType":"Prescription drug",
+      "drugNameMedical":"Hydromorphone",
+      "drugNameCommercial":"Dilaudid-hp",
+      "drugPrice":10.0,
+      "drugLv":"1",
+      "drugUnit":"MG/ML",
+      "drugDose":"50",
+      "drugReaction":null,
+      "drugUsage":null,
+      "drugStatus":"Enable"
+   }
+]
+
+1.2 IN PAGES
+http://138.49.101.83/Pharmacy/interface/drugList/page={pageNumber}&count={pageCount}
+Get drug list by page number and result count for per page (if pageNumber = 0 or pageCount = 0 return all drug)
+example:
+http://138.49.101.83/Pharmacy/interface/drugList/page=2&count=5
+Get Second page for 5 drug.
+
+[
+   {
+      "id":6,
+      "drugId":"c202990e-4b98-4176-a639-5dbf5b7d9a2e",
+      "drugType":"Prescription drug",
+      "drugNameMedical":"Acetaminophen",
+      "drugNameCommercial":"Mapap",
+      "drugPrice":9.0,
+      "drugLv":"1",
+      "drugUnit":"MG",
+      "drugDose":"130",
+      "drugReaction":null,
+      "drugUsage":null,
+      "drugStatus":"Enable"
+   },
+   {
+      "id":7,
+      "drugId":"f433da5e-e312-40fb-b891-a403e46f53b9",
+      "drugType":"Prescription drug",
+      "drugNameMedical":"Hydromorphone",
+      "drugNameCommercial":"Dilaudid-hp",
+      "drugPrice":10.0,
+      "drugLv":"1",
+      "drugUnit":"MG/ML",
+      "drugDose":"50",
+      "drugReaction":null,
+      "drugUsage":null,
+      "drugStatus":"Enable"
+   }
+]
+
+http://138.49.101.83/Pharmacy/interface/drugList/page=1&count=0
+Get All drug list.
+Result Same as http://138.49.101.83/Pharmacy/interface/drugList/all
+
+
+
+
+2.For Drug Info:
+
+2.1 Get Drug Info by Commercial Name
+http://138.49.101.83/Pharmacy/interface/drugInfo/commercialName={name}
+example:
+http://localhost:8080/Pharmacy/interface/drugInfo/commercialName=Exalgo
+
+{
+   "id":1,
+   "drugId":"097a9215-ee07-451f-8ef1-dd66704b1c01",
+   "drugType":"Prescription drug",
+   "drugNameMedical":"Hydromorphone",
+   "drugNameCommercial":"Exalgo",
+   "drugPrice":10.0,
+   "drugLv":"1",
+   "drugUnit":"MG/ML",
+   "drugDose":"50",
+   "drugReaction":null,
+   "drugUsage":null,
+   "drugStatus":"Enable"
+}
+
+2.2 Get Drugs Info by Medical Name
+http://138.49.101.83/Pharmacy/interface/drugInfo/medicalName={name}
+example:
+http://localhost:8080/Pharmacy/interface/drugInfo/medicalName=Acetaminophen
+
+[
+   {
+      "id":4,
+      "drugId":"933a4607-167a-41c2-860c-bcac796ac649",
+      "drugType":"Prescription drug",
+      "drugNameMedical":"Acetaminophen",
+      "drugNameCommercial":"Panadol",
+      "drugPrice":9.0,
+      "drugLv":"1",
+      "drugUnit":"MG",
+      "drugDose":"120",
+      "drugReaction":null,
+      "drugUsage":null,
+      "drugStatus":"Enable"
+   },
+   {
+      "id":5,
+      "drugId":"b3847f7c-1e0e-42de-aa48-a39bd05e08fe",
+      "drugType":"Prescription drug",
+      "drugNameMedical":"Acetaminophen",
+      "drugNameCommercial":"Tempra",
+      "drugPrice":9.0,
+      "drugLv":"1",
+      "drugUnit":"MG",
+      "drugDose":"125",
+      "drugReaction":null,
+      "drugUsage":null,
+      "drugStatus":"Enable"
+   },
+   {
+      "id":6,
+      "drugId":"c202990e-4b98-4176-a639-5dbf5b7d9a2e",
+      "drugType":"Prescription drug",
+      "drugNameMedical":"Acetaminophen",
+      "drugNameCommercial":"Mapap",
+      "drugPrice":9.0,
+      "drugLv":"1",
+      "drugUnit":"MG",
+      "drugDose":"130",
+      "drugReaction":null,
+      "drugUsage":null,
+      "drugStatus":"Enable"
+   }
+]
+
+2.3 Get Drug Info by Drug ID
+http://138.49.101.83/Pharmacy/interface/drugInfo/id={id}
+expample:
+http://localhost:8080/Pharmacy/interface/drugInfo/id=4cb92d84-b497-4b23-9be5-cc19ae5e2c1a
+
+{
+   "id":2,
+   "drugId":"4cb92d84-b497-4b23-9be5-cc19ae5e2c1a",
+   "drugType":"Prescription drug",
+   "drugNameMedical":"Hydromorphone",
+   "drugNameCommercial":"Palladone",
+   "drugPrice":10.0,
+   "drugLv":"1",
+   "drugUnit":"MG/ML",
+   "drugDose":"50",
+   "drugReaction":null,
+   "drugUsage":null,
+   "drugStatus":"Enable"
+}
+
+
+If you have any question, fell free to contact me with email:
+yang.xi@uwlax.edu

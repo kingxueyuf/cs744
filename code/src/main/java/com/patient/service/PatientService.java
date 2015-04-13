@@ -11,57 +11,59 @@ import org.springframework.stereotype.Service;
 
 import com.patient.dao.PatientDao;
 import com.patient.data.Patient;
+
 @Service
 public class PatientService {
 	@Autowired
 	PatientDao pDao;
 	final String dateFormat = "yyyy-MM-dd";
-	
-	public Patient getPatientById(int patientId){
+
+	public Patient getPatientById(int patientId) {
 		Patient patient = pDao.findPatientByPatientId(patientId);
 		return patient;
 	}
-	
-	public String dateToString(java.util.Date date){
+
+	public String dateToString(java.util.Date date) {
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 		return sdf.format(date);
 	}
-	
-	public String computeAge(java.util.Date date){
+
+	public String computeAge(java.util.Date date) {
 		Calendar cal = Calendar.getInstance();
 
-        if (cal.before(date)) {
-            return  "cannot be born in future!";
-        }
+		if (cal.before(date)) {
+			return "cannot be born in future!";
+		}
 
-        int yearNow = cal.get(Calendar.YEAR);
-        int monthNow = cal.get(Calendar.MONTH) + 1;
-        int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH);
-        cal.setTime(date);
+		int yearNow = cal.get(Calendar.YEAR);
+		int monthNow = cal.get(Calendar.MONTH) + 1;
+		int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH);
+		cal.setTime(date);
 
-        int yearBirth = cal.get(Calendar.YEAR);
-        int monthBirth = cal.get(Calendar.MONTH);
-        int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
+		int yearBirth = cal.get(Calendar.YEAR);
+		int monthBirth = cal.get(Calendar.MONTH);
+		int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
 
-        int age = yearNow - yearBirth;
+		int age = yearNow - yearBirth;
 
-        if (monthNow <= monthBirth) {
-            if (monthNow == monthBirth) {
-                
-                if (dayOfMonthNow < dayOfMonthBirth) {
-                    age--;
-               
-            } else {
-                age--;
-            }
-          } 
-        }
-        return age+"";
+		if (monthNow <= monthBirth) {
+			if (monthNow == monthBirth) {
+
+				if (dayOfMonthNow < dayOfMonthBirth) {
+					age--;
+
+				} else {
+					age--;
+				}
+			}
+		}
+		return age + "";
 	}
 
 	public String save(Patient patient) {
 		// TODO Auto-generated method stub
+		int age =Integer.valueOf(computeAge(patient.getPatient_birthday()));
+		patient.setPatient_age(age);
 		return pDao.save(patient);
 	}
 }
- 

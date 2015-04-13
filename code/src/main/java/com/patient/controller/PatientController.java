@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +22,11 @@ public class PatientController {
 	private PatientService pService;
 
 	@RequestMapping(value = "/patient/admin/add", method = RequestMethod.POST)
-	public @ResponseBody String addPatientFromAdmin(@RequestBody Patient patient) {
+	public @ResponseBody String addPatientFromAdmin(
+			@RequestBody Patient patient) {
+		System.out.println(patient.getPatient_id() + " "
+				+ patient.getPatient_name() + " "
+				+ patient.getPatient_birthday());
 		return pService.save(patient);
 	}
 }

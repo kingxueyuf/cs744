@@ -18,7 +18,12 @@ function loadPrimaryPatient(primary) {
 	var dataSet = [];
 	for ( var i in primary) {
 		var patientItem = [];
-		patientItem.push(primary[i].patient_name);
+		var patient_name = primary[i].patient_name
+		var name_arr = patient_name.split(" ");
+		var first_name = name_arr[0];
+		var last_name = name_arr[1];
+		patientItem.push(first_name);
+		patientItem.push(last_name);
 		patientItem.push(primary[i].patient_gender);
 		patientItem.push(convertTimestampToDate(primary[i].patient_birthday));
 		patientItem.push(primary[i].relation_type);
@@ -37,7 +42,9 @@ function loadPrimaryPatient(primary) {
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {
-			"title" : "Patient Name"
+			"title" : "Patient First Name"
+		}, {
+			"title" : "Patient Last Name"
 		}, {
 			"title" : "Patient Gender"
 		}, {
@@ -59,7 +66,12 @@ function loadTemporaryPatient(temporary) {
 	var dataSet = [];
 	for ( var i in temporary) {
 		var patientItem = [];
-		patientItem.push(temporary[i].patient_name);
+		var patient_name = temporary[i].patient_name
+		var name_arr = patient_name.split(" ");
+		var first_name = name_arr[0];
+		var last_name = name_arr[1];
+		patientItem.push(first_name);
+		patientItem.push(last_name);
 		patientItem.push(temporary[i].patient_gender);
 		patientItem.push(convertTimestampToDate(temporary[i].patient_birthday));
 		patientItem.push(temporary[i].relation_type);
@@ -82,7 +94,9 @@ function loadTemporaryPatient(temporary) {
 		"responsive" : true,
 		"data" : dataSet,
 		"columns" : [ {
-			"title" : "Patient Name"
+			"title" : "Patient First Name"
+		}, {
+			"title" : "Patient Last Name"
 		}, {
 			"title" : "Patient Gender"
 		}, {

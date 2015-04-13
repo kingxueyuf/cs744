@@ -31,7 +31,10 @@ public class Physician {
 	private String password;
 
 	@Column(name = "SSN")
-	private String SSN;
+	private String ssn;
+	
+	@Column(name = "specialty")
+	private String specialty;
 	
 	public int getPhysicianId() {
 		return physicianId;
@@ -82,11 +85,19 @@ public class Physician {
 	}
 
 	public String getSSN() {
-		return SSN;
+		return ssn;
 	}
 
-	public void setSSN(String sSN) {
-		SSN = sSN;
+	public void setSSN(String ssn) {
+		this.ssn = ssn;
+	}
+
+	public String getSpecialty() {
+		return specialty;
+	}
+
+	public void setSpecialty(String specialty) {
+		this.specialty = specialty;
 	}
 	
 }

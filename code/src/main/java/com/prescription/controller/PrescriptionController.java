@@ -89,6 +89,8 @@ public class PrescriptionController {
 		Prescription prescription = pService.getByPrescriptionId(prescriptionId);
 		List<PrescriptionDrugRelation> list= pdService.getByPrescriptionId(prescriptionId);
 		pfp.setPrescription(prescription);
+		pfp.setPatient(patientService.getPatientById(prescription.getPatient_id()));
+		pfp.setPhysician(physicianService.getPhysicianById(prescription.getPhysician_id()));
 		pfp.setPrescriptionDrugList(list);
 		return pfp;
 	}
