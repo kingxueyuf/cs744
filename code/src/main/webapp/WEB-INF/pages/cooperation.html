@@ -41,15 +41,7 @@
 <link
 	href="/resources/bower_components/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
 
-<link href="/resources/css/dropzone.css" rel="stylesheet"
-	type="text/css">
-
-<link href="/resources/css/basic.css" rel="stylesheet" type="text/css">
-
-<!-- My css -->
 <link href="/resources/css/common.css" rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -58,31 +50,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<style>
-#diagnostictest {
-	font-family: Arial, Helvetica, sans-serif;
-	color: red;
-	text-decoration: underline;
-}
 
-#surgery {
-	font-family: Arial, Helvetica, sans-serif;
-	color: red;
-	text-decoration: underline;
-}
-
-#treatment_list {
-	font-family: Arial, Helvetica, sans-serif;
-	color: red;
-	text-decoration: underline;
-}
-
-#drugTableContent {
-	font-family: Arial, Helvetica, sans-serif;
-	color: red;
-	text-decoration: underline;
-}
-</style>
 </head>
 
 <body>
@@ -99,7 +67,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">EMR Version 1.0</a>
+				<a class="navbar-brand" href="index.html">ERM Version 1.0</a>
 			</div>
 			<!-- /.navbar-header -->
 
@@ -229,8 +197,8 @@
 								Dashboard</a></li>
 						<li><a href="patients.html"><i class="fa fa-table fa-fw"></i>
 								Patients</a></li>
-						<li><a href="cooperation.html"><i class="fa fa-edit fa-fw"></i>
-								Cooperation</a></li>
+						<li><a href="cooperation.html"><i
+								class="fa fa-edit fa-fw"></i> Cooperation</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
@@ -239,204 +207,30 @@
 		</nav>
 
 		<div id="page-wrapper">
-			<div class="form-horizontal">
-				<fieldset>
-					<legend>Create new transcription</legend>
-					<div class="form-group has-success">
-						<label for="inputEmail" class="col-lg-3 control-label">Patient
-							Name</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="patient_name"
-								placeholder="" disabled>
-						</div>
+			<br>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-lg-10">Cooperation</div>
 					</div>
-					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Physician
-							Name(create examination)</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="physician_name"
-								placeholder="" disabled>
-						</div>
-					</div>
-					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Operator
-							Name</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="operator_name"
-								placeholder="" disabled>
-						</div>
-					</div>
-					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Operator
-							Title</label>
-						<div class="col-lg-9">
-							<input type="text" class="form-control" id="operator_title"
-								placeholder="" disabled>
-						</div>
-					</div>
-					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Diagnostic
-							Test</label>
-						<div class="col-lg-9">
-							<div class="input-group">
-								<input type="text" id="diagnosticTestInput" class="form-control">
-								<span class="input-group-btn">
-									<button class="btn btn-primary" id='addTest' type="button">
-										<i class="fa fa-pencil-square-o"></i> add
-									</button>
-								</span>
-							</div>
-							<div class="row">
-								<div class="col-lg-9">
-									<p id="diagnostictest"></p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Surgery
-						</label>
-						<div class="col-lg-9">
-							<div class="input-group">
-								<input type="text" id="surgeryInput" class="form-control"
-									placeholder="surgery name..."> <span
-									class="input-group-btn">
-									<button class="btn btn-primary" id='addSurgery' type="button">
-										<i class="fa fa-pencil-square-o"></i> add
-									</button>
-								</span>
-							</div>
-							<div class="row">
-								<div class="col-lg-9">
-									<p id="surgery"></p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Treatment
-						</label>
-						<div class="col-lg-9">
-							<div class="row">
-								<div class="col-lg-9">
-									<select id="treatment" class="form-control">
-										<option value="1">clean wound</option>
-										<option value="2">put needle</option>
-										<option value="3">check blood pressure</option>
-									</select>
-								</div>
-								<div class="col-lg-3">
-									<button class="btn btn-primary" id='addTreatment' type="button">
-										<i class="fa fa-pencil-square-o"></i> add
-									</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-9">
-									<p id="treatment_list"></p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Upload
-							image </label>
-						<div class="col-lg-9">
-							<form action="/upload" class="dropzone" id="my-awesome-dropzone">
-								<div class="dz-message">
-									Drop files here or click to upload.<br> <span class="note">(File
-										use only<strong> image </strong> .)
-									</span>
-								</div>
-							</form>
-						</div>
-					</div>
-				</fieldset>
-			</div>
-			<!-- Prescription -->
-			<div class="form-horizontal">
-				<fieldset>
-					<legend>Create new prescription</legend>
-					<div class="form-group has-error">
-						<label for="textArea" class="col-lg-3 control-label">Create
-							Prescription </label>
-						<div class="col-lg-9">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<div class="row">
-										<div class="col-lg-10">Prescription</div>
-										<div class="col-lg-2">
-											<button type="button" class="btn btn-primary btn-xs"
-												id="createPrescription">
-												<i class="fa fa-pencil-square-o"></i> Add
-											</button>
-										</div>
-									</div>
-								</div>
-								<div class="panel-body" id='panelcontent' style="display: none;">
-									<table class="table table-bordered">
-										<thead>
-											<th>Drug Name</th>
-											<th>Drug Amount</th>
-										</thead>
-										<tbody id='drugTableContent'>
+				</div>
+				<div class="panel-body">
+					<div class="dataTable_wrapper">
+						<table class="table table-striped table-bordered table-hover"
+							id="trans-table">
+							<thead>
+								<tr>
+									<th>Physician Id</th>
+									<th>Physician Name</th>
+									<th>Medical Staff Name Id</th>
+									<th>Medical Staff Name</th>
+								</tr>
+							</thead>
+							<tbody>
 
-										</tbody>
-									</table>
-									<div class="form-group has-warning">
-										<label for="textArea" class="col-lg-2 control-label">Drug
-											Name </label>
-										<div class="col-lg-4">
-											<input type="text" id='drugInput' class="form-control"
-												placeholder="drug name...">
-										</div>
-										<label for="textArea" class="col-lg-2 control-label">Drug
-											Amount </label>
-										<div class="col-lg-4">
-											<div class="input-group">
-												<input type="text" id="amount" class="form-control"
-													placeholder="surgery name..."> <span
-													class="input-group-btn">
-													<button class="btn btn-primary" id='addDrug' type="button">
-														<i class="fa fa-pencil-square-o"></i> add
-													</button>
-												</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+							</tbody>
+						</table>
 					</div>
-				</fieldset>
-			</div>
-			<div class="row">
-				<div class="row">
-					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Abstraction</span>
-						<input type="text" class="form-control"
-							placeholder="input abstraction" aria-describedby="basic-addon1"
-							id='abstraction'>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<textarea class="form-control" rows="20" id="comment"></textarea>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-6"></div>
-				<div class="col-lg-4">
-					<p>
-						<button type="button" class="btn btn-info"
-							id='updateTranscription'>
-							<i class="fa fa-pencil-square-o"></i> Create
-						</button>
-						<a type="button" class="btn btn-danger" href="emr.html"> <i
-							class="fa fa-pencil-square-o"></i> Cancel
-						</a>
-					</p>
 				</div>
 			</div>
 		</div>
@@ -446,7 +240,6 @@
 
 	<!-- jQuery -->
 	<script src="/resources/bower_components/jquery/dist/jquery.min.js"></script>
-	<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script
@@ -464,15 +257,10 @@
 
 	<!-- Bootstrap Editable -->
 	<script src="/resources/bootstrap-editable/js/bootstrap-editable.js"></script>
-
 	<!-- Custom Theme JavaScript -->
 	<script src="/resources/dist/js/sb-admin-2.js"></script>
-	<!-- Dropzone dropzone.js and include it like this -->
-	<script src="/resources/bower_components/dropzone/dropzone.js"></script>
+	<script src="/resources/js/cooperation.js"></script>
 
-	<!-- My js -->
-	<script src="/resources/js/create_transcription.js"></script>
-	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 </body>
 
 </html>

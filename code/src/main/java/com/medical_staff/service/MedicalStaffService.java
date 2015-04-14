@@ -19,4 +19,7 @@ public class MedicalStaffService {
 	public MedicalStaff getMedicalstaffById(int id){
 		return msDao.getById(id);
 	}
+	public List<MedicalStaff> getByPhysicianId(int id){
+		return msDao.getByPhysicianId(id);
+	}
 }

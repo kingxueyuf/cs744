@@ -50,6 +50,7 @@
 				<value>com.surgery.data</value>
 				<value>com.relation_transcription_treatment.data</value>
 				<value>com.treatment.data</value>
+				<value>com.security.data</value>
 			</array>
 		</property>
 		<property name="hibernateProperties">

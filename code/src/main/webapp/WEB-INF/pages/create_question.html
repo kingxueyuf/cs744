@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="emr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Security</title>
+
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="../resources/jquery-cookie/jc/jquery.cookie.js"></script>
+<!-- Bootstrap -->
+<link href="/resources/css/theme/bootstrap-simplex.min.css"
+	rel="stylesheet">
+
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+
+<style type="text/css">
+body {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #333;
+}
+
+.form-signin {
+	max-width: 600px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	margin-top: 100px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	background-color: #fff;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin input[type="text"], .form-signin input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+
+#footer {
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 100px;
+}
+</style>
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<div class="container" ng-controller="questionCtrl">
+		<div class="form-signin" role="form">
+			<div class="row">
+				<div class="alert alert-success" role="alert">question1</div>
+			</div>
+			<div class="row">
+				<input type="text" class="form-control" ng-model="question1" />
+			</div>
+			<div class="row">
+				<div class="alert alert-success" role="alert">answer1</div>
+			</div>
+			<div class="row">
+				<input type="text" class="form-control" ng-model="answer1" />
+			</div>
+			<div class="row">
+				<div class="alert alert-success" role="alert">question2</div>
+			</div>
+			<div class="row">
+				<input type="text" class="form-control" ng-model="question2" />
+			</div>
+			<div class="row">
+				<div class="alert alert-success" role="alert">answer2</div>
+			</div>
+			<div class="row">
+				<input type="text" class="form-control" ng-model="answer2" />
+			</div>
+			<div class="row">
+				<div class="alert alert-success" role="alert">question3</div>
+			</div>
+			<div class="row">
+				<input type="text" class="form-control" ng-model="question3" />
+			</div>
+			<div class="row">
+				<div class="alert alert-success" role="alert">answer3</div>
+			</div>
+			<div class="row">
+				<input type="text" class="form-control" ng-model="answer3" />
+			</div>
+			<button class="btn btn-sm btn-primary btn-block" ng-click="submit()">
+				submit</button>
+		</div>
+	</div>
+	<!-- /container -->
+	<div class="footer" id="footer"></div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/resources/js/angular.min.js"></script>
+	<script src="/resources/js/create_question.js"></script>
+</body>
+</html>
+

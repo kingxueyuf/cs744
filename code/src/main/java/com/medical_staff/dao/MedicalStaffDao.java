@@ -37,5 +37,15 @@ public class MedicalStaffDao {
 		session.close();
 		return list.remove(0);
 	}
+	
+	public List<MedicalStaff> getByPhysicianId(int id){
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from MedicalStaff where physician_id=" + id);
+		Transaction transaction = session.beginTransaction();
+		List<MedicalStaff> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
 
 }
