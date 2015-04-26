@@ -20,12 +20,19 @@ public class PrescriptionDrugRelation {
 	private int prescription_id;
 	@Column(name = "drug_id")
 	private int drug_id;
-	@Column(name = "drug_name")
-	private String drug_name;
-	
+	@Column(name = "drug_name_medical")
+	private String drug_name_medical;
+	@Column(name = "drug_name_commercial")
+	private String drug_name_commercial;
+	@Column(name = "drug_unit")
+	private String drug_unit;
+	@Column(name = "drug_dose")
+	private String drug_dose;
+	@Column(name = "drug_price")
+	private String drug_price;
 	@Column(name = "amount")
 	private String amount;
-	
+
 	public int getRpd_id() {
 		return rpd_id;
 	}
@@ -50,12 +57,44 @@ public class PrescriptionDrugRelation {
 		this.drug_id = drug_id;
 	}
 
-	public String getDrug_name() {
-		return drug_name;
+	public String getDrug_name_medical() {
+		return drug_name_medical;
 	}
 
-	public void setDrug_name(String drug_name) {
-		this.drug_name = drug_name;
+	public void setDrug_name_medical(String drug_name_medical) {
+		this.drug_name_medical = drug_name_medical;
+	}
+
+	public String getDrug_name_commercial() {
+		return drug_name_commercial;
+	}
+
+	public void setDrug_name_commercial(String drug_name_commercial) {
+		this.drug_name_commercial = drug_name_commercial;
+	}
+
+	public String getDrug_unit() {
+		return drug_unit;
+	}
+
+	public void setDrug_unit(String drug_unit) {
+		this.drug_unit = drug_unit;
+	}
+
+	public String getDrug_dose() {
+		return drug_dose;
+	}
+
+	public void setDrug_dose(String drug_dose) {
+		this.drug_dose = drug_dose;
+	}
+
+	public String getDrug_price() {
+		return drug_price;
+	}
+
+	public void setDrug_price(String drug_price) {
+		this.drug_price = drug_price;
 	}
 
 	public String getAmount() {
@@ -65,5 +104,5 @@ public class PrescriptionDrugRelation {
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
-	
+
 }

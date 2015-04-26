@@ -229,8 +229,8 @@
 								Dashboard</a></li>
 						<li><a href="patients.html"><i class="fa fa-table fa-fw"></i>
 								Patients</a></li>
-						<li><a href="cooperation.html"><i class="fa fa-edit fa-fw"></i>
-								Cooperation</a></li>
+						<li><a href="cooperation.html"><i
+								class="fa fa-edit fa-fw"></i> Cooperation</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
@@ -243,41 +243,41 @@
 				<fieldset>
 					<legend>Create new transcription</legend>
 					<div class="form-group has-success">
-						<label for="inputEmail" class="col-lg-3 control-label">Patient
-							Name</label>
-						<div class="col-lg-9">
+						<label for="inputEmail" class="col-lg-2 control-label"><strong>Patient
+								Name</strong></label>
+						<div class="col-lg-10">
 							<input type="text" class="form-control" id="patient_name"
 								placeholder="" disabled>
 						</div>
 					</div>
 					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Physician
-							Name(create examination)</label>
-						<div class="col-lg-9">
+						<label for="inputPassword" class="col-lg-2 control-label"><strong>Physician
+								Name</strong></label>
+						<div class="col-lg-10">
 							<input type="text" class="form-control" id="physician_name"
 								placeholder="" disabled>
 						</div>
 					</div>
 					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Operator
-							Name</label>
-						<div class="col-lg-9">
+						<label for="inputPassword" class="col-lg-2 control-label"><strong>Operator
+								Name</strong></label>
+						<div class="col-lg-10">
 							<input type="text" class="form-control" id="operator_name"
 								placeholder="" disabled>
 						</div>
 					</div>
 					<div class="form-group has-success">
-						<label for="inputPassword" class="col-lg-3 control-label">Operator
-							Title</label>
-						<div class="col-lg-9">
+						<label for="inputPassword" class="col-lg-2 control-label"><strong>Operator
+								Title</strong></label>
+						<div class="col-lg-10">
 							<input type="text" class="form-control" id="operator_title"
 								placeholder="" disabled>
 						</div>
 					</div>
 					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Diagnostic
-							Test</label>
-						<div class="col-lg-9">
+						<label for="textArea" class="col-lg-2 control-label"><strong>Diagnostic
+								Test</strong></label>
+						<div class="col-lg-10">
 							<div class="input-group">
 								<input type="text" id="diagnosticTestInput" class="form-control">
 								<span class="input-group-btn">
@@ -294,9 +294,9 @@
 						</div>
 					</div>
 					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Surgery
-						</label>
-						<div class="col-lg-9">
+						<label for="textArea" class="col-lg-2 control-label"><strong>Surgery
+						</strong></label>
+						<div class="col-lg-10">
 							<div class="input-group">
 								<input type="text" id="surgeryInput" class="form-control"
 									placeholder="surgery name..."> <span
@@ -314,9 +314,9 @@
 						</div>
 					</div>
 					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Treatment
-						</label>
-						<div class="col-lg-9">
+						<label for="textArea" class="col-lg-2 control-label"><strong>Treatment
+						</strong></label>
+						<div class="col-lg-10">
 							<div class="row">
 								<div class="col-lg-9">
 									<select id="treatment" class="form-control">
@@ -339,9 +339,9 @@
 						</div>
 					</div>
 					<div class="form-group has-warning">
-						<label for="textArea" class="col-lg-3 control-label">Upload
-							image </label>
-						<div class="col-lg-9">
+						<label for="textArea" class="col-lg-2 control-label"><strong>Upload
+								image </strong></label>
+						<div class="col-lg-10">
 							<form action="/upload" class="dropzone" id="my-awesome-dropzone">
 								<div class="dz-message">
 									Drop files here or click to upload.<br> <span class="note">(File
@@ -358,9 +358,9 @@
 				<fieldset>
 					<legend>Create new prescription</legend>
 					<div class="form-group has-error">
-						<label for="textArea" class="col-lg-3 control-label">Create
-							Prescription </label>
-						<div class="col-lg-9">
+						<label for="textArea" class="col-lg-2 control-label"><strong>Create
+								Prescription</strong> </label>
+						<div class="col-lg-10">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<div class="row">
@@ -376,24 +376,34 @@
 								<div class="panel-body" id='panelcontent' style="display: none;">
 									<table class="table table-bordered">
 										<thead>
-											<th>Drug Name</th>
-											<th>Drug Amount</th>
+											<th>Medical Name</th>
+											<th>Commercial Name</th>
+											<th>Unit</th>
+											<th>Dose</th>
+											<th>Price</th>
+											<th>Amount</th>
 										</thead>
 										<tbody id='drugTableContent'>
 
 										</tbody>
 									</table>
 									<div class="form-group has-warning">
-										<label for="textArea" class="col-lg-2 control-label">Drug
-											Name </label>
-										<div class="col-lg-4">
-											<input type="text" id='drugInput' class="form-control"
-												placeholder="drug name...">
+										<div class="col-lg-3">
+											<select id="nameType" class="form-control">
+												<option value="medical">medical name</option>
+												<option value="commercial">commercial name</option>
+											</select>
 										</div>
-										<label for="textArea" class="col-lg-2 control-label">Drug
-											Amount </label>
+										<div class="col-lg-5">
+											<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1">Name</span>
+												<input type="text" id='drugInput' class="form-control"
+													placeholder="drug name...">
+											</div>
+										</div>
 										<div class="col-lg-4">
 											<div class="input-group">
+												<span class="input-group-addon" id="basic-addon1">Amount</span>
 												<input type="text" id="amount" class="form-control"
 													placeholder="surgery name..."> <span
 													class="input-group-btn">
@@ -410,20 +420,25 @@
 					</div>
 				</fieldset>
 			</div>
-			<div class="row">
-				<div class="row">
-					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Abstraction</span>
-						<input type="text" class="form-control"
-							placeholder="input abstraction" aria-describedby="basic-addon1"
-							id='abstraction'>
+
+			<div class="form-horizontal">
+				<fieldset>
+					<legend>Write transcription content</legend>
+					<div class="form-group">
+						<label class="col-lg-2 control-label"><strong>Abstraction</strong></label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control"
+								placeholder="input abstraction" aria-describedby="basic-addon1"
+								id='abstraction'>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<textarea class="form-control" rows="20" id="comment"></textarea>
+					<div class="form-group">
+						<label class="col-lg-2 control-label"><strong>Content</strong></label>
+						<div class="col-lg-10">
+							<textarea class="form-control" rows="20" id="comment"></textarea>
+						</div>
 					</div>
-				</div>
+				</fieldset>
 			</div>
 			<div class="row">
 				<div class="col-lg-6"></div>

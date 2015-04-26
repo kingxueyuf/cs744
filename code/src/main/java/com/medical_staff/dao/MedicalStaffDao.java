@@ -48,4 +48,24 @@ public class MedicalStaffDao {
 		return list;
 	}
 
+	public String save(MedicalStaff ms) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		session.save(ms);
+		session.getTransaction().commit();
+		session.close();
+		return "success";
+	}
+
+	public String delete(int msid) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("delete MedicalStaff where msid = "
+				+ msid);
+		q.executeUpdate();
+		session.close();
+		return "success";
+	}
+
 }

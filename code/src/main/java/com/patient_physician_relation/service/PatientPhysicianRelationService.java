@@ -41,7 +41,7 @@ public class PatientPhysicianRelationService implements
 							.currentUserDetails().getUserId());
 			Physician p = pService.getPhysicianById(ms.getPhysician_id());
 			List<RelationPhysicianPatient> primaryCarePatients = ppRelationDao
-					.findPrimaryCareRelation(p.getPhysicianId());
+					.findPrimaryCareRelation(p.getPhysician_id());
 			return primaryCarePatients;
 		}
 		return null;
@@ -61,7 +61,7 @@ public class PatientPhysicianRelationService implements
 							.currentUserDetails().getUserId());
 			Physician p = pService.getPhysicianById(ms.getPhysician_id());
 			List<RelationPhysicianPatient> temporaryCarePatients = ppRelationDao
-					.findTemporaryCareRelation(p.getPhysicianId());
+					.findTemporaryCareRelation(p.getPhysician_id());
 			return temporaryCarePatients;
 		}
 		return null;
@@ -79,8 +79,14 @@ public class PatientPhysicianRelationService implements
 	public List<RelationPhysicianPatient> findPhysicianCanMakeAppointment(
 			int patient_id) {
 		// TODO Auto-generated method stub
-		List<RelationPhysicianPatient> list = ppRelationDao.findAllByPatientId(patient_id);
+		List<RelationPhysicianPatient> list = ppRelationDao
+				.findAllByPatientId(patient_id);
 		return list;
+	}
+
+	public String save(RelationPhysicianPatient rpp) {
+		// TODO Auto-generated method stub
+		return ppRelationDao.save(rpp);
 	}
 
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.drug.data.Drug;
+import com.drug.data.DrugFromPharmacy;
 import com.drug.service.DrugService;
 import com.emr.data.Emr;
 
@@ -27,6 +28,15 @@ public class DrugController {
 	public @ResponseBody List<Drug> searchWithInput(
 			@RequestParam(value = "drugInput", required = true) String input) {
 		List<Drug> list = drugService.searchWithInput(input);
+		return list;
+	}
+	
+	@RequestMapping(value = "/drug/search", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody List<DrugFromPharmacy> search(
+			@RequestParam(value = "drugInput", required = true) String input,
+			@RequestParam(value = "drugNameType", required = true) String nameType) {
+		List<DrugFromPharmacy> list = drugService.search(input,nameType);
 		return list;
 	}
 	

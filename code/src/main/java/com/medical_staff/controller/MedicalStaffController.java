@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.authentication.data.CustomSpringUser;
@@ -32,5 +33,17 @@ public class MedicalStaffController {
 			// is Physician
 			return msService.getByPhysicianId(cs.getUserId());
 		}
+	}
+	
+	@RequestMapping(value = "/medicalstaff/admin/add", method = RequestMethod.POST)
+	public @ResponseBody String addMedicalStaffFromAdmin(
+			@RequestBody MedicalStaff ms) {
+		return msService.save(ms);
+	}
+	
+	@RequestMapping(value = "/medicalstaff/admin/delete", method = RequestMethod.POST)
+	public @ResponseBody String deleteMedicalStaffFromAdmin(
+			@RequestParam(value = "msid", required = true) int msid) {
+		return msService.delete(msid);
 	}
 }

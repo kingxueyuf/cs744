@@ -50,6 +50,7 @@ public class TranscriptionService {
 		transcription.setEmr_id(emrId);
 		transcription.setPatient_id(patientId);
 		Patient p = pService.getPatientById(patientId);
+		transcription.setPatient_ssn(p.getSSN());
 		transcription.setPatient_name(p.getPatient_name());
 		transcription.setAbstraction("");
 		transcription.setContent("");
@@ -59,17 +60,17 @@ public class TranscriptionService {
 							.currentUserDetails().getUserId());
 			Physician phsician = physicianService.getPhysicianById(ms
 					.getPhysician_id());
-			transcription.setPhysician_id(phsician.getPhysicianId());
-			transcription.setPhysician_name(phsician.getPhysicianName());
+			transcription.setPhysician_id(phsician.getPhysician_id());
+			transcription.setPhysician_name(phsician.getPhysician_name());
 			transcription.setWriter_id(ms.getMsid());
 			transcription.setWriter_name(ms.getMs_name());
 			transcription.setWriter_type(ConstantValue.MEDICAL_STAFF);
 		} else if (CustomUserDetailsService.isPhysician()) {
 			Physician currentPhysician = physicianService.currentPhysician();
-			transcription.setPhysician_id(currentPhysician.getPhysicianId());
+			transcription.setPhysician_id(currentPhysician.getPhysician_id());
 			transcription
-					.setPhysician_name(currentPhysician.getPhysicianName());
-			transcription.setWriter_id(currentPhysician.getPhysicianId());
+					.setPhysician_name(currentPhysician.getPhysician_name());
+			transcription.setWriter_id(currentPhysician.getPhysician_id());
 			transcription.setWriter_name(currentPhysician.getAccount());
 			transcription.setWriter_type(ConstantValue.PHYSICIAN);
 		}

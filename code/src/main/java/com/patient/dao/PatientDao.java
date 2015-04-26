@@ -39,4 +39,14 @@ public class PatientDao {
 		session.close();
 		return "success";
 	}
+
+	public String delete(int patientId) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("delete Patient where patient_id = "
+				+ patientId);
+		q.executeUpdate();
+		session.close();
+		return "success";
+	}
 }

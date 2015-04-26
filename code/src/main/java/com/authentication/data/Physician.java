@@ -46,38 +46,38 @@ public class Physician implements Serializable {
 		System.out.println("new a Physician");
 	}
 
-	public int getPhysicianId() {
+	public int getPhysician_id() {
 		return physician_id;
 	}
 
-	public void setPhysicianId(int physician_id) {
+	public void setPhysician_id(int physician_id) {
 		this.physician_id = physician_id;
 		System.out.println(physician_id);
 	}
 
-	public String getPhysicianName() {
+	public String getPhysician_name() {
 		return physician_name;
 	}
 
-	public void setPhysicianName(String physician_name) {
+	public void setPhysician_name(String physician_name) {
 		this.physician_name = physician_name;
 		System.out.println(physician_name);
 	}
 
-	public String getPhysicianGender() {
+	public String getPhysician_gender() {
 		return physician_gender;
 	}
 
-	public void setPhysicianGender(String physician_gender) {
+	public void setPhysician_gender(String physician_gender) {
 		this.physician_gender = physician_gender;
 		System.out.println(physician_gender);
 	}
 
-	public Date getPhysicianBirthday() {
+	public Date getPhysician_birthday() {
 		return physician_birthday;
 	}
 
-	public void setPhysicianBirthday(String physician_birthday) {
+	public void setPhysician_birthday(String physician_birthday) {
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println(physician_birthday);
 		Date date = null;
@@ -108,11 +108,11 @@ public class Physician implements Serializable {
 		System.out.println(password);
 	}
 
-	public String getSSN() {
+	public String getSsn() {
 		return ssn;
 	}
 
-	public void setSSN(String ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 		System.out.println(ssn);
 	}

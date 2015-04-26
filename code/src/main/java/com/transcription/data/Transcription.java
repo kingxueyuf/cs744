@@ -32,6 +32,9 @@ public class Transcription {
 
 	@Column(name = "patient_name")
 	private String patient_name;
+	
+	@Column(name = "patient_ssn")
+	private String patient_ssn;
 
 	@Column(name = "abstraction")
 	private String abstraction;
@@ -249,6 +252,14 @@ public class Transcription {
 
 	public void setWriter_type(String writer_type) {
 		this.writer_type = writer_type;
+	}
+
+	public String getPatient_ssn() {
+		return patient_ssn;
+	}
+
+	public void setPatient_ssn(String patient_ssn) {
+		this.patient_ssn = patient_ssn;
 	}
 	
 	

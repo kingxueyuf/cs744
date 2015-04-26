@@ -1,5 +1,7 @@
 package com.security.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,11 @@ public class SecurityService {
 	public void save(Security s) {
 		// TODO Auto-generated method stub
 		sDao.save(s);
+	}
+
+	public List<com.security.data.Question> questions() {
+		// TODO Auto-generated method stub
+		return sDao.questions();
 	}
 	
 }

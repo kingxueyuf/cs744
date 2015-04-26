@@ -77,7 +77,9 @@ body {
 				<div class="alert alert-success" role="alert">question1</div>
 			</div>
 			<div class="row">
-				<input type="text" class="form-control" ng-model="question1" />
+				<select ng-model="selectquestion1"
+					ng-options="opt as opt.label for opt in question1" class="form-control">
+				</select>
 			</div>
 			<div class="row">
 				<div class="alert alert-success" role="alert">answer1</div>
@@ -86,25 +88,29 @@ body {
 				<input type="text" class="form-control" ng-model="answer1" />
 			</div>
 			<div class="row">
-				<div class="alert alert-success" role="alert">question2</div>
+				<div class="alert alert-warning" role="alert">question2</div>
 			</div>
 			<div class="row">
-				<input type="text" class="form-control" ng-model="question2" />
+				<select ng-model="selectquestion2"
+					ng-options="opt as opt.label for opt in question2" class="form-control">
+				</select>
 			</div>
 			<div class="row">
-				<div class="alert alert-success" role="alert">answer2</div>
+				<div class="alert alert-warning" role="alert">answer2</div>
 			</div>
 			<div class="row">
 				<input type="text" class="form-control" ng-model="answer2" />
 			</div>
 			<div class="row">
-				<div class="alert alert-success" role="alert">question3</div>
+				<div class="alert alert-info" role="alert">question3</div>
 			</div>
 			<div class="row">
-				<input type="text" class="form-control" ng-model="question3" />
+				<select ng-model="selectquestion3"
+					ng-options="opt as opt.label for opt in question3" class="form-control">
+				</select>
 			</div>
 			<div class="row">
-				<div class="alert alert-success" role="alert">answer3</div>
+				<div class="alert alert-info" role="alert">answer3</div>
 			</div>
 			<div class="row">
 				<input type="text" class="form-control" ng-model="answer3" />

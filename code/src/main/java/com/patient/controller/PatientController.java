@@ -29,4 +29,10 @@ public class PatientController {
 				+ patient.getPatient_birthday());
 		return pService.save(patient);
 	}
+	
+	@RequestMapping(value = "/patient/admin/delete", method = RequestMethod.GET)
+	public @ResponseBody String deletePatientFromAdmin(
+			@RequestParam(value = "patientId", required = true) int patientId) {
+		return pService.delete(patientId);
+	}
 }

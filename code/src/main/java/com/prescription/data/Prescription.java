@@ -24,14 +24,20 @@ public class Prescription {
 	private int patient_id;
 	@Column(name = "patient_name")
 	private String patient_name;
+	@Column(name = "patient_ssn")
+	private String patient_ssn;
 	@Column(name = "physician_id")
 	private int physician_id;
 	@Column(name = "physician_name")
 	private String physician_name;
+	@Column(name = "physician_ssn")
+	private String physician_ssn;
 	@Column(name = "writer_id")
 	private int writer_id;
 	@Column(name = "writer_name")
 	private String writer_name;
+	@Column(name = "writer_ssn")
+	private String writer_ssn;
 	@Column(name = "writer_type")
 	private String writer_type;
 	
@@ -129,4 +135,28 @@ public class Prescription {
 		this.content = content;
 	}
 
+	public String getPatient_ssn() {
+		return patient_ssn;
+	}
+
+	public void setPatient_ssn(String patient_ssn) {
+		this.patient_ssn = patient_ssn;
+	}
+
+	public String getPhysician_ssn() {
+		return physician_ssn;
+	}
+
+	public void setPhysician_ssn(String physician_ssn) {
+		this.physician_ssn = physician_ssn;
+	}
+
+	public String getWriter_ssn() {
+		return writer_ssn;
+	}
+
+	public void setWriter_ssn(String writer_ssn) {
+		this.writer_ssn = writer_ssn;
+	}
+	
 }

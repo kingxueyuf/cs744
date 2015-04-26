@@ -74,8 +74,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 			System.out.println("ROLE_PHYSICIAN");
 			UserDetails user = new CustomSpringUser(currentUser.getAccount(),
 					currentUser.getPassword(), true, true, true, true,
-					getAuthorities("PHYSICIAN"), currentUser.getPhysicianId(),
-					ConstantValue.PHYSICIAN, currentUser.getPhysicianName(),
+					getAuthorities("PHYSICIAN"), currentUser.getPhysician_id(),
+					ConstantValue.PHYSICIAN, currentUser.getPhysician_name(),
 					currentUser.getAccount());
 			return user;
 		} else if (role == 2) {

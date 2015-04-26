@@ -92,4 +92,14 @@ public class PatientPhysicianRelationDao implements
 		return list;
 	}
 
+	public String save(RelationPhysicianPatient rpp) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		session.save(rpp);
+		session.getTransaction().commit();
+		session.close();
+		return "success";
+	}
+
 }

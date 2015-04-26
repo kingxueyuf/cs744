@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.authentication.service.CustomUserDetailsService;
+import com.security.data.Question;
 import com.security.data.Security;
 import com.security.service.SecurityService;
 
@@ -56,4 +57,12 @@ public class SecurityController {
 		sService.save(s);
 		return "success";
 	}
+	
+	@RequestMapping(value = "/question/questions", method = RequestMethod.GET)
+	@Secured(value = { "ROLE_PHYSICIAN" })
+	public @ResponseBody List<Question> questions() {
+		return sService.questions();
+	
+	}
+	
 }

@@ -236,44 +236,63 @@ function createPrescription() {
 	}
 }
 function registerAddDrug(prescriptionId) {
-	$("#drugInput").on("keyup", function() {
-		console.log("here");
-		var input = $('#drugInput').val();
-		$.ajax({
-			type : "GET",
-			url : "/drug/searchWithInput",
-			data : 'drugInput=' + input,
-			success : function(data) {
-				var suggestion = [];
-				for ( var i in data) {
-					suggestion.push(data[i].drug_id + "_" + data[i].drug_name);
-				}
-				$("#drugInput").autocomplete({
-					source : suggestion
+	$("#drugInput").on(
+			"keyup",
+			function() {
+				console.log("here");
+				var input = $('#drugInput').val();
+				var nameType = $("#nameType").val();
+				$.ajax({
+					type : "GET",
+					url : "/drug/search",
+					data : 'drugInput=' + input + "&drugNameType=" + nameType,
+					success : function(data) {
+						var suggestion = [];
+						for ( var i in data) {
+							suggestion.push(data[i].drug_type + "_"
+									+ data[i].drug_name_medical + "_"
+									+ data[i].drug_name_commercial + "_"
+									+ data[i].drug_unit + "_"
+									+ data[i].drug_dose + "_"
+									+ data[i].drug_price);
+						}
+						$("#drugInput").autocomplete({
+							source : suggestion
+						});
+					},
+					dataType : "json",
 				});
-			},
-			dataType : "json",
-		});
-	});
+			});
 	registerDrugAddButton(prescriptionId);
 }
 function registerDrugAddButton(prescriptionId) {
 	$('#addDrug').on(
 			'click',
 			function() {
-				var id_drug = $('#drugInput').val();
-				var drugId = id_drug.split('_')[0];
-				var drugName = id_drug.split('_')[1];
+				var complexDrugNameInput = $('#drugInput').val();
+				var drugId = 1;
+				var drug_name_medical = complexDrugNameInput.split('_')[1];
+				var drug_name_commercial = complexDrugNameInput.split('_')[2];
+				var drug_unit = complexDrugNameInput.split('_')[3];
+				var drug_dose = complexDrugNameInput.split('_')[4];
+				var drug_price = complexDrugNameInput.split('_')[5];
 				var amount = $('#amount').val();
 				$.ajax({
 					type : "GET",
 					url : "/drug/add",
-					data : 'drugName=' + drugName + '&prescriptionId='
+					data : 'medicalName=' + drug_name_medical
+							+ "&commercialName=" + drug_name_commercial
+							+ "&unit=" + drug_unit + "&dose=" + drug_dose
+							+ "&price=" + drug_price + '&prescriptionId='
 							+ prescriptionId + '&drugId=' + drugId + '&amount='
 							+ amount,
 					success : function(data) {
 						var row = '<tr>';
-						row += '<td>' + id_drug + '</td>';
+						row += '<td>' + drug_name_medical + '</td>';
+						row += '<td>' + drug_name_commercial + '</td>';
+						row += '<td>' + drug_unit + '</td>';
+						row += '<td>' + drug_dose + '</td>';
+						row += '<td>' + drug_price + '</td>';
 						row += '<td>' + amount + '</td>';
 						row += '</tr>';
 						var $rowDom = $.parseHTML(row);

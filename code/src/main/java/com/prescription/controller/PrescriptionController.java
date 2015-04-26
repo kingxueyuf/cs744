@@ -58,26 +58,30 @@ public class PrescriptionController {
 		p.setPatient_id(patientId);
 		Patient patient = patientService.getPatientById(patientId);
 		p.setPatient_name(patient.getPatient_name());
+		p.setPatient_ssn(patient.getSSN());
 		if (CustomUserDetailsService.isMedicalStaff()) {
 			MedicalStaff ms = msService
 					.getMedicalstaffById(CustomUserDetailsService
 							.currentUserDetails().getUserId());
 			Physician physician = physicianService.getPhysicianById(ms.getPhysician_id());
-			p.setPhysician_id(physician.getPhysicianId());
-			p.setPhysician_name(physician.getPhysicianName());
+			p.setPhysician_id(physician.getPhysician_id());
+			p.setPhysician_name(physician.getPhysician_name());
+			p.setPhysician_ssn(physician.getSsn());
 			p.setCreate_date(new Date());
 			p.setContent("");
 			p.setWriter_id(ms.getMsid());
 			p.setWriter_name(ms.getMs_name());
+			p.setWriter_ssn(ms.getSsn());
 			p.setWriter_type(ConstantValue.MEDICAL_STAFF);
 		} else if (CustomUserDetailsService.isPhysician()) {
 			Physician physician = physicianService.currentPhysician();
-			p.setPhysician_id(physician.getPhysicianId());
-			p.setPhysician_name(physician.getPhysicianName());
+			p.setPhysician_id(physician.getPhysician_id());
+			p.setPhysician_name(physician.getPhysician_name());
 			p.setCreate_date(new Date());
 			p.setContent("");
-			p.setWriter_id(physician.getPhysicianId());
-			p.setWriter_name(physician.getPhysicianName());
+			p.setWriter_id(physician.getPhysician_id());
+			p.setWriter_name(physician.getPhysician_name());
+			p.setWriter_ssn(physician.getSsn());
 			p.setWriter_type(ConstantValue.PHYSICIAN);
 		}
 		return pService.save(p);

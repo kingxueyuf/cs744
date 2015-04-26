@@ -12,14 +12,26 @@ import com.medical_staff.dao.MedicalStaffDao;
 public class MedicalStaffService {
 	@Autowired
 	MedicalStaffDao msDao;
-	
-	public List<MedicalStaff> list(){
+
+	public List<MedicalStaff> list() {
 		return msDao.list();
 	}
-	public MedicalStaff getMedicalstaffById(int id){
+
+	public MedicalStaff getMedicalstaffById(int id) {
 		return msDao.getById(id);
 	}
-	public List<MedicalStaff> getByPhysicianId(int id){
+
+	public List<MedicalStaff> getByPhysicianId(int id) {
 		return msDao.getByPhysicianId(id);
+	}
+
+	public String save(MedicalStaff ms) {
+		// TODO Auto-generated method stub
+		return msDao.save(ms);
+	}
+
+	public String delete(int msid) {
+		// TODO Auto-generated method stub
+		return msDao.delete(msid);
 	}
 }

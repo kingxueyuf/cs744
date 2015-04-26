@@ -31,7 +31,7 @@ public class MedicalStaff {
 	private String physician_name;
 
 	@Column(name = "SSN")
-	private String SSN;
+	private String ssn;
 	
 	public int getMsid() {
 		return msid;
@@ -81,12 +81,11 @@ public class MedicalStaff {
 		this.physician_name = physician_name;
 	}
 
-	public String getSSN() {
-		return SSN;
+	public String getSsn() {
+		return ssn;
 	}
 
-	public void setSSN(String sSN) {
-		SSN = sSN;
-	}
-
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}	
 }

@@ -35,4 +35,8 @@ public class PhysicianService {
 		// TODO Auto-generated method stub
 		return physicianDao.save(physician);
 	}
+	public String delete(int physicianId) {
+		// TODO Auto-generated method stub
+		return physicianDao.delete(physicianId);
+	}
 }

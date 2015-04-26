@@ -35,4 +35,10 @@ public class PhysicianController {
 		System.out.println("here");
 		return pService.save(physician);
 	}
+	
+	@RequestMapping(value = "/physician/admin/delete", method = RequestMethod.GET)
+	public @ResponseBody String delete(
+			@RequestParam(value = "physicianId", required = true) int physicianId) {
+		return pService.delete(physicianId);
+	}
 }

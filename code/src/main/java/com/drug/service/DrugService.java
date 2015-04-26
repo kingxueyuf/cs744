@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.drug.dao.DrugDao;
 import com.drug.data.Drug;
+import com.drug.data.DrugFromPharmacy;
 
 @Service
 public class DrugService {
@@ -16,5 +17,10 @@ public class DrugService {
 	
 	public List<Drug> searchWithInput( String input ){
 		return drugDao.searchWithInput(input);
+	}
+
+	public List<DrugFromPharmacy> search(String input, String nameType) {
+		// TODO Auto-generated method stub
+		return drugDao.search(input,nameType);
 	}
 }

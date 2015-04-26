@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.prescription.data.Prescription;
 import com.security.data.Security;
 
 @Repository
@@ -38,6 +39,17 @@ public class SecurityDao {
 		session.save(s);
 		session.getTransaction().commit();
 		session.close();
+	}
+
+	public List<com.security.data.Question> questions() {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Question");
+		Transaction transaction = session.beginTransaction();
+		List<com.security.data.Question> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
 	}
 
 }

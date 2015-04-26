@@ -66,4 +66,9 @@ public class PatientService {
 		patient.setPatient_age(age);
 		return pDao.save(patient);
 	}
+
+	public String delete(int patientId) {
+		// TODO Auto-generated method stub
+		return pDao.delete(patientId);
+	}
 }

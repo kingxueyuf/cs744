@@ -65,4 +65,14 @@ public class PhysicianDao {
 		return "success";
 	}
 
+	public String delete(int physicianId) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("delete Physician where physician_id = "
+				+ physicianId);
+		q.executeUpdate();
+		session.close();
+		return "success";
+	}
+
 }
