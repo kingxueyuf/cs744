@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "	relation_transcription_treatment")
@@ -27,6 +28,14 @@ public class TreatmentRelation {
 	@Column(name = "treatment_operator_type")
 	private String treatment_operator_type;
 	
+	@Transient
+	public String price;
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	public int getRelation_id() {
 		return relation_id;
 	}

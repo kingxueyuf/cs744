@@ -1,0 +1,3 @@
+Patient was seen by medical staff and physician.
+This was a general check up. Patient was asked to get blood test for sugar and cholestrol. Reports will be sent in the mail to the 
+patient.

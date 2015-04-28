@@ -29,4 +29,10 @@ public class PrescriptionService {
 		return pDao.getByPrescriptionId(prescriptionId);
 	}
 
+	public List<Prescription> getByPrescriptionId(String physician_ssn,
+			String patient_ssn, String create_date) {
+		// TODO Auto-generated method stub
+		return pDao.toPharmacy(physician_ssn,patient_ssn,create_date);
+	}
+
 }

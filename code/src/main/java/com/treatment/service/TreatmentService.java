@@ -20,5 +20,9 @@ public class TreatmentService {
 		// TODO Auto-generated method stub
 		return treatmentDao.list();
 	}
+	
+	public Treatment getById(int id){
+		return treatmentDao.getById(id);
+	}
 
 }

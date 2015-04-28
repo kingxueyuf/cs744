@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,6 +25,15 @@ public class TranscriptionDiagnosticRelation {
 	private int diagnostic_test_id;
 	@Column(name = "diagnostic_test_name")
 	private String diagnostic_test_name;
+	
+	@Transient
+	public String price;
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	
 	public int getRelation_id() {
 		return relation_id;

@@ -56,6 +56,8 @@ public class TranscriptionController {
 			@RequestParam(value = "abstraction", required = true) String abstraction) {
 
 		transcriptionService.update(transcriptionId, content, abstraction);
+		
+		transcriptionService.sendBillToAdmin(transcriptionId);
 		return "success";
 	}
 }

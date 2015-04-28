@@ -19,5 +19,9 @@ public class DiagnosticTestServcie {
 		List<DiagnosticTest> list = dtDao.serachWithInput(input);
 		return list;
 	}
+	
+	public DiagnosticTest getById(int id){
+		return dtDao.getById(id);
+	}
 
 }

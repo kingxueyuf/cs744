@@ -1,0 +1,4 @@
+Patient was seen medical staff only.
+This was a follow up to check how the patient is doing after the depression medication given two weeks earlier. It looks like the
+depression medication is working and the patient has been asked continue the medication. If there is a change in mood or behavior
+then the patient must see the physician. At this time, no follow up seems to be necessary.

@@ -1,0 +1,4 @@
+Patient was seen by medical staff and physician.
+Patient had some chest and saw a cardiologist before. The cardiologis referred the patient to do some basic tests to check reactions to 
+a prescription medicine. The patient was asked to do the blood test and some physical activities and observed. Report will be sent to
+the cardiologist.

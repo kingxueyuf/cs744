@@ -3,6 +3,11 @@ package com.transcription.service;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,27 +15,51 @@ import com.authentication.data.MedicalStaff;
 import com.authentication.data.Physician;
 import com.authentication.service.CustomUserDetailsService;
 import com.constant.ConstantValue;
+import com.diagnostic_test.data.DiagnosticTest;
+import com.diagnostic_test.service.DiagnosticTestServcie;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.medical_staff.service.MedicalStaffService;
 import com.patient.data.Patient;
 import com.patient.service.PatientService;
 import com.physician.service.PhysicianService;
+import com.relation_transcription_diagnostic_test.data.TranscriptionDiagnosticRelation;
+import com.relation_transcription_diagnostic_test.service.TranscriptionDiagnosticRelationService;
+import com.relation_transcription_surgery.data.TranscriptionSurgeryRelation;
+import com.relation_transcription_surgery.service.TranscriptionSurgeryRelationService;
+import com.relation_transcription_treatment.data.TreatmentRelation;
+import com.relation_transcription_treatment.service.TreatmentRelationService;
+import com.surgery.data.Surgery;
+import com.surgery.service.SurgeryService;
 import com.transcription.dao.TranscriptionDao;
+import com.transcription.data.BillToAdmin;
 import com.transcription.data.Transcription;
+import com.treatment.data.Treatment;
+import com.treatment.service.TreatmentService;
 
 @Service
 public class TranscriptionService {
-
 	@Autowired
 	TranscriptionDao transcriptionDao;
-
 	@Autowired
 	PatientService pService;
-
 	@Autowired
 	PhysicianService physicianService;
-
 	@Autowired
 	MedicalStaffService msService;
+	@Autowired
+	TranscriptionDiagnosticRelationService diagnosticRelationService;
+	@Autowired
+	TranscriptionSurgeryRelationService sugeryRelationService;
+	@Autowired
+	TreatmentRelationService treatmentRelationService;
+	@Autowired
+	DiagnosticTestServcie diagnosticTestServcie;
+	@Autowired
+	SurgeryService surgeryService;
+	@Autowired
+	TreatmentService treatmentService;
 
 	public List<Transcription> getTranscriptionsByEmrId(int emrId) {
 		List<Transcription> list = transcriptionDao
@@ -68,8 +97,8 @@ public class TranscriptionService {
 		} else if (CustomUserDetailsService.isPhysician()) {
 			Physician currentPhysician = physicianService.currentPhysician();
 			transcription.setPhysician_id(currentPhysician.getPhysician_id());
-			transcription
-					.setPhysician_name(currentPhysician.getPhysician_name());
+			transcription.setPhysician_name(currentPhysician
+					.getPhysician_name());
 			transcription.setWriter_id(currentPhysician.getPhysician_id());
 			transcription.setWriter_name(currentPhysician.getAccount());
 			transcription.setWriter_type(ConstantValue.PHYSICIAN);
@@ -84,4 +113,63 @@ public class TranscriptionService {
 		transcriptionDao.update(transcriptionId, content, abstraction);
 	}
 
+	public void sendBillToAdmin(int transcriptionId) {
+		// TODO Auto-generated method stub
+		BillToAdmin bta = new BillToAdmin();
+		Transcription trans = transcriptionDao
+				.findTranscriptionById(transcriptionId);
+		bta.setTrans(trans);
+		List<TranscriptionDiagnosticRelation> diagnosticList = diagnosticRelationService
+				.getByTranscriptionId(transcriptionId);
+		List<TranscriptionSurgeryRelation> surgeryList = sugeryRelationService
+				.getByTranscriptionId(transcriptionId);
+		List<TreatmentRelation> treatmentList = treatmentRelationService
+				.getByTranscriptionId(transcriptionId);
+
+		for (TranscriptionDiagnosticRelation tdr : diagnosticList) {
+			DiagnosticTest dt = diagnosticTestServcie.getById(tdr
+					.getDiagnostic_test_id());
+			tdr.setPrice(dt.getCost() + "");
+		}
+		for (TranscriptionSurgeryRelation tsr : surgeryList) {
+			Surgery s = surgeryService.getById(tsr.getSurgery_id());
+			tsr.setPrice(s.getCost() + "");
+		}
+		for (TreatmentRelation tr : treatmentList) {
+			Treatment t = treatmentService.getById(tr.getTreatment_id());
+			tr.setPrice(t.getTreatment_price());
+		}
+		bta.setDiagnosticList(diagnosticList);
+		bta.setSurgeryList(surgeryList);
+		bta.setTreatmentList(treatmentList);
+		ObjectWriter ow = new ObjectMapper().writer()
+				.withDefaultPrettyPrinter();
+		try {
+			String json = ow.writeValueAsString(bta);
+			System.out.println(json);
+			String url = "url from admin component";
+			this.postToUrl(url, json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void postToUrl(String url, String json) {
+		HttpClient httpClient = HttpClientBuilder.create().build(); // Use this
+																	// instead
+		try {
+			HttpPost request = new HttpPost(url);
+			StringEntity params = new StringEntity(json);
+			request.addHeader("content-type",
+					"application/x-www-form-urlencoded");
+			request.setEntity(params);
+			HttpResponse response = httpClient.execute(request);
+			// handle response here...
+		} catch (Exception ex) {
+			// handle exception here
+		} finally {
+			httpClient.getConnectionManager().shutdown();
+		}
+	}
 }

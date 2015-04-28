@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "	relation_transcription_surgery")
@@ -21,6 +22,15 @@ public class TranscriptionSurgeryRelation {
 	@Column(name = "surgery_name")
 	private String surgery_name;
 
+	@Transient
+	public String price;
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	
 	public int getRelation_id() {
 		return relation_id;
 	}

@@ -1,0 +1,3 @@
+Patient was seen by the medical staff and physician.
+Patient had muscle pain on the left elbow. Based on the symptoms, the problem was diagnosed as "tennis elbow - left twist".
+The patient was referred to Dr. Kristian Jokinen. Patient was asked to take Advil (Ibuprofen) 200 mg, 2 per day for 3 days.

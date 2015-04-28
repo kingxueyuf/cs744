@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.authentication.data.Physician;
+import com.emr.data.Emr;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.patient.data.Patient;
 import com.relation_prescription_drug.data.PrescriptionDrugRelation;
@@ -20,7 +21,7 @@ public class PrescriptionForPharmacy {
 	private Patient patient;
 	private Physician physician;
 	private List<PrescriptionDrugRelation> prescriptionDrugList;
-
+	private Emr emr;
 	
 	public Patient getsPatient() {
 		return patient;
@@ -55,4 +56,12 @@ public class PrescriptionForPharmacy {
 		this.prescriptionDrugList = prescriptionDrugList;
 	}
 
+	public Emr getEmr() {
+		return emr;
+	}
+
+	public void setEmr(Emr emr) {
+		this.emr = emr;
+	}
+	
 }

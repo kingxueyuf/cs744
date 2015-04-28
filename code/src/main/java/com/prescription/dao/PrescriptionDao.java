@@ -54,4 +54,18 @@ public class PrescriptionDao {
 		return (list.size() == 0) ? null : list.remove(0);
 	}
 
+	public List<Prescription> toPharmacy(String physician_ssn,
+			String patient_ssn, String create_date) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Prescription where patient_ssn='"
+				+ patient_ssn + "' and physician_ssn='" + physician_ssn
+				+ "' and create_date='" + create_date + "'");
+		Transaction transaction = session.beginTransaction();
+		List<Prescription> list = q.list();
+		transaction.commit();
+		session.close();
+		return list;
+	}
+
 }

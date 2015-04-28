@@ -31,6 +31,7 @@ public class Treatment {
 	@Column(name = "can_medical_staff")
 	private String can_medical_staff;
 
+	
 	public int getTreatment_id() {
 		return treatment_id;
 	}

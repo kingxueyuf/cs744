@@ -18,4 +18,8 @@ public class SurgeryService {
 		// TODO Auto-generated method stub
 		return sDao.serachWithInput(input);
 	}
+	
+	public Surgery getById(int id){
+		return sDao.getById(id);
+	}
 }
