@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "physician")
 public class Physician implements Serializable {
 	@Id
+	@GeneratedValue
 	@Column(name = "physician_id")
 	private int physician_id;
 

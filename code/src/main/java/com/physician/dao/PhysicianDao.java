@@ -75,4 +75,15 @@ public class PhysicianDao {
 		return "success";
 	}
 
+	public Physician getPhysicianBySSN(String ssn) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session.createQuery("from Physician where SSN = '" + ssn
+				+ "'");
+		List<Physician> list = q.list();
+		session.close();
+		Physician p = (Physician) ((list.size() != 0) ? list.remove(0) : null);
+		return p;
+	}
+
 }

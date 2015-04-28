@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "medical_staff")
@@ -32,6 +33,9 @@ public class MedicalStaff {
 
 	@Column(name = "SSN")
 	private String ssn;
+	
+	@Transient
+	public String physician_ssn;
 	
 	public int getMsid() {
 		return msid;
@@ -87,5 +91,15 @@ public class MedicalStaff {
 
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
+	}
+
+	public String getPhysician_ssn() {
+		return physician_ssn;
+	}
+
+	public void setPhysician_ssn(String physician_ssn) {
+		this.physician_ssn = physician_ssn;
 	}	
+	
+	
 }

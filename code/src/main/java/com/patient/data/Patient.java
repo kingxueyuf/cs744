@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -22,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "patient")
 public class Patient implements Serializable {
 	@Id
+	@GeneratedValue
 	@Column(name = "patient_id")
 	private int patient_id;
 	@Column(name = "patient_name")
@@ -39,6 +41,9 @@ public class Patient implements Serializable {
 	@Column(name = "SSN")
 	private String ssn;
 
+	@Transient
+	public String physician_ssn;
+	
 	public int getPatient_id() {
 		return patient_id;
 	}
@@ -75,14 +80,6 @@ public class Patient implements Serializable {
 		System.out.println(patient_age);
 	}
 
-	public String getSSN() {
-		return ssn;
-	}
-
-	public void setSSN(String ssn) {
-		this.ssn = ssn;
-		System.out.println("ssn=" + ssn);
-	}
 
 	/**
 	 * @return the patient_birthday
@@ -107,4 +104,21 @@ public class Patient implements Serializable {
 		this.patient_birthday = date;
 	}
 
+	public String getPhysician_ssn() {
+		return physician_ssn;
+	}
+
+	public void setPhysician_ssn(String physician_ssn) {
+		this.physician_ssn = physician_ssn;
+	}
+
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+	
+	
 }

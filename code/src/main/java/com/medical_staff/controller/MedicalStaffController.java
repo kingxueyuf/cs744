@@ -13,15 +13,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.authentication.data.CustomSpringUser;
 import com.authentication.data.MedicalStaff;
+import com.authentication.data.Physician;
 import com.authentication.service.CustomUserDetailsService;
 import com.medical_staff.service.MedicalStaffService;
 import com.patient.data.Patient;
+import com.physician.service.PhysicianService;
 
 @Controller
 public class MedicalStaffController {
 	@Autowired
 	private MedicalStaffService msService;
-
+	@Autowired
+	private PhysicianService physicianService;
+	
 	@RequestMapping(value = "/relation/physicianAndMedicalStaff", method = RequestMethod.GET)
 	public @ResponseBody List<MedicalStaff> get() {
 		CustomSpringUser cs = CustomUserDetailsService.currentUserDetails();
@@ -38,6 +42,9 @@ public class MedicalStaffController {
 	@RequestMapping(value = "/medicalstaff/admin/add", method = RequestMethod.POST)
 	public @ResponseBody String addMedicalStaffFromAdmin(
 			@RequestBody MedicalStaff ms) {
+		Physician physician = physicianService.getPhysicianBySSN(ms.getSsn());
+		ms.setPhysician_id(physician.getPhysician_id());
+		ms.setPhysician_name(physician.getPhysician_name());
 		return msService.save(ms);
 	}
 	

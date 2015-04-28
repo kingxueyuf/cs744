@@ -26,6 +26,9 @@ public class PhysicianService {
 	public Physician getPhysicianById(int physicianId){
 		return physicianDao.getPhysicianById(physicianId);
 	}
+	public Physician getPhysicianBySSN(String ssn){
+		return physicianDao.getPhysicianBySSN(ssn);
+	}
 
 	public List<Physician> searchWithInput(String input) {
 		List<Physician> list = physicianDao.serachWithInput(input);
