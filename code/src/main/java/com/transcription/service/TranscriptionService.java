@@ -79,7 +79,7 @@ public class TranscriptionService {
 		transcription.setEmr_id(emrId);
 		transcription.setPatient_id(patientId);
 		Patient p = pService.getPatientById(patientId);
-		transcription.setPatient_ssn(p.getSSN());
+		transcription.setPatient_ssn(p.getSsn());
 		transcription.setPatient_name(p.getPatient_name());
 		transcription.setAbstraction("");
 		transcription.setContent("");

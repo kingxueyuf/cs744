@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "patient")
 public class Patient implements Serializable {
 	@Id
-	@GeneratedValue
 	@Column(name = "patient_id")
 	private int patient_id;
 	@Column(name = "patient_name")

@@ -42,7 +42,7 @@ public class MedicalStaffController {
 	@RequestMapping(value = "/medicalstaff/admin/add", method = RequestMethod.POST)
 	public @ResponseBody String addMedicalStaffFromAdmin(
 			@RequestBody MedicalStaff ms) {
-		Physician physician = physicianService.getPhysicianBySSN(ms.getSsn());
+		Physician physician = physicianService.getPhysicianBySSN(ms.getPhysician_ssn());
 		ms.setPhysician_id(physician.getPhysician_id());
 		ms.setPhysician_name(physician.getPhysician_name());
 		return msService.save(ms);

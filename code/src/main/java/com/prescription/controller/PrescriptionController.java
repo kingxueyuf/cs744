@@ -65,7 +65,7 @@ public class PrescriptionController {
 		p.setPatient_id(patientId);
 		Patient patient = patientService.getPatientById(patientId);
 		p.setPatient_name(patient.getPatient_name());
-		p.setPatient_ssn(patient.getSSN());
+		p.setPatient_ssn(patient.getSsn());
 		if (CustomUserDetailsService.isMedicalStaff()) {
 			MedicalStaff ms = msService
 					.getMedicalstaffById(CustomUserDetailsService
