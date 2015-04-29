@@ -63,4 +63,10 @@ public class PatientController {
 			@RequestParam(value = "patientId", required = true) int patientId) {
 		return pService.delete(patientId);
 	}
+	
+	@RequestMapping(value = "/patient/admin/edit", method = RequestMethod.GET)
+	public @ResponseBody String editPatientFromAdmin(
+			@RequestBody Patient patient) {
+		return pService.update(patient);
+	}
 }

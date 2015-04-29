@@ -102,4 +102,18 @@ public class PatientPhysicianRelationDao implements
 		return "success";
 	}
 
+	public RelationPhysicianPatient findPrimaryCaraPatientById(int patient_id) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session
+				.createQuery("from RelationPhysicianPatient where patient_id="
+						+ patient_id + " and relation_type='"
+						+ ConstantValue.PRIMARY_CARE_RELATION + "'");
+		Transaction transaction = session.beginTransaction();
+		List<RelationPhysicianPatient> list = q.list();
+		transaction.commit();
+		session.close();
+		return (list.size() > 0) ? list.get(0) : null;
+	}
+
 }

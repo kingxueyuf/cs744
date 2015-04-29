@@ -42,4 +42,8 @@ public class PhysicianService {
 		// TODO Auto-generated method stub
 		return physicianDao.delete(physicianId);
 	}
+	public String update(Physician physician) {
+		// TODO Auto-generated method stub
+		return physicianDao.update(physician);
+	}
 }

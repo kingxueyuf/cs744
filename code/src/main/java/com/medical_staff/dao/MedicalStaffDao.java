@@ -68,4 +68,22 @@ public class MedicalStaffDao {
 		return "success";
 	}
 
+	public String update(MedicalStaff ms) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.update(ms);
+			tx.commit();
+			return "success";
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			session.close();
+		}
+	}
+
 }

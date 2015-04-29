@@ -83,9 +83,16 @@ public class PatientPhysicianRelationService implements
 				.findAllByPatientId(patient_id);
 		return list;
 	}
+	public RelationPhysicianPatient findPrimaryCaraPatientById(int patient_id){
+		return ppRelationDao.findPrimaryCaraPatientById(patient_id);
+	}
 
 	public String save(RelationPhysicianPatient rpp) {
+		
 		// TODO Auto-generated method stub
+		RelationPhysicianPatient primaryRR = this.findPrimaryCaraPatientById(rpp.getPatient_id());
+		rpp.setPrimary_physician_id(primaryRR.getPhysician_id());
+		rpp.setPrimary_physician_name(primaryRR.getPhysician_name());
 		return ppRelationDao.save(rpp);
 	}
 

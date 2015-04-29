@@ -49,4 +49,22 @@ public class PatientDao {
 		session.close();
 		return "success";
 	}
+
+	public String update(Patient patient) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.update(patient);
+			tx.commit();
+			return "success";
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			session.close();
+		}
+	}
 }

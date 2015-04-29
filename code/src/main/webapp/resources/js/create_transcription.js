@@ -252,8 +252,9 @@ function registerAddDrug(prescriptionId) {
 							suggestion.push(data[i].drug_type + "_"
 									+ data[i].drug_name_medical + "_"
 									+ data[i].drug_name_commercial + "_"
-									+ data[i].drug_unit + "_"
 									+ data[i].drug_dose + "_"
+									+ data[i].drug_usage + "_"
+									+ data[i].drug_refill_times + "_"
 									+ data[i].drug_price);
 						}
 						$("#drugInput").autocomplete({
@@ -273,27 +274,31 @@ function registerDrugAddButton(prescriptionId) {
 				var drugId = 1;
 				var drug_name_medical = complexDrugNameInput.split('_')[1];
 				var drug_name_commercial = complexDrugNameInput.split('_')[2];
-				var drug_unit = complexDrugNameInput.split('_')[3];
-				var drug_dose = complexDrugNameInput.split('_')[4];
-				var drug_price = complexDrugNameInput.split('_')[5];
+				var drug_dose = complexDrugNameInput.split('_')[3];
+				var drug_usage = complexDrugNameInput.split('_')[4];
+				var drug_refill_times = complexDrugNameInput.split('_')[5];
+				var drug_price = complexDrugNameInput.split('_')[6];
 				var amount = $('#amount').val();
+				var refill = $('#refill').val();
 				$.ajax({
 					type : "GET",
 					url : "/drug/add",
 					data : 'medicalName=' + drug_name_medical
 							+ "&commercialName=" + drug_name_commercial
-							+ "&unit=" + drug_unit + "&dose=" + drug_dose
+							+ "&dose=" + drug_dose
 							+ "&price=" + drug_price + '&prescriptionId='
 							+ prescriptionId + '&drugId=' + drugId + '&amount='
-							+ amount,
+							+ amount + "&refill=" + refill,
 					success : function(data) {
 						var row = '<tr>';
 						row += '<td>' + drug_name_medical + '</td>';
 						row += '<td>' + drug_name_commercial + '</td>';
-						row += '<td>' + drug_unit + '</td>';
 						row += '<td>' + drug_dose + '</td>';
+						row += '<td>' + drug_usage + '</td>';
+						row += '<td>' + drug_refill_times + '</td>';
 						row += '<td>' + drug_price + '</td>';
 						row += '<td>' + amount + '</td>';
+						row += '<td>' + refill + '</td>';
 						row += '</tr>';
 						var $rowDom = $.parseHTML(row);
 						$('#drugTableContent').append($rowDom);

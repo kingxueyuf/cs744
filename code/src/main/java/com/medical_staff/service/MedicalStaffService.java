@@ -34,4 +34,9 @@ public class MedicalStaffService {
 		// TODO Auto-generated method stub
 		return msDao.delete(msid);
 	}
+
+	public String update(MedicalStaff ms) {
+		// TODO Auto-generated method stub
+		return msDao.update(ms);
+	}
 }

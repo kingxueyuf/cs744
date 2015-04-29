@@ -154,20 +154,20 @@ function format(row, tr, d) {
 				data : "prescription_id=" + prescription_id,
 				success : function(data) {
 					var extension = '<table class="table table-bordered"><thead>'
-							+ '<tr><th>Medical Name</th><th>Commercial Name</th><th>Unit</th><th>Dose</th><th>Price</th><th>Amount</th></tr></thead><tbody>';
+							+ '<tr><th>Medical Name</th><th>Commercial Name</th><th>Dose</th><th>Price</th><th>Amount</th><th>Refill</th></tr></thead><tbody>';
 					for ( var i in data) {
 						var onTr = '<tr><td class="drugname">'
 								+ data[i].drug_name_medical + '</td>'
 								+ '<td class="drugamount">'
 								+ data[i].drug_name_commercial + '</td>'
 								+ '<td class="drugamount">'
-								+ data[i].drug_unit + '</td>'
-								+ '<td class="drugamount">'
 								+ data[i].drug_dose + '</td>'
 								+ '<td class="drugamount">'
 								+ data[i].drug_price + '</td>'
 								+ '<td class="drugamount">'
 								+ data[i].amount + '</td>'
+								+ '<td class="drugamount">'
+								+ data[i].refill + '</td>'
 								+ '</tr>';
 						extension += onTr;
 					}

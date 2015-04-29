@@ -53,4 +53,10 @@ public class MedicalStaffController {
 			@RequestParam(value = "msid", required = true) int msid) {
 		return msService.delete(msid);
 	}
+	
+	@RequestMapping(value = "/medicalstaff/admin/edit", method = RequestMethod.POST)
+	public @ResponseBody String editMedicalStaffFromAdmin(
+			@RequestBody MedicalStaff ms) {
+		return msService.update(ms);
+	}
 }

@@ -58,9 +58,12 @@ function bindSubmitAction() {
 	$('#createEMRSubmit').click(
 			function() {
 
-				var race = $('#race').val();
-				var occupation = $('#occupation').val();
-				var address = $('#address').val();
+//				var race = $('#race').val();
+//				var occupation = $('#occupation').val();
+//				var address = $('#address').val();
+				var race = "asian";
+				var occupation = "singer";
+				var address="test";
 				var height = $('#height').val();
 				var weight = $('#weight').val();
 				var blood_group = $('#blood_group').val();

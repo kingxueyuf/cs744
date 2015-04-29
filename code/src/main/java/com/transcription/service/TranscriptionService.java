@@ -1,5 +1,8 @@
 package com.transcription.service;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.List;
 
@@ -100,7 +103,7 @@ public class TranscriptionService {
 			transcription.setPhysician_name(currentPhysician
 					.getPhysician_name());
 			transcription.setWriter_id(currentPhysician.getPhysician_id());
-			transcription.setWriter_name(currentPhysician.getAccount());
+			transcription.setWriter_name(currentPhysician.getPhysician_name());
 			transcription.setWriter_type(ConstantValue.PHYSICIAN);
 		}
 		Date date = new Date();
@@ -147,7 +150,9 @@ public class TranscriptionService {
 		try {
 			String json = ow.writeValueAsString(bta);
 			System.out.println(json);
-			String url = "url from admin component";
+			String url = "http://138.49.101.81/Administrative/bill/getEMRData";
+					//"http://138.49.101.81/Administrative/bill/getEMRData";
+					//"http://172.31.156.156:8080/admin/bill/getEMRData";
 			this.postToUrl(url, json);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
@@ -157,14 +162,31 @@ public class TranscriptionService {
 
 	public void postToUrl(String url, String json) {
 		HttpClient httpClient = HttpClientBuilder.create().build(); // Use this
+																	// //
 																	// instead
 		try {
 			HttpPost request = new HttpPost(url);
 			StringEntity params = new StringEntity(json);
-			request.addHeader("content-type",
-					"application/x-www-form-urlencoded");
+			request.addHeader("content-type", "application/json");
 			request.setEntity(params);
 			HttpResponse response = httpClient.execute(request);
+			System.out.println("status code = "
+					+ response.getStatusLine().getStatusCode());
+			InputStream ips = response.getEntity().getContent();
+			BufferedReader buf = new BufferedReader(new InputStreamReader(ips,
+					"UTF-8"));
+			StringBuilder sb = new StringBuilder();
+			String s;
+			while (true) {
+				s = buf.readLine();
+				if (s == null || s.length() == 0)
+					break;
+				sb.append(s);
+
+			}
+			buf.close();
+			ips.close();
+			System.out.println(sb.toString());
 			// handle response here...
 		} catch (Exception ex) {
 			// handle exception here

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.authentication.data.Physician;
 import com.drug.data.Drug;
+import com.patient.data.Patient;
 import com.physician.service.PhysicianService;
 
 @Controller
@@ -40,5 +41,11 @@ public class PhysicianController {
 	public @ResponseBody String delete(
 			@RequestParam(value = "physicianId", required = true) int physicianId) {
 		return pService.delete(physicianId);
+	}
+	
+	@RequestMapping(value = "/physician/admin/edit", method = RequestMethod.GET)
+	public @ResponseBody String edit(
+			@RequestBody Physician physician) {
+		return pService.update(physician);
 	}
 }

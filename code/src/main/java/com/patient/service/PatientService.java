@@ -71,4 +71,9 @@ public class PatientService {
 		// TODO Auto-generated method stub
 		return pDao.delete(patientId);
 	}
+
+	public String update(Patient patient) {
+		// TODO Auto-generated method stub
+		return pDao.update(patient);
+	}
 }

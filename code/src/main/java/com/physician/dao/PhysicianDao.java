@@ -33,7 +33,7 @@ public class PhysicianDao {
 	public List<Physician> serachWithInput(String input) {
 		Session session = sessionFactory.openSession();
 		Query q = session
-				.createQuery("from Physician where physicianName like '"
+				.createQuery("from Physician where physician_name like '"
 						+ input + "%'");
 		Transaction transaction = session.beginTransaction();
 		List<Physician> list = q.list();
@@ -84,6 +84,24 @@ public class PhysicianDao {
 		session.close();
 		Physician p = (Physician) ((list.size() != 0) ? list.remove(0) : null);
 		return p;
+	}
+
+	public String update(Physician physician) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.update(physician);
+			tx.commit();
+			return "success";
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			session.close();
+		}
 	}
 
 }

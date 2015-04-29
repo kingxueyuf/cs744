@@ -54,4 +54,53 @@ public class DrugDao {
 			return list;
 		}
 	}
+
+	public List<DrugFromPharmacy> searchForMedicalStaff(String input,
+			String nameType) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		if (nameType.equals("medical")) {
+			Query q = session
+					.createQuery("from DrugFromPharmacy where drug_name_medical like '"
+							+ input + "%' and drug_lv ='0'");
+			Transaction transaction = session.beginTransaction();
+			List<DrugFromPharmacy> list = q.list();
+			transaction.commit();
+			session.close();
+			return list;
+		} else {
+			Query q = session
+					.createQuery("from DrugFromPharmacy where drug_name_commercial like '"
+							+ input + "%' and drug_lv ='0'");
+			Transaction transaction = session.beginTransaction();
+			List<DrugFromPharmacy> list = q.list();
+			transaction.commit();
+			session.close();
+			return list;
+		}
+	}
+
+	public String update(DrugFromPharmacy drug) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Query q = session
+				.createQuery("from DrugFromPharmacy where drug_unique_id = '"
+						+ drug.getDrug_unique_id() + "'");
+		List<DrugFromPharmacy> list = q.list();
+		DrugFromPharmacy item = (list.size() > 0) ? list.get(0) : null;
+		drug.setDrug_id(item.getDrug_id());
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.update(drug);
+			tx.commit();
+			return "success";
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			throw e;
+		} finally {
+			session.close();
+		}
+	}
 }

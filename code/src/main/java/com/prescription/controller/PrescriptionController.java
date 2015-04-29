@@ -85,7 +85,7 @@ public class PrescriptionController {
 			Physician physician = physicianService.currentPhysician();
 			p.setPhysician_id(physician.getPhysician_id());
 			p.setPhysician_name(physician.getPhysician_name());
-			p.setPatient_ssn(physician.getSsn());
+			p.setPhysician_ssn(physician.getSsn());
 			p.setCreate_date(new Date());
 			p.setContent("");
 			p.setWriter_id(physician.getPhysician_id());

@@ -24,14 +24,14 @@ public class PrescriptionDrugRelation {
 	private String drug_name_medical;
 	@Column(name = "drug_name_commercial")
 	private String drug_name_commercial;
-	@Column(name = "drug_unit")
-	private String drug_unit;
 	@Column(name = "drug_dose")
 	private String drug_dose;
 	@Column(name = "drug_price")
 	private String drug_price;
 	@Column(name = "amount")
 	private String amount;
+	@Column(name = "refill")
+	private String refill;
 
 	public int getRpd_id() {
 		return rpd_id;
@@ -73,13 +73,6 @@ public class PrescriptionDrugRelation {
 		this.drug_name_commercial = drug_name_commercial;
 	}
 
-	public String getDrug_unit() {
-		return drug_unit;
-	}
-
-	public void setDrug_unit(String drug_unit) {
-		this.drug_unit = drug_unit;
-	}
 
 	public String getDrug_dose() {
 		return drug_dose;
@@ -103,6 +96,14 @@ public class PrescriptionDrugRelation {
 
 	public void setAmount(String amount) {
 		this.amount = amount;
+	}
+
+	public String getRefill() {
+		return refill;
+	}
+
+	public void setRefill(String refill) {
+		this.refill = refill;
 	}
 
 }
